@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      LittleMossStone_0: 8543330596421563257
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

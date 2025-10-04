@@ -359,7 +359,17 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      crownbottom1_0: -2188234700325511310
+      crownbottom1_1: -3764943568654720373
+      crownbottom1_2: -2426405762607476214
+      crownbottom1_3: 1862122695608650496
+      crownbottom1_4: 8483576227686731903
+      crownbottom1_5: -8367853346723237791
+      crownbottom1_6: -9048601885023115401
+      crownbottom1_7: 7298402723024289820
+      crownbottom1_8: -9086396082525403414
+      crownbottom1_9: 4991911352215977070
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

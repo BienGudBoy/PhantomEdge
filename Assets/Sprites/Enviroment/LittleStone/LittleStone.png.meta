@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      LittleStone_0: -6662181251718553572
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

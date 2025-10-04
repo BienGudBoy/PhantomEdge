@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      GatesWoodClosed_0: -1094720935070045436
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
