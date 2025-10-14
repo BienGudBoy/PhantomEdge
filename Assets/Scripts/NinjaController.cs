@@ -60,8 +60,13 @@ public class NinjaController : MonoBehaviour
     
     void Update()
     {
-        // Get input
-        horizontalInput = Input.GetAxisRaw("Horizontal");
+        // Get input - using explicit arrow keys only
+        horizontalInput = 0f;
+        if (Input.GetKey(KeyCode.LeftArrow))
+            horizontalInput = -1f;
+        else if (Input.GetKey(KeyCode.RightArrow))
+            horizontalInput = 1f;
+        
         isRunning = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
         
         // Jump input
@@ -70,8 +75,8 @@ public class NinjaController : MonoBehaviour
             Jump();
         }
         
-        // Attack input
-        if (Input.GetKeyDown(KeyCode.A) && isGrounded && !isAttacking)
+        // Attack input - Changed to J key to avoid conflict
+        if (Input.GetKeyDown(KeyCode.J) && isGrounded && !isAttacking)
         {
             Attack();
         }
