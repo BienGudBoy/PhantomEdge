@@ -75,8 +75,8 @@ public class NinjaController : MonoBehaviour
             Jump();
         }
         
-        // Attack input - Changed to J key to avoid conflict
-        if (Input.GetKeyDown(KeyCode.J) && isGrounded && !isAttacking)
+        // Attack input - Changed to A key to avoid conflict
+        if (Input.GetKeyDown(KeyCode.A) && isGrounded && !isAttacking)
         {
             Attack();
         }
