@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      farforest_0: -7345220402995947321
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

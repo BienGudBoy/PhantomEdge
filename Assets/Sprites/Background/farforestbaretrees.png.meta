@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      farforestbaretrees_0: 3588963712196478074
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
