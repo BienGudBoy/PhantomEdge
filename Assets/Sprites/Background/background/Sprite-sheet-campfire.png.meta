@@ -1,0 +1,4847 @@
+fileFormatVersion: 2
+guid: f1c4ea278a8397c448fc476f5a29b8bb
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7519012063143179805
+    second: Sprite-sheet-campfire_0
+  - first:
+      213: 39962005725566234
+    second: Sprite-sheet-campfire_1
+  - first:
+      213: -2630035703461596525
+    second: Sprite-sheet-campfire_2
+  - first:
+      213: 8107342659637613259
+    second: Sprite-sheet-campfire_3
+  - first:
+      213: -7294982035888093457
+    second: Sprite-sheet-campfire_4
+  - first:
+      213: -3551542914978531822
+    second: Sprite-sheet-campfire_5
+  - first:
+      213: 5680249859620256577
+    second: Sprite-sheet-campfire_6
+  - first:
+      213: -4696514063948768032
+    second: Sprite-sheet-campfire_7
+  - first:
+      213: -3917499688757120942
+    second: Sprite-sheet-campfire_8
+  - first:
+      213: -7578481769336532367
+    second: Sprite-sheet-campfire_9
+  - first:
+      213: -7091449186970913462
+    second: Sprite-sheet-campfire_10
+  - first:
+      213: -1604642116264100401
+    second: Sprite-sheet-campfire_11
+  - first:
+      213: -4664794633854628771
+    second: Sprite-sheet-campfire_12
+  - first:
+      213: 6913732368554246615
+    second: Sprite-sheet-campfire_13
+  - first:
+      213: -2790246131610074598
+    second: Sprite-sheet-campfire_14
+  - first:
+      213: -5714441628313345079
+    second: Sprite-sheet-campfire_15
+  - first:
+      213: 1071071009080342718
+    second: Sprite-sheet-campfire_16
+  - first:
+      213: -6165807713462036522
+    second: Sprite-sheet-campfire_17
+  - first:
+      213: -6363053123740328470
+    second: Sprite-sheet-campfire_18
+  - first:
+      213: 8499467191253943904
+    second: Sprite-sheet-campfire_19
+  - first:
+      213: -3994938369602036975
+    second: Sprite-sheet-campfire_20
+  - first:
+      213: -6367411322179571888
+    second: Sprite-sheet-campfire_21
+  - first:
+      213: 3007045848383754301
+    second: Sprite-sheet-campfire_22
+  - first:
+      213: -1702545445068026596
+    second: Sprite-sheet-campfire_23
+  - first:
+      213: -4449460103114163155
+    second: Sprite-sheet-campfire_24
+  - first:
+      213: -2045099064339121929
+    second: Sprite-sheet-campfire_25
+  - first:
+      213: -3830808448510352117
+    second: Sprite-sheet-campfire_26
+  - first:
+      213: -4346063230250774467
+    second: Sprite-sheet-campfire_27
+  - first:
+      213: -6892514050788220705
+    second: Sprite-sheet-campfire_28
+  - first:
+      213: -4557340638324806765
+    second: Sprite-sheet-campfire_29
+  - first:
+      213: -1475450376917339499
+    second: Sprite-sheet-campfire_30
+  - first:
+      213: -8891310862240952541
+    second: Sprite-sheet-campfire_31
+  - first:
+      213: 3346628794212097156
+    second: Sprite-sheet-campfire_32
+  - first:
+      213: 3983839164347139388
+    second: Sprite-sheet-campfire_33
+  - first:
+      213: -5877406404463911868
+    second: Sprite-sheet-campfire_34
+  - first:
+      213: 4580878852282737349
+    second: Sprite-sheet-campfire_35
+  - first:
+      213: -7760501608087870776
+    second: Sprite-sheet-campfire_36
+  - first:
+      213: -2744380738284175869
+    second: Sprite-sheet-campfire_37
+  - first:
+      213: 5552936159117529147
+    second: Sprite-sheet-campfire_38
+  - first:
+      213: 552001784998073942
+    second: Sprite-sheet-campfire_39
+  - first:
+      213: 7101245195435684430
+    second: Sprite-sheet-campfire_40
+  - first:
+      213: -1173002806390939357
+    second: Sprite-sheet-campfire_41
+  - first:
+      213: -2995545588307422198
+    second: Sprite-sheet-campfire_42
+  - first:
+      213: 2930419416983025319
+    second: Sprite-sheet-campfire_43
+  - first:
+      213: 8844444362789277363
+    second: Sprite-sheet-campfire_44
+  - first:
+      213: 3769996980270975995
+    second: Sprite-sheet-campfire_45
+  - first:
+      213: 4690842296531650124
+    second: Sprite-sheet-campfire_46
+  - first:
+      213: -4025461045154261704
+    second: Sprite-sheet-campfire_47
+  - first:
+      213: -2241058044363224014
+    second: Sprite-sheet-campfire_48
+  - first:
+      213: 440311745039442756
+    second: Sprite-sheet-campfire_49
+  - first:
+      213: -3357135167829690172
+    second: Sprite-sheet-campfire_50
+  - first:
+      213: -6374799290139698375
+    second: Sprite-sheet-campfire_51
+  - first:
+      213: -357630864285820463
+    second: Sprite-sheet-campfire_52
+  - first:
+      213: 3431025102428902709
+    second: Sprite-sheet-campfire_53
+  - first:
+      213: -2036529054956495391
+    second: Sprite-sheet-campfire_54
+  - first:
+      213: -8401335492793822645
+    second: Sprite-sheet-campfire_55
+  - first:
+      213: 4287194830536897870
+    second: Sprite-sheet-campfire_56
+  - first:
+      213: -4273265393246102407
+    second: Sprite-sheet-campfire_57
+  - first:
+      213: -8064790117821363679
+    second: Sprite-sheet-campfire_58
+  - first:
+      213: -8833069670218280968
+    second: Sprite-sheet-campfire_59
+  - first:
+      213: 7651737753213021545
+    second: Sprite-sheet-campfire_60
+  - first:
+      213: -3968056341869129737
+    second: Sprite-sheet-campfire_61
+  - first:
+      213: 8322945736544758415
+    second: Sprite-sheet-campfire_62
+  - first:
+      213: 32252088955426458
+    second: Sprite-sheet-campfire_63
+  - first:
+      213: 7691757653716070759
+    second: Sprite-sheet-campfire_64
+  - first:
+      213: 6775036199479730423
+    second: Sprite-sheet-campfire_65
+  - first:
+      213: 7571088138017930522
+    second: Sprite-sheet-campfire_66
+  - first:
+      213: -478434747182809023
+    second: Sprite-sheet-campfire_67
+  - first:
+      213: 8861384626435519096
+    second: Sprite-sheet-campfire_68
+  - first:
+      213: 6202512731640946182
+    second: Sprite-sheet-campfire_69
+  - first:
+      213: -2344335145501915658
+    second: Sprite-sheet-campfire_70
+  - first:
+      213: -1301473147982926306
+    second: Sprite-sheet-campfire_71
+  - first:
+      213: -10160718608159962
+    second: Sprite-sheet-campfire_72
+  - first:
+      213: 3981510030550932601
+    second: Sprite-sheet-campfire_73
+  - first:
+      213: -7998067371759639545
+    second: Sprite-sheet-campfire_74
+  - first:
+      213: 848385307232465134
+    second: Sprite-sheet-campfire_75
+  - first:
+      213: -609770545686162528
+    second: Sprite-sheet-campfire_76
+  - first:
+      213: 1360318378388620699
+    second: Sprite-sheet-campfire_77
+  - first:
+      213: 3283315565284010097
+    second: Sprite-sheet-campfire_78
+  - first:
+      213: -370325014906551663
+    second: Sprite-sheet-campfire_79
+  - first:
+      213: 5905192937421423968
+    second: Sprite-sheet-campfire_80
+  - first:
+      213: 6856849246390050889
+    second: Sprite-sheet-campfire_81
+  - first:
+      213: -356003036852671492
+    second: Sprite-sheet-campfire_82
+  - first:
+      213: -5213135554637861633
+    second: Sprite-sheet-campfire_83
+  - first:
+      213: -8490053631761916280
+    second: Sprite-sheet-campfire_84
+  - first:
+      213: 1131659230645390489
+    second: Sprite-sheet-campfire_85
+  - first:
+      213: -5378157290468960776
+    second: Sprite-sheet-campfire_86
+  - first:
+      213: -9199838842971630452
+    second: Sprite-sheet-campfire_87
+  - first:
+      213: 4425759319874146698
+    second: Sprite-sheet-campfire_88
+  - first:
+      213: -6808188290070830956
+    second: Sprite-sheet-campfire_89
+  - first:
+      213: -7933632675087353353
+    second: Sprite-sheet-campfire_90
+  - first:
+      213: -3469843444762378023
+    second: Sprite-sheet-campfire_91
+  - first:
+      213: 6177242700550347346
+    second: Sprite-sheet-campfire_92
+  - first:
+      213: -464343528110768044
+    second: Sprite-sheet-campfire_93
+  - first:
+      213: 8729498657988739650
+    second: Sprite-sheet-campfire_94
+  - first:
+      213: 8784044297480388529
+    second: Sprite-sheet-campfire_95
+  - first:
+      213: 5223505449615344788
+    second: Sprite-sheet-campfire_96
+  - first:
+      213: -3118397779489891302
+    second: Sprite-sheet-campfire_97
+  - first:
+      213: -3427163082921658655
+    second: Sprite-sheet-campfire_98
+  - first:
+      213: 4247653022923354408
+    second: Sprite-sheet-campfire_99
+  - first:
+      213: -7320380914197119625
+    second: Sprite-sheet-campfire_100
+  - first:
+      213: -5695084620220425131
+    second: Sprite-sheet-campfire_101
+  - first:
+      213: -649135135875965185
+    second: Sprite-sheet-campfire_102
+  - first:
+      213: 6001286234201151114
+    second: Sprite-sheet-campfire_103
+  - first:
+      213: -7383371771383464534
+    second: Sprite-sheet-campfire_104
+  - first:
+      213: 8536791309243712219
+    second: Sprite-sheet-campfire_105
+  - first:
+      213: -2969156671259979118
+    second: Sprite-sheet-campfire_106
+  - first:
+      213: 1640813774084186994
+    second: Sprite-sheet-campfire_107
+  - first:
+      213: -6699325979162346654
+    second: Sprite-sheet-campfire_108
+  - first:
+      213: 1634952100679711015
+    second: Sprite-sheet-campfire_109
+  - first:
+      213: -4968062808039684852
+    second: Sprite-sheet-campfire_110
+  - first:
+      213: -6610356013200829005
+    second: Sprite-sheet-campfire_111
+  - first:
+      213: -5637046327590092464
+    second: Sprite-sheet-campfire_112
+  - first:
+      213: -6535519680273488530
+    second: Sprite-sheet-campfire_113
+  - first:
+      213: -2237384925765527094
+    second: Sprite-sheet-campfire_114
+  - first:
+      213: 7485825643032118302
+    second: Sprite-sheet-campfire_115
+  - first:
+      213: 5664971949902944111
+    second: Sprite-sheet-campfire_116
+  - first:
+      213: -2914919019577107827
+    second: Sprite-sheet-campfire_117
+  - first:
+      213: -3572798298310817197
+    second: Sprite-sheet-campfire_118
+  - first:
+      213: -6793069278506008758
+    second: Sprite-sheet-campfire_119
+  - first:
+      213: 525425159862162964
+    second: Sprite-sheet-campfire_120
+  - first:
+      213: 3999566022801644717
+    second: Sprite-sheet-campfire_121
+  - first:
+      213: 1488384310756806261
+    second: Sprite-sheet-campfire_122
+  - first:
+      213: 7167332697456181340
+    second: Sprite-sheet-campfire_123
+  - first:
+      213: -4053203226830277453
+    second: Sprite-sheet-campfire_124
+  - first:
+      213: 4387454096592791692
+    second: Sprite-sheet-campfire_125
+  - first:
+      213: 5835711285471359585
+    second: Sprite-sheet-campfire_126
+  - first:
+      213: -1901701560999718671
+    second: Sprite-sheet-campfire_127
+  - first:
+      213: 4404983725383658137
+    second: Sprite-sheet-campfire_128
+  - first:
+      213: 4426003004647750946
+    second: Sprite-sheet-campfire_129
+  - first:
+      213: -3641125763660875471
+    second: Sprite-sheet-campfire_130
+  - first:
+      213: -1027134371146478956
+    second: Sprite-sheet-campfire_131
+  - first:
+      213: -5635916160429586748
+    second: Sprite-sheet-campfire_132
+  - first:
+      213: 591937478444281353
+    second: Sprite-sheet-campfire_133
+  - first:
+      213: 6263955952632757161
+    second: Sprite-sheet-campfire_134
+  - first:
+      213: -3732988832038601531
+    second: Sprite-sheet-campfire_135
+  - first:
+      213: 1905176967596728303
+    second: Sprite-sheet-campfire_136
+  - first:
+      213: 8072511040053821274
+    second: Sprite-sheet-campfire_137
+  - first:
+      213: 3272502728965593100
+    second: Sprite-sheet-campfire_138
+  - first:
+      213: 5201370036498254402
+    second: Sprite-sheet-campfire_139
+  - first:
+      213: -5777505484139237589
+    second: Sprite-sheet-campfire_140
+  - first:
+      213: 7567085579878982347
+    second: Sprite-sheet-campfire_141
+  - first:
+      213: 8363147771912082113
+    second: Sprite-sheet-campfire_142
+  - first:
+      213: 5202376601190104402
+    second: Sprite-sheet-campfire_143
+  - first:
+      213: 1203152113570598976
+    second: Sprite-sheet-campfire_144
+  - first:
+      213: -772637403791788642
+    second: Sprite-sheet-campfire_145
+  - first:
+      213: 3757318043605884652
+    second: Sprite-sheet-campfire_146
+  - first:
+      213: 646484275981968004
+    second: Sprite-sheet-campfire_147
+  - first:
+      213: -3141603378208329888
+    second: Sprite-sheet-campfire_148
+  - first:
+      213: 5878699561003097648
+    second: Sprite-sheet-campfire_149
+  - first:
+      213: -292313189763544027
+    second: Sprite-sheet-campfire_150
+  - first:
+      213: 3773546062859218865
+    second: Sprite-sheet-campfire_151
+  - first:
+      213: 3987917216238409701
+    second: Sprite-sheet-campfire_152
+  - first:
+      213: 8190433031735386915
+    second: Sprite-sheet-campfire_153
+  - first:
+      213: 5649242774710715123
+    second: Sprite-sheet-campfire_154
+  - first:
+      213: -1841870543059711575
+    second: Sprite-sheet-campfire_155
+  - first:
+      213: -8703810141376199908
+    second: Sprite-sheet-campfire_156
+  - first:
+      213: -6542852567167030350
+    second: Sprite-sheet-campfire_157
+  - first:
+      213: -7288528757343863739
+    second: Sprite-sheet-campfire_158
+  - first:
+      213: 7081111974392488209
+    second: Sprite-sheet-campfire_159
+  - first:
+      213: -3901188013751151412
+    second: Sprite-sheet-campfire_160
+  - first:
+      213: 8959936024076746874
+    second: Sprite-sheet-campfire_161
+  - first:
+      213: 5389597812693791906
+    second: Sprite-sheet-campfire_162
+  - first:
+      213: -7021425843841445742
+    second: Sprite-sheet-campfire_163
+  - first:
+      213: -5566013073591782822
+    second: Sprite-sheet-campfire_164
+  - first:
+      213: -2130528892815989225
+    second: Sprite-sheet-campfire_165
+  - first:
+      213: 1122622417038621642
+    second: Sprite-sheet-campfire_166
+  - first:
+      213: 2272714680587408555
+    second: Sprite-sheet-campfire_167
+  - first:
+      213: -7908227346832461437
+    second: Sprite-sheet-campfire_168
+  - first:
+      213: -1572004492070831230
+    second: Sprite-sheet-campfire_169
+  - first:
+      213: -670770609296256975
+    second: Sprite-sheet-campfire_170
+  - first:
+      213: 6684919682079571756
+    second: Sprite-sheet-campfire_171
+  - first:
+      213: 3543851750496182725
+    second: Sprite-sheet-campfire_172
+  - first:
+      213: -6391517054618646485
+    second: Sprite-sheet-campfire_173
+  - first:
+      213: 4039161011641844754
+    second: Sprite-sheet-campfire_174
+  - first:
+      213: -1610298090393945040
+    second: Sprite-sheet-campfire_175
+  - first:
+      213: 5214302164478365585
+    second: Sprite-sheet-campfire_176
+  - first:
+      213: 7776540756644160078
+    second: Sprite-sheet-campfire_177
+  - first:
+      213: 6313459456701758360
+    second: Sprite-sheet-campfire_178
+  - first:
+      213: -602849652750908111
+    second: Sprite-sheet-campfire_179
+  - first:
+      213: -6974136777008172442
+    second: Sprite-sheet-campfire_180
+  - first:
+      213: 1493114991733993655
+    second: Sprite-sheet-campfire_181
+  - first:
+      213: -8834233674241786236
+    second: Sprite-sheet-campfire_182
+  - first:
+      213: 7468649357476489810
+    second: Sprite-sheet-campfire_183
+  - first:
+      213: -1972201033349968093
+    second: Sprite-sheet-campfire_184
+  - first:
+      213: 7520840552925231573
+    second: Sprite-sheet-campfire_185
+  - first:
+      213: -4742111215020793275
+    second: Sprite-sheet-campfire_186
+  - first:
+      213: 6530637073300475981
+    second: Sprite-sheet-campfire_187
+  - first:
+      213: -2615789762647566962
+    second: Sprite-sheet-campfire_188
+  - first:
+      213: 4486380750262872911
+    second: Sprite-sheet-campfire_189
+  - first:
+      213: 554892634804799602
+    second: Sprite-sheet-campfire_190
+  - first:
+      213: -4207548398694663387
+    second: Sprite-sheet-campfire_191
+  - first:
+      213: 7915425485282394252
+    second: Sprite-sheet-campfire_192
+  - first:
+      213: -2811069054098786868
+    second: Sprite-sheet-campfire_193
+  - first:
+      213: 7109707690646477057
+    second: Sprite-sheet-campfire_194
+  - first:
+      213: 5258665407888291501
+    second: Sprite-sheet-campfire_195
+  - first:
+      213: -4179211546265881419
+    second: Sprite-sheet-campfire_196
+  - first:
+      213: -8108425891925359994
+    second: Sprite-sheet-campfire_197
+  - first:
+      213: -5213171470082077276
+    second: Sprite-sheet-campfire_198
+  - first:
+      213: -6838492749753692929
+    second: Sprite-sheet-campfire_199
+  - first:
+      213: 129787891313064496
+    second: Sprite-sheet-campfire_200
+  - first:
+      213: -2229958635561331240
+    second: Sprite-sheet-campfire_201
+  - first:
+      213: -3782505928129810752
+    second: Sprite-sheet-campfire_202
+  - first:
+      213: -823752245597157272
+    second: Sprite-sheet-campfire_203
+  - first:
+      213: -7587149654571199742
+    second: Sprite-sheet-campfire_204
+  - first:
+      213: 353444212737760057
+    second: Sprite-sheet-campfire_205
+  - first:
+      213: -2146836517173171526
+    second: Sprite-sheet-campfire_206
+  - first:
+      213: 2558366096731775529
+    second: Sprite-sheet-campfire_207
+  - first:
+      213: 2493222488145374507
+    second: Sprite-sheet-campfire_208
+  - first:
+      213: 6568438191253571447
+    second: Sprite-sheet-campfire_209
+  - first:
+      213: -6087576922833982354
+    second: Sprite-sheet-campfire_210
+  - first:
+      213: -1115091547785902368
+    second: Sprite-sheet-campfire_211
+  - first:
+      213: -8249686722408355954
+    second: Sprite-sheet-campfire_212
+  - first:
+      213: -3875283859684587071
+    second: Sprite-sheet-campfire_213
+  - first:
+      213: 4349652913484813134
+    second: Sprite-sheet-campfire_214
+  - first:
+      213: -4325008300356260955
+    second: Sprite-sheet-campfire_215
+  - first:
+      213: -6633954224674924751
+    second: Sprite-sheet-campfire_216
+  - first:
+      213: 1156743821980005112
+    second: Sprite-sheet-campfire_217
+  - first:
+      213: 1426509507602979348
+    second: Sprite-sheet-campfire_218
+  - first:
+      213: 216331059314284786
+    second: Sprite-sheet-campfire_219
+  - first:
+      213: -1994080211524393262
+    second: Sprite-sheet-campfire_220
+  - first:
+      213: 332552777241518285
+    second: Sprite-sheet-campfire_221
+  - first:
+      213: 8387188985126867148
+    second: Sprite-sheet-campfire_222
+  - first:
+      213: 3948352918115912462
+    second: Sprite-sheet-campfire_223
+  - first:
+      213: -7419149766364132030
+    second: Sprite-sheet-campfire_224
+  - first:
+      213: -910239081950064483
+    second: Sprite-sheet-campfire_225
+  - first:
+      213: 6791729780580194311
+    second: Sprite-sheet-campfire_226
+  - first:
+      213: -8642186397003982777
+    second: Sprite-sheet-campfire_227
+  - first:
+      213: -8567665589698194748
+    second: Sprite-sheet-campfire_228
+  - first:
+      213: -7663209394848701281
+    second: Sprite-sheet-campfire_229
+  - first:
+      213: 7451583162027804051
+    second: Sprite-sheet-campfire_230
+  - first:
+      213: 2031971643980429415
+    second: Sprite-sheet-campfire_231
+  - first:
+      213: 7627805882013879944
+    second: Sprite-sheet-campfire_232
+  - first:
+      213: -7812896090833004028
+    second: Sprite-sheet-campfire_233
+  - first:
+      213: 1092398530990939218
+    second: Sprite-sheet-campfire_234
+  - first:
+      213: -7059303291417833452
+    second: Sprite-sheet-campfire_235
+  - first:
+      213: -1514475873114808050
+    second: Sprite-sheet-campfire_236
+  - first:
+      213: 1889854208898583817
+    second: Sprite-sheet-campfire_237
+  - first:
+      213: 2173929406881795772
+    second: Sprite-sheet-campfire_238
+  - first:
+      213: 5791908490009700134
+    second: Sprite-sheet-campfire_239
+  - first:
+      213: 2825861856924393449
+    second: Sprite-sheet-campfire_240
+  - first:
+      213: -6972216128927220829
+    second: Sprite-sheet-campfire_241
+  - first:
+      213: -7225156260708611739
+    second: Sprite-sheet-campfire_242
+  - first:
+      213: -8913254136086297784
+    second: Sprite-sheet-campfire_243
+  - first:
+      213: -1158679254180966085
+    second: Sprite-sheet-campfire_244
+  - first:
+      213: 3172940301229042011
+    second: Sprite-sheet-campfire_245
+  - first:
+      213: 6095771652975245940
+    second: Sprite-sheet-campfire_246
+  - first:
+      213: 3266094854647474075
+    second: Sprite-sheet-campfire_247
+  - first:
+      213: -7820604826307043720
+    second: Sprite-sheet-campfire_248
+  - first:
+      213: 2021690972841929714
+    second: Sprite-sheet-campfire_249
+  - first:
+      213: -4255369365186676097
+    second: Sprite-sheet-campfire_250
+  - first:
+      213: -3435836735156447170
+    second: Sprite-sheet-campfire_251
+  - first:
+      213: 8917559220649179990
+    second: Sprite-sheet-campfire_252
+  - first:
+      213: 6539003183122202945
+    second: Sprite-sheet-campfire_253
+  - first:
+      213: 1718504361271087441
+    second: Sprite-sheet-campfire_254
+  - first:
+      213: -590804000032262395
+    second: Sprite-sheet-campfire_255
+  - first:
+      213: 5094492026382713515
+    second: Sprite-sheet-campfire_256
+  - first:
+      213: 8442614466284573695
+    second: Sprite-sheet-campfire_257
+  - first:
+      213: 4722239664053403200
+    second: Sprite-sheet-campfire_258
+  - first:
+      213: 8995322466925093055
+    second: Sprite-sheet-campfire_259
+  - first:
+      213: 5237173738978459559
+    second: Sprite-sheet-campfire_260
+  - first:
+      213: 4635962392783215717
+    second: Sprite-sheet-campfire_261
+  - first:
+      213: 6060063936700730557
+    second: Sprite-sheet-campfire_262
+  - first:
+      213: 1668202718576913529
+    second: Sprite-sheet-campfire_263
+  - first:
+      213: 3384104104079250779
+    second: Sprite-sheet-campfire_264
+  - first:
+      213: -7029672497148597999
+    second: Sprite-sheet-campfire_265
+  - first:
+      213: 8051775727466846041
+    second: Sprite-sheet-campfire_266
+  - first:
+      213: -6245732771280435541
+    second: Sprite-sheet-campfire_267
+  - first:
+      213: -7280304995276282324
+    second: Sprite-sheet-campfire_268
+  - first:
+      213: -3398987374946531105
+    second: Sprite-sheet-campfire_269
+  - first:
+      213: 6611801884210012234
+    second: Sprite-sheet-campfire_270
+  - first:
+      213: -1581442697051296876
+    second: Sprite-sheet-campfire_271
+  - first:
+      213: 2602904889451242225
+    second: Sprite-sheet-campfire_272
+  - first:
+      213: 6395531436303578186
+    second: Sprite-sheet-campfire_273
+  - first:
+      213: -3961833939023649639
+    second: Sprite-sheet-campfire_274
+  - first:
+      213: -8754185339374803514
+    second: Sprite-sheet-campfire_275
+  - first:
+      213: -8553174531125813418
+    second: Sprite-sheet-campfire_276
+  - first:
+      213: 5714011223645291657
+    second: Sprite-sheet-campfire_277
+  - first:
+      213: -741719200289829995
+    second: Sprite-sheet-campfire_278
+  - first:
+      213: 6073959348716506220
+    second: Sprite-sheet-campfire_279
+  - first:
+      213: 9090078501057410108
+    second: Sprite-sheet-campfire_280
+  - first:
+      213: -4589309759209918722
+    second: Sprite-sheet-campfire_281
+  - first:
+      213: 4239227481292277185
+    second: Sprite-sheet-campfire_282
+  - first:
+      213: -5437028236303556343
+    second: Sprite-sheet-campfire_283
+  - first:
+      213: 5284238096477178766
+    second: Sprite-sheet-campfire_284
+  - first:
+      213: -8617147359964755748
+    second: Sprite-sheet-campfire_285
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_0
+      rect:
+        serializedVersion: 2
+        x: 8039
+        y: 619
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e94972bd5a17a790800000000000000
+      internalID: -7519012063143179805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_1
+      rect:
+        serializedVersion: 2
+        x: 12479
+        y: 629
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a15d8c38b39fd8000800000000000000
+      internalID: 39962005725566234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_4
+      rect:
+        serializedVersion: 2
+        x: 10509
+        y: 609
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe6c8042d7403ca90800000000000000
+      internalID: -7294982035888093457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_5
+      rect:
+        serializedVersion: 2
+        x: 11899
+        y: 599
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2163624298266bec0800000000000000
+      internalID: -3551542914978531822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_6
+      rect:
+        serializedVersion: 2
+        x: 12469
+        y: 609
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14bb02ee62d44de40800000000000000
+      internalID: 5680249859620256577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_7
+      rect:
+        serializedVersion: 2
+        x: 13179
+        y: 609
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ec15bf8751a2deb0800000000000000
+      internalID: -4696514063948768032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_8
+      rect:
+        serializedVersion: 2
+        x: 14349
+        y: 609
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 250bde3f9ce32a9c0800000000000000
+      internalID: -3917499688757120942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_9
+      rect:
+        serializedVersion: 2
+        x: 15069
+        y: 599
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1721ce9bbf2d3d690800000000000000
+      internalID: -7578481769336532367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_12
+      rect:
+        serializedVersion: 2
+        x: 7919
+        y: 579
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5c42f2eef1534fb0800000000000000
+      internalID: -4664794633854628771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_13
+      rect:
+        serializedVersion: 2
+        x: 8599
+        y: 589
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d1cbcb65f282ff50800000000000000
+      internalID: 6913732368554246615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_14
+      rect:
+        serializedVersion: 2
+        x: 9409
+        y: 579
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a1249793ded0749d0800000000000000
+      internalID: -2790246131610074598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_15
+      rect:
+        serializedVersion: 2
+        x: 10509
+        y: 589
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c3adae8d9932b0b0800000000000000
+      internalID: -5714441628313345079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_16
+      rect:
+        serializedVersion: 2
+        x: 10599
+        y: 589
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb8f37178653dde00800000000000000
+      internalID: 1071071009080342718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_17
+      rect:
+        serializedVersion: 2
+        x: 11839
+        y: 579
+        width: 32
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d75bbd6d86ae6aa0800000000000000
+      internalID: -6165807713462036522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_18
+      rect:
+        serializedVersion: 2
+        x: 12409
+        y: 589
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aed948895e4e1b7a0800000000000000
+      internalID: -6363053123740328470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_19
+      rect:
+        serializedVersion: 2
+        x: 12589
+        y: 579
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06647cad06c24f570800000000000000
+      internalID: 8499467191253943904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_20
+      rect:
+        serializedVersion: 2
+        x: 13109
+        y: 579
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11bda4c08b02f88c0800000000000000
+      internalID: -3994938369602036975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_21
+      rect:
+        serializedVersion: 2
+        x: 13149
+        y: 579
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05fafa2732962a7a0800000000000000
+      internalID: -6367411322179571888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_22
+      rect:
+        serializedVersion: 2
+        x: 13659
+        y: 579
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d301a30644c2bb920800000000000000
+      internalID: 3007045848383754301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_23
+      rect:
+        serializedVersion: 2
+        x: 14379
+        y: 579
+        width: 12
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c1dc2cc20f75f58e0800000000000000
+      internalID: -1702545445068026596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_24
+      rect:
+        serializedVersion: 2
+        x: 14399
+        y: 589
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2c7b974c975042c0800000000000000
+      internalID: -4449460103114163155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_25
+      rect:
+        serializedVersion: 2
+        x: 15019
+        y: 589
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f835938c395e93e0800000000000000
+      internalID: -2045099064339121929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_36
+      rect:
+        serializedVersion: 2
+        x: 7999
+        y: 569
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c2231387e82d4490800000000000000
+      internalID: -7760501608087870776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_37
+      rect:
+        serializedVersion: 2
+        x: 8699
+        y: 559
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30eb52642400ae9d0800000000000000
+      internalID: -2744380738284175869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_38
+      rect:
+        serializedVersion: 2
+        x: 9369
+        y: 569
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b305f98140eff0d40800000000000000
+      internalID: 5552936159117529147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_39
+      rect:
+        serializedVersion: 2
+        x: 9879
+        y: 559
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6561136e2ba19a700800000000000000
+      internalID: 552001784998073942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_40
+      rect:
+        serializedVersion: 2
+        x: 9909
+        y: 569
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e42b4e891e0bc8260800000000000000
+      internalID: 7101245195435684430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_41
+      rect:
+        serializedVersion: 2
+        x: 10559
+        y: 559
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32128849928a8bfe0800000000000000
+      internalID: -1173002806390939357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_42
+      rect:
+        serializedVersion: 2
+        x: 12459
+        y: 559
+        width: 32
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a049274982fad66d0800000000000000
+      internalID: -2995545588307422198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_43
+      rect:
+        serializedVersion: 2
+        x: 12499
+        y: 569
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a63e280fe0faa820800000000000000
+      internalID: 2930419416983025319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_44
+      rect:
+        serializedVersion: 2
+        x: 12519
+        y: 569
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3bec2cfb947cdba70800000000000000
+      internalID: 8844444362789277363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_45
+      rect:
+        serializedVersion: 2
+        x: 12549
+        y: 569
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bfbc85d7748b15430800000000000000
+      internalID: 3769996980270975995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_46
+      rect:
+        serializedVersion: 2
+        x: 12579
+        y: 559
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c46852e2738391140800000000000000
+      internalID: 4690842296531650124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_47
+      rect:
+        serializedVersion: 2
+        x: 13129
+        y: 559
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 835586ad180b228c0800000000000000
+      internalID: -4025461045154261704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_48
+      rect:
+        serializedVersion: 2
+        x: 13159
+        y: 559
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23cc2b0159926e0e0800000000000000
+      internalID: -2241058044363224014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_49
+      rect:
+        serializedVersion: 2
+        x: 14359
+        y: 559
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4432281033d4c1600800000000000000
+      internalID: 440311745039442756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_50
+      rect:
+        serializedVersion: 2
+        x: 14419
+        y: 559
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c83a8a0a5f0961d0800000000000000
+      internalID: -3357135167829690172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_51
+      rect:
+        serializedVersion: 2
+        x: 14449
+        y: 559
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93b9fcc12d92887a0800000000000000
+      internalID: -6374799290139698375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_52
+      rect:
+        serializedVersion: 2
+        x: 15019
+        y: 559
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d9178daf90790bf0800000000000000
+      internalID: -357630864285820463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_72
+      rect:
+        serializedVersion: 2
+        x: 8069
+        y: 539
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62ba2b851e6ebdff0800000000000000
+      internalID: -10160718608159962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_73
+      rect:
+        serializedVersion: 2
+        x: 8619
+        y: 549
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 97c94a0274a214730800000000000000
+      internalID: 3981510030550932601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_74
+      rect:
+        serializedVersion: 2
+        x: 8649
+        y: 519
+        width: 22
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 704ef98d918210190800000000000000
+      internalID: -7998067371759639545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_75
+      rect:
+        serializedVersion: 2
+        x: 9279
+        y: 549
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee0704621f116cb00800000000000000
+      internalID: 848385307232465134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_76
+      rect:
+        serializedVersion: 2
+        x: 9309
+        y: 509
+        width: 52
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a351ed5be8a987f0800000000000000
+      internalID: -609770545686162528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_77
+      rect:
+        serializedVersion: 2
+        x: 9399
+        y: 539
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b950a4d9b52d0e210800000000000000
+      internalID: 1360318378388620699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_78
+      rect:
+        serializedVersion: 2
+        x: 10439
+        y: 549
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 178a3426c1ea09d20800000000000000
+      internalID: 3283315565284010097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_79
+      rect:
+        serializedVersion: 2
+        x: 10559
+        y: 539
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 192cd0b6c575cdaf0800000000000000
+      internalID: -370325014906551663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_80
+      rect:
+        serializedVersion: 2
+        x: 11239
+        y: 539
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 065462580b573f150800000000000000
+      internalID: 5905192937421423968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_81
+      rect:
+        serializedVersion: 2
+        x: 11779
+        y: 539
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 940eb797f0c682f50800000000000000
+      internalID: 6856849246390050889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_82
+      rect:
+        serializedVersion: 2
+        x: 12539
+        y: 549
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cfbaf69cf193f0bf0800000000000000
+      internalID: -356003036852671492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_83
+      rect:
+        serializedVersion: 2
+        x: 13069
+        y: 549
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ffce9db55d837a7b0800000000000000
+      internalID: -5213135554637861633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_84
+      rect:
+        serializedVersion: 2
+        x: 13139
+        y: 539
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88ed0d244354d2a80800000000000000
+      internalID: -8490053631761916280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_85
+      rect:
+        serializedVersion: 2
+        x: 13159
+        y: 539
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99c0961131674bf00800000000000000
+      internalID: 1131659230645390489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_86
+      rect:
+        serializedVersion: 2
+        x: 13729
+        y: 549
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f59b636072fc55b0800000000000000
+      internalID: -5378157290468960776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_87
+      rect:
+        serializedVersion: 2
+        x: 14269
+        y: 539
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c84d5dda05b935080800000000000000
+      internalID: -9199838842971630452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_88
+      rect:
+        serializedVersion: 2
+        x: 14289
+        y: 539
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a81197a17a47b6d30800000000000000
+      internalID: 4425759319874146698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_89
+      rect:
+        serializedVersion: 2
+        x: 14339
+        y: 549
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 490aa5e42d47481a0800000000000000
+      internalID: -6808188290070830956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_90
+      rect:
+        serializedVersion: 2
+        x: 14359
+        y: 539
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f97cfebd1316e190800000000000000
+      internalID: -7933632675087353353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_91
+      rect:
+        serializedVersion: 2
+        x: 14379
+        y: 549
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d088b065c3a8dfc0800000000000000
+      internalID: -3469843444762378023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_92
+      rect:
+        serializedVersion: 2
+        x: 14409
+        y: 539
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25a9da9f189f9b550800000000000000
+      internalID: 6177242700550347346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_93
+      rect:
+        serializedVersion: 2
+        x: 15049
+        y: 549
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 450c43975025e89f0800000000000000
+      internalID: -464343528110768044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_111
+      rect:
+        serializedVersion: 2
+        x: 7989
+        y: 519
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b51c4aaa3c4344a0800000000000000
+      internalID: -6610356013200829005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_112
+      rect:
+        serializedVersion: 2
+        x: 8009
+        y: 519
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 051829d3b3035c1b0800000000000000
+      internalID: -5637046327590092464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_113
+      rect:
+        serializedVersion: 2
+        x: 9209
+        y: 519
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6569ba3a7b2d45a0800000000000000
+      internalID: -6535519680273488530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_114
+      rect:
+        serializedVersion: 2
+        x: 9249
+        y: 529
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac99ee1a34633f0e0800000000000000
+      internalID: -2237384925765527094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_115
+      rect:
+        serializedVersion: 2
+        x: 9289
+        y: 529
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e14807fb2cef2e760800000000000000
+      internalID: 7485825643032118302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_116
+      rect:
+        serializedVersion: 2
+        x: 9819
+        y: 519
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f67548069f50e9e40800000000000000
+      internalID: 5664971949902944111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_117
+      rect:
+        serializedVersion: 2
+        x: 9979
+        y: 529
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8a931978902c87d0800000000000000
+      internalID: -2914919019577107827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_118
+      rect:
+        serializedVersion: 2
+        x: 10529
+        y: 529
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35a401f80eeda6ec0800000000000000
+      internalID: -3572798298310817197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_119
+      rect:
+        serializedVersion: 2
+        x: 11179
+        y: 529
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4fb7008b7b2ab1a0800000000000000
+      internalID: -6793069278506008758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_120
+      rect:
+        serializedVersion: 2
+        x: 11199
+        y: 519
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41613a9266faa4700800000000000000
+      internalID: 525425159862162964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_121
+      rect:
+        serializedVersion: 2
+        x: 11799
+        y: 519
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dac50dc6b10518730800000000000000
+      internalID: 3999566022801644717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_122
+      rect:
+        serializedVersion: 2
+        x: 11829
+        y: 529
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57e8ce315adc7a410800000000000000
+      internalID: 1488384310756806261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_123
+      rect:
+        serializedVersion: 2
+        x: 11859
+        y: 509
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c500bea3d1b777360800000000000000
+      internalID: 7167332697456181340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_124
+      rect:
+        serializedVersion: 2
+        x: 12529
+        y: 529
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b47056d32120c7c0800000000000000
+      internalID: -4053203226830277453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_125
+      rect:
+        serializedVersion: 2
+        x: 13669
+        y: 509
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c88eebf414e53ec30800000000000000
+      internalID: 4387454096592791692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_126
+      rect:
+        serializedVersion: 2
+        x: 13729
+        y: 519
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1623246ce7c9cf050800000000000000
+      internalID: 5835711285471359585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_127
+      rect:
+        serializedVersion: 2
+        x: 13849
+        y: 519
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f05ec3818ccb95e0800000000000000
+      internalID: -1901701560999718671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_128
+      rect:
+        serializedVersion: 2
+        x: 14329
+        y: 519
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99aaed01c55a12d30800000000000000
+      internalID: 4404983725383658137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_129
+      rect:
+        serializedVersion: 2
+        x: 14389
+        y: 499
+        width: 22
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22d37d268425c6d30800000000000000
+      internalID: 4426003004647750946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_130
+      rect:
+        serializedVersion: 2
+        x: 15089
+        y: 519
+        width: 12
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1397872d86f187dc0800000000000000
+      internalID: -3641125763660875471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_150
+      rect:
+        serializedVersion: 2
+        x: 8039
+        y: 489
+        width: 32
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52c8bf0e3be71fbf0800000000000000
+      internalID: -292313189763544027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_151
+      rect:
+        serializedVersion: 2
+        x: 8589
+        y: 509
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1bf2c4ca6245e5430800000000000000
+      internalID: 3773546062859218865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_152
+      rect:
+        serializedVersion: 2
+        x: 9239
+        y: 509
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e71e8b449de75730800000000000000
+      internalID: 3987917216238409701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_153
+      rect:
+        serializedVersion: 2
+        x: 9289
+        y: 499
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 323a63592734aa170800000000000000
+      internalID: 8190433031735386915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_154
+      rect:
+        serializedVersion: 2
+        x: 9899
+        y: 499
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f203946f54266e40800000000000000
+      internalID: 5649242774710715123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_155
+      rect:
+        serializedVersion: 2
+        x: 9979
+        y: 499
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a98baeef7c5076e0800000000000000
+      internalID: -1841870543059711575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_156
+      rect:
+        serializedVersion: 2
+        x: 10489
+        y: 489
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c1344da8acad53780800000000000000
+      internalID: -8703810141376199908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_157
+      rect:
+        serializedVersion: 2
+        x: 11239
+        y: 509
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2bba144714e1335a0800000000000000
+      internalID: -6542852567167030350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_158
+      rect:
+        serializedVersion: 2
+        x: 11819
+        y: 499
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 54cbc4326b1f9da90800000000000000
+      internalID: -7288528757343863739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_159
+      rect:
+        serializedVersion: 2
+        x: 12469
+        y: 509
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 111ed68c2d9254260800000000000000
+      internalID: 7081111974392488209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_160
+      rect:
+        serializedVersion: 2
+        x: 12539
+        y: 509
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc4d95ebb223cd9c0800000000000000
+      internalID: -3901188013751151412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_161
+      rect:
+        serializedVersion: 2
+        x: 12579
+        y: 509
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7002559756185c70800000000000000
+      internalID: 8959936024076746874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_162
+      rect:
+        serializedVersion: 2
+        x: 13709
+        y: 509
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a4f5d3c7a2bbca40800000000000000
+      internalID: 5389597812693791906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_163
+      rect:
+        serializedVersion: 2
+        x: 13749
+        y: 509
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29055196562ee8e90800000000000000
+      internalID: -7021425843841445742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_164
+      rect:
+        serializedVersion: 2
+        x: 14309
+        y: 509
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a52b16d799c81c2b0800000000000000
+      internalID: -5566013073591782822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_165
+      rect:
+        serializedVersion: 2
+        x: 14359
+        y: 499
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7162fff8247de62e0800000000000000
+      internalID: -2130528892815989225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_166
+      rect:
+        serializedVersion: 2
+        x: 14959
+        y: 509
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: acb3a70f32b549f00800000000000000
+      internalID: 1122622417038621642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_167
+      rect:
+        serializedVersion: 2
+        x: 15019
+        y: 509
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba45a3ce5fd4a8f10800000000000000
+      internalID: 2272714680587408555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_189
+      rect:
+        serializedVersion: 2
+        x: 7959
+        y: 489
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4ba192c583d24e30800000000000000
+      internalID: 4486380750262872911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_190
+      rect:
+        serializedVersion: 2
+        x: 8079
+        y: 489
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 278450259ef53b700800000000000000
+      internalID: 554892634804799602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_191
+      rect:
+        serializedVersion: 2
+        x: 8669
+        y: 479
+        width: 22
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52b7a802609cb95c0800000000000000
+      internalID: -4207548398694663387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_192
+      rect:
+        serializedVersion: 2
+        x: 9219
+        y: 479
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c80c4588a8d39dd60800000000000000
+      internalID: 7915425485282394252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_193
+      rect:
+        serializedVersion: 2
+        x: 9379
+        y: 489
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc53957c6931df8d0800000000000000
+      internalID: -2811069054098786868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_194
+      rect:
+        serializedVersion: 2
+        x: 9869
+        y: 489
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10998ddc971caa260800000000000000
+      internalID: 7109707690646477057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_195
+      rect:
+        serializedVersion: 2
+        x: 9919
+        y: 479
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da6f0dda3588af840800000000000000
+      internalID: 5258665407888291501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_196
+      rect:
+        serializedVersion: 2
+        x: 10009
+        y: 479
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b47c97bd357006c0800000000000000
+      internalID: -4179211546265881419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_197
+      rect:
+        serializedVersion: 2
+        x: 10519
+        y: 489
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 68285309c95197f80800000000000000
+      internalID: -8108425891925359994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_198
+      rect:
+        serializedVersion: 2
+        x: 11139
+        y: 489
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ad8e842b2817a7b0800000000000000
+      internalID: -5213171470082077276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_199
+      rect:
+        serializedVersion: 2
+        x: 11159
+        y: 469
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ffcc8d3731bc811a0800000000000000
+      internalID: -6838492749753692929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_200
+      rect:
+        serializedVersion: 2
+        x: 11189
+        y: 489
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03abcd546691dc100800000000000000
+      internalID: 129787891313064496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_201
+      rect:
+        serializedVersion: 2
+        x: 13029
+        y: 489
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d55d8f8f689d01e0800000000000000
+      internalID: -2229958635561331240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_202
+      rect:
+        serializedVersion: 2
+        x: 13069
+        y: 489
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ce630126e6d18bc0800000000000000
+      internalID: -3782505928129810752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_203
+      rect:
+        serializedVersion: 2
+        x: 13669
+        y: 479
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 868404272b17194f0800000000000000
+      internalID: -823752245597157272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_204
+      rect:
+        serializedVersion: 2
+        x: 13829
+        y: 489
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2035e8d669705b690800000000000000
+      internalID: -7587149654571199742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_205
+      rect:
+        serializedVersion: 2
+        x: 14379
+        y: 469
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93bd62c83afa7e400800000000000000
+      internalID: 353444212737760057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_206
+      rect:
+        serializedVersion: 2
+        x: 15009
+        y: 479
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aba6e03ef87e432e0800000000000000
+      internalID: -2146836517173171526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_221
+      rect:
+        serializedVersion: 2
+        x: 8609
+        y: 459
+        width: 22
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc0ec8c2df67d9400800000000000000
+      internalID: 332552777241518285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_222
+      rect:
+        serializedVersion: 2
+        x: 9329
+        y: 469
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc05e8ad1f7456470800000000000000
+      internalID: 8387188985126867148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_223
+      rect:
+        serializedVersion: 2
+        x: 9889
+        y: 459
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0b0d2c4f0e5bc630800000000000000
+      internalID: 3948352918115912462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_224
+      rect:
+        serializedVersion: 2
+        x: 9959
+        y: 469
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24d81788892e90990800000000000000
+      internalID: -7419149766364132030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_225
+      rect:
+        serializedVersion: 2
+        x: 10409
+        y: 459
+        width: 12
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d9050bba06e2e53f0800000000000000
+      internalID: -910239081950064483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_226
+      rect:
+        serializedVersion: 2
+        x: 10479
+        y: 459
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7089ce55042114e50800000000000000
+      internalID: 6791729780580194311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_227
+      rect:
+        serializedVersion: 2
+        x: 11239
+        y: 459
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7485ddb9249c01880800000000000000
+      internalID: -8642186397003982777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_228
+      rect:
+        serializedVersion: 2
+        x: 12459
+        y: 469
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c293b32a89891980800000000000000
+      internalID: -8567665589698194748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_229
+      rect:
+        serializedVersion: 2
+        x: 13009
+        y: 469
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f946b9428afc6a590800000000000000
+      internalID: -7663209394848701281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_230
+      rect:
+        serializedVersion: 2
+        x: 13059
+        y: 459
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39503fad767596760800000000000000
+      internalID: 7451583162027804051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_231
+      rect:
+        serializedVersion: 2
+        x: 13699
+        y: 469
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 768be11c173033c10800000000000000
+      internalID: 2031971643980429415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_232
+      rect:
+        serializedVersion: 2
+        x: 13749
+        y: 469
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88e821d29096bd960800000000000000
+      internalID: 7627805882013879944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_233
+      rect:
+        serializedVersion: 2
+        x: 13839
+        y: 459
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40a5cde5664039390800000000000000
+      internalID: -7812896090833004028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_234
+      rect:
+        serializedVersion: 2
+        x: 14359
+        y: 459
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25c9fd81daaf82f00800000000000000
+      internalID: 1092398530990939218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_235
+      rect:
+        serializedVersion: 2
+        x: 14389
+        y: 449
+        width: 32
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4105b49ee01580e90800000000000000
+      internalID: -7059303291417833452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_250
+      rect:
+        serializedVersion: 2
+        x: 7909
+        y: 449
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7af7f7bb14e1f4c0800000000000000
+      internalID: -4255369365186676097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_251
+      rect:
+        serializedVersion: 2
+        x: 7979
+        y: 449
+        width: 22
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3813c671b47150d0800000000000000
+      internalID: -3435836735156447170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_252
+      rect:
+        serializedVersion: 2
+        x: 8669
+        y: 439
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65bbd4a2dd881cb70800000000000000
+      internalID: 8917559220649179990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_253
+      rect:
+        serializedVersion: 2
+        x: 11099
+        y: 439
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 141c52bffb43fba50800000000000000
+      internalID: 6539003183122202945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_254
+      rect:
+        serializedVersion: 2
+        x: 11809
+        y: 429
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 151d58e8c9a59d710800000000000000
+      internalID: 1718504361271087441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_255
+      rect:
+        serializedVersion: 2
+        x: 13149
+        y: 449
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 507723664ea0dc7f0800000000000000
+      internalID: -590804000032262395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_256
+      rect:
+        serializedVersion: 2
+        x: 14929
+        y: 149
+        width: 232
+        height: 302
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba20a97918543b640800000000000000
+      internalID: 5094492026382713515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_257
+      rect:
+        serializedVersion: 2
+        x: 14969
+        y: 449
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff3577e40213a2570800000000000000
+      internalID: 8442614466284573695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_259
+      rect:
+        serializedVersion: 2
+        x: 806
+        y: 149
+        width: 327
+        height: 470
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb02929df1ec5dc70800000000000000
+      internalID: 8995322466925093055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_262
+      rect:
+        serializedVersion: 2
+        x: 2076
+        y: 149
+        width: 344
+        height: 491
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dbcc337fa0ca91450800000000000000
+      internalID: 6060063936700730557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_263
+      rect:
+        serializedVersion: 2
+        x: 2711
+        y: 149
+        width: 344
+        height: 488
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 97c2e16b885a62710800000000000000
+      internalID: 1668202718576913529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_265
+      rect:
+        serializedVersion: 2
+        x: 3327
+        y: 149
+        width: 381
+        height: 491
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 119ef10db16917e90800000000000000
+      internalID: -7029672497148597999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_266
+      rect:
+        serializedVersion: 2
+        x: 3989
+        y: 149
+        width: 390
+        height: 491
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95716ce2d57adbf60800000000000000
+      internalID: 8051775727466846041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_268
+      rect:
+        serializedVersion: 2
+        x: 5232
+        y: 149
+        width: 380
+        height: 491
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c262e04fd2927fa90800000000000000
+      internalID: -7280304995276282324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_269
+      rect:
+        serializedVersion: 2
+        x: 5912
+        y: 148
+        width: 381
+        height: 480
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd84648bdfe54d0d0800000000000000
+      internalID: -3398987374946531105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_270
+      rect:
+        serializedVersion: 2
+        x: 6537
+        y: 149
+        width: 390
+        height: 488
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a40a89968c6d1cb50800000000000000
+      internalID: 6611801884210012234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_271
+      rect:
+        serializedVersion: 2
+        x: 7889
+        y: 149
+        width: 232
+        height: 292
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49b2f91fe369d0ae0800000000000000
+      internalID: -1581442697051296876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_272
+      rect:
+        serializedVersion: 2
+        x: 8549
+        y: 419
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f26ed7c4306f1420800000000000000
+      internalID: 2602904889451242225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_273
+      rect:
+        serializedVersion: 2
+        x: 9169
+        y: 149
+        width: 232
+        height: 282
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a44f7b2d4fd71c850800000000000000
+      internalID: 6395531436303578186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_274
+      rect:
+        serializedVersion: 2
+        x: 9809
+        y: 149
+        width: 232
+        height: 292
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 994a86de50db409c0800000000000000
+      internalID: -3961833939023649639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_275
+      rect:
+        serializedVersion: 2
+        x: 10449
+        y: 149
+        width: 232
+        height: 292
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c5e1a4c0d2e28680800000000000000
+      internalID: -8754185339374803514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_276
+      rect:
+        serializedVersion: 2
+        x: 11089
+        y: 149
+        width: 232
+        height: 282
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65fd352a4150d4980800000000000000
+      internalID: -8553174531125813418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_277
+      rect:
+        serializedVersion: 2
+        x: 12369
+        y: 149
+        width: 232
+        height: 282
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98409fb0fee3c4f40800000000000000
+      internalID: 5714011223645291657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_278
+      rect:
+        serializedVersion: 2
+        x: 12479
+        y: 429
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59b43af2152e4b5f0800000000000000
+      internalID: -741719200289829995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_279
+      rect:
+        serializedVersion: 2
+        x: 13009
+        y: 149
+        width: 232
+        height: 282
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6c0960b8d90b4450800000000000000
+      internalID: 6073959348716506220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_280
+      rect:
+        serializedVersion: 2
+        x: 13649
+        y: 149
+        width: 232
+        height: 292
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3431f34c32762e70800000000000000
+      internalID: 9090078501057410108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_281
+      rect:
+        serializedVersion: 2
+        x: 14289
+        y: 149
+        width: 232
+        height: 292
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: efe2f06d61f7f40c0800000000000000
+      internalID: -4589309759209918722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_282
+      rect:
+        serializedVersion: 2
+        x: 1425
+        y: 149
+        width: 372
+        height: 491
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c500801fe2c4da30800000000000000
+      internalID: 4239227481292277185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_283
+      rect:
+        serializedVersion: 2
+        x: 4633
+        y: 149
+        width: 381
+        height: 491
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 901ab5d20abcb84b0800000000000000
+      internalID: -5437028236303556343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_284
+      rect:
+        serializedVersion: 2
+        x: 8529
+        y: 149
+        width: 232
+        height: 272
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8bcb193d82655940800000000000000
+      internalID: 5284238096477178766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-sheet-campfire_285
+      rect:
+        serializedVersion: 2
+        x: 11729
+        y: 149
+        width: 232
+        height: 272
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd80b18b12eb96880800000000000000
+      internalID: -8617147359964755748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5c465a3187191524fad1d37298eb62ae
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Sprite-sheet-campfire_0: -7519012063143179805
+      Sprite-sheet-campfire_1: 39962005725566234
+      Sprite-sheet-campfire_10: -7091449186970913462
+      Sprite-sheet-campfire_100: -7320380914197119625
+      Sprite-sheet-campfire_101: -5695084620220425131
+      Sprite-sheet-campfire_102: -649135135875965185
+      Sprite-sheet-campfire_103: 6001286234201151114
+      Sprite-sheet-campfire_104: -7383371771383464534
+      Sprite-sheet-campfire_105: 8536791309243712219
+      Sprite-sheet-campfire_106: -2969156671259979118
+      Sprite-sheet-campfire_107: 1640813774084186994
+      Sprite-sheet-campfire_108: -6699325979162346654
+      Sprite-sheet-campfire_109: 1634952100679711015
+      Sprite-sheet-campfire_11: -1604642116264100401
+      Sprite-sheet-campfire_110: -4968062808039684852
+      Sprite-sheet-campfire_111: -6610356013200829005
+      Sprite-sheet-campfire_112: -5637046327590092464
+      Sprite-sheet-campfire_113: -6535519680273488530
+      Sprite-sheet-campfire_114: -2237384925765527094
+      Sprite-sheet-campfire_115: 7485825643032118302
+      Sprite-sheet-campfire_116: 5664971949902944111
+      Sprite-sheet-campfire_117: -2914919019577107827
+      Sprite-sheet-campfire_118: -3572798298310817197
+      Sprite-sheet-campfire_119: -6793069278506008758
+      Sprite-sheet-campfire_12: -4664794633854628771
+      Sprite-sheet-campfire_120: 525425159862162964
+      Sprite-sheet-campfire_121: 3999566022801644717
+      Sprite-sheet-campfire_122: 1488384310756806261
+      Sprite-sheet-campfire_123: 7167332697456181340
+      Sprite-sheet-campfire_124: -4053203226830277453
+      Sprite-sheet-campfire_125: 4387454096592791692
+      Sprite-sheet-campfire_126: 5835711285471359585
+      Sprite-sheet-campfire_127: -1901701560999718671
+      Sprite-sheet-campfire_128: 4404983725383658137
+      Sprite-sheet-campfire_129: 4426003004647750946
+      Sprite-sheet-campfire_13: 6913732368554246615
+      Sprite-sheet-campfire_130: -3641125763660875471
+      Sprite-sheet-campfire_131: -1027134371146478956
+      Sprite-sheet-campfire_132: -5635916160429586748
+      Sprite-sheet-campfire_133: 591937478444281353
+      Sprite-sheet-campfire_134: 6263955952632757161
+      Sprite-sheet-campfire_135: -3732988832038601531
+      Sprite-sheet-campfire_136: 1905176967596728303
+      Sprite-sheet-campfire_137: 8072511040053821274
+      Sprite-sheet-campfire_138: 3272502728965593100
+      Sprite-sheet-campfire_139: 5201370036498254402
+      Sprite-sheet-campfire_14: -2790246131610074598
+      Sprite-sheet-campfire_140: -5777505484139237589
+      Sprite-sheet-campfire_141: 7567085579878982347
+      Sprite-sheet-campfire_142: 8363147771912082113
+      Sprite-sheet-campfire_143: 5202376601190104402
+      Sprite-sheet-campfire_144: 1203152113570598976
+      Sprite-sheet-campfire_145: -772637403791788642
+      Sprite-sheet-campfire_146: 3757318043605884652
+      Sprite-sheet-campfire_147: 646484275981968004
+      Sprite-sheet-campfire_148: -3141603378208329888
+      Sprite-sheet-campfire_149: 5878699561003097648
+      Sprite-sheet-campfire_15: -5714441628313345079
+      Sprite-sheet-campfire_150: -292313189763544027
+      Sprite-sheet-campfire_151: 3773546062859218865
+      Sprite-sheet-campfire_152: 3987917216238409701
+      Sprite-sheet-campfire_153: 8190433031735386915
+      Sprite-sheet-campfire_154: 5649242774710715123
+      Sprite-sheet-campfire_155: -1841870543059711575
+      Sprite-sheet-campfire_156: -8703810141376199908
+      Sprite-sheet-campfire_157: -6542852567167030350
+      Sprite-sheet-campfire_158: -7288528757343863739
+      Sprite-sheet-campfire_159: 7081111974392488209
+      Sprite-sheet-campfire_16: 1071071009080342718
+      Sprite-sheet-campfire_160: -3901188013751151412
+      Sprite-sheet-campfire_161: 8959936024076746874
+      Sprite-sheet-campfire_162: 5389597812693791906
+      Sprite-sheet-campfire_163: -7021425843841445742
+      Sprite-sheet-campfire_164: -5566013073591782822
+      Sprite-sheet-campfire_165: -2130528892815989225
+      Sprite-sheet-campfire_166: 1122622417038621642
+      Sprite-sheet-campfire_167: 2272714680587408555
+      Sprite-sheet-campfire_168: -7908227346832461437
+      Sprite-sheet-campfire_169: -1572004492070831230
+      Sprite-sheet-campfire_17: -6165807713462036522
+      Sprite-sheet-campfire_170: -670770609296256975
+      Sprite-sheet-campfire_171: 6684919682079571756
+      Sprite-sheet-campfire_172: 3543851750496182725
+      Sprite-sheet-campfire_173: -6391517054618646485
+      Sprite-sheet-campfire_174: 4039161011641844754
+      Sprite-sheet-campfire_175: -1610298090393945040
+      Sprite-sheet-campfire_176: 5214302164478365585
+      Sprite-sheet-campfire_177: 7776540756644160078
+      Sprite-sheet-campfire_178: 6313459456701758360
+      Sprite-sheet-campfire_179: -602849652750908111
+      Sprite-sheet-campfire_18: -6363053123740328470
+      Sprite-sheet-campfire_180: -6974136777008172442
+      Sprite-sheet-campfire_181: 1493114991733993655
+      Sprite-sheet-campfire_182: -8834233674241786236
+      Sprite-sheet-campfire_183: 7468649357476489810
+      Sprite-sheet-campfire_184: -1972201033349968093
+      Sprite-sheet-campfire_185: 7520840552925231573
+      Sprite-sheet-campfire_186: -4742111215020793275
+      Sprite-sheet-campfire_187: 6530637073300475981
+      Sprite-sheet-campfire_188: -2615789762647566962
+      Sprite-sheet-campfire_189: 4486380750262872911
+      Sprite-sheet-campfire_19: 8499467191253943904
+      Sprite-sheet-campfire_190: 554892634804799602
+      Sprite-sheet-campfire_191: -4207548398694663387
+      Sprite-sheet-campfire_192: 7915425485282394252
+      Sprite-sheet-campfire_193: -2811069054098786868
+      Sprite-sheet-campfire_194: 7109707690646477057
+      Sprite-sheet-campfire_195: 5258665407888291501
+      Sprite-sheet-campfire_196: -4179211546265881419
+      Sprite-sheet-campfire_197: -8108425891925359994
+      Sprite-sheet-campfire_198: -5213171470082077276
+      Sprite-sheet-campfire_199: -6838492749753692929
+      Sprite-sheet-campfire_2: -2630035703461596525
+      Sprite-sheet-campfire_20: -3994938369602036975
+      Sprite-sheet-campfire_200: 129787891313064496
+      Sprite-sheet-campfire_201: -2229958635561331240
+      Sprite-sheet-campfire_202: -3782505928129810752
+      Sprite-sheet-campfire_203: -823752245597157272
+      Sprite-sheet-campfire_204: -7587149654571199742
+      Sprite-sheet-campfire_205: 353444212737760057
+      Sprite-sheet-campfire_206: -2146836517173171526
+      Sprite-sheet-campfire_207: 2558366096731775529
+      Sprite-sheet-campfire_208: 2493222488145374507
+      Sprite-sheet-campfire_209: 6568438191253571447
+      Sprite-sheet-campfire_21: -6367411322179571888
+      Sprite-sheet-campfire_210: -6087576922833982354
+      Sprite-sheet-campfire_211: -1115091547785902368
+      Sprite-sheet-campfire_212: -8249686722408355954
+      Sprite-sheet-campfire_213: -3875283859684587071
+      Sprite-sheet-campfire_214: 4349652913484813134
+      Sprite-sheet-campfire_215: -4325008300356260955
+      Sprite-sheet-campfire_216: -6633954224674924751
+      Sprite-sheet-campfire_217: 1156743821980005112
+      Sprite-sheet-campfire_218: 1426509507602979348
+      Sprite-sheet-campfire_219: 216331059314284786
+      Sprite-sheet-campfire_22: 3007045848383754301
+      Sprite-sheet-campfire_220: -1994080211524393262
+      Sprite-sheet-campfire_221: 332552777241518285
+      Sprite-sheet-campfire_222: 8387188985126867148
+      Sprite-sheet-campfire_223: 3948352918115912462
+      Sprite-sheet-campfire_224: -7419149766364132030
+      Sprite-sheet-campfire_225: -910239081950064483
+      Sprite-sheet-campfire_226: 6791729780580194311
+      Sprite-sheet-campfire_227: -8642186397003982777
+      Sprite-sheet-campfire_228: -8567665589698194748
+      Sprite-sheet-campfire_229: -7663209394848701281
+      Sprite-sheet-campfire_23: -1702545445068026596
+      Sprite-sheet-campfire_230: 7451583162027804051
+      Sprite-sheet-campfire_231: 2031971643980429415
+      Sprite-sheet-campfire_232: 7627805882013879944
+      Sprite-sheet-campfire_233: -7812896090833004028
+      Sprite-sheet-campfire_234: 1092398530990939218
+      Sprite-sheet-campfire_235: -7059303291417833452
+      Sprite-sheet-campfire_236: -1514475873114808050
+      Sprite-sheet-campfire_237: 1889854208898583817
+      Sprite-sheet-campfire_238: 2173929406881795772
+      Sprite-sheet-campfire_239: 5791908490009700134
+      Sprite-sheet-campfire_24: -4449460103114163155
+      Sprite-sheet-campfire_240: 2825861856924393449
+      Sprite-sheet-campfire_241: -6972216128927220829
+      Sprite-sheet-campfire_242: -7225156260708611739
+      Sprite-sheet-campfire_243: -8913254136086297784
+      Sprite-sheet-campfire_244: -1158679254180966085
+      Sprite-sheet-campfire_245: 3172940301229042011
+      Sprite-sheet-campfire_246: 6095771652975245940
+      Sprite-sheet-campfire_247: 3266094854647474075
+      Sprite-sheet-campfire_248: -7820604826307043720
+      Sprite-sheet-campfire_249: 2021690972841929714
+      Sprite-sheet-campfire_25: -2045099064339121929
+      Sprite-sheet-campfire_250: -4255369365186676097
+      Sprite-sheet-campfire_251: -3435836735156447170
+      Sprite-sheet-campfire_252: 8917559220649179990
+      Sprite-sheet-campfire_253: 6539003183122202945
+      Sprite-sheet-campfire_254: 1718504361271087441
+      Sprite-sheet-campfire_255: -590804000032262395
+      Sprite-sheet-campfire_256: 5094492026382713515
+      Sprite-sheet-campfire_257: 8442614466284573695
+      Sprite-sheet-campfire_258: 4722239664053403200
+      Sprite-sheet-campfire_259: 8995322466925093055
+      Sprite-sheet-campfire_26: -3830808448510352117
+      Sprite-sheet-campfire_260: 5237173738978459559
+      Sprite-sheet-campfire_261: 4635962392783215717
+      Sprite-sheet-campfire_262: 6060063936700730557
+      Sprite-sheet-campfire_263: 1668202718576913529
+      Sprite-sheet-campfire_264: 3384104104079250779
+      Sprite-sheet-campfire_265: -7029672497148597999
+      Sprite-sheet-campfire_266: 8051775727466846041
+      Sprite-sheet-campfire_267: -6245732771280435541
+      Sprite-sheet-campfire_268: -7280304995276282324
+      Sprite-sheet-campfire_269: -3398987374946531105
+      Sprite-sheet-campfire_27: -4346063230250774467
+      Sprite-sheet-campfire_270: 6611801884210012234
+      Sprite-sheet-campfire_271: -1581442697051296876
+      Sprite-sheet-campfire_272: 2602904889451242225
+      Sprite-sheet-campfire_273: 6395531436303578186
+      Sprite-sheet-campfire_274: -3961833939023649639
+      Sprite-sheet-campfire_275: -8754185339374803514
+      Sprite-sheet-campfire_276: -8553174531125813418
+      Sprite-sheet-campfire_277: 5714011223645291657
+      Sprite-sheet-campfire_278: -741719200289829995
+      Sprite-sheet-campfire_279: 6073959348716506220
+      Sprite-sheet-campfire_28: -6892514050788220705
+      Sprite-sheet-campfire_280: 9090078501057410108
+      Sprite-sheet-campfire_281: -4589309759209918722
+      Sprite-sheet-campfire_282: 4239227481292277185
+      Sprite-sheet-campfire_283: -5437028236303556343
+      Sprite-sheet-campfire_284: 5284238096477178766
+      Sprite-sheet-campfire_285: -8617147359964755748
+      Sprite-sheet-campfire_29: -4557340638324806765
+      Sprite-sheet-campfire_3: 8107342659637613259
+      Sprite-sheet-campfire_30: -1475450376917339499
+      Sprite-sheet-campfire_31: -8891310862240952541
+      Sprite-sheet-campfire_32: 3346628794212097156
+      Sprite-sheet-campfire_33: 3983839164347139388
+      Sprite-sheet-campfire_34: -5877406404463911868
+      Sprite-sheet-campfire_35: 4580878852282737349
+      Sprite-sheet-campfire_36: -7760501608087870776
+      Sprite-sheet-campfire_37: -2744380738284175869
+      Sprite-sheet-campfire_38: 5552936159117529147
+      Sprite-sheet-campfire_39: 552001784998073942
+      Sprite-sheet-campfire_4: -7294982035888093457
+      Sprite-sheet-campfire_40: 7101245195435684430
+      Sprite-sheet-campfire_41: -1173002806390939357
+      Sprite-sheet-campfire_42: -2995545588307422198
+      Sprite-sheet-campfire_43: 2930419416983025319
+      Sprite-sheet-campfire_44: 8844444362789277363
+      Sprite-sheet-campfire_45: 3769996980270975995
+      Sprite-sheet-campfire_46: 4690842296531650124
+      Sprite-sheet-campfire_47: -4025461045154261704
+      Sprite-sheet-campfire_48: -2241058044363224014
+      Sprite-sheet-campfire_49: 440311745039442756
+      Sprite-sheet-campfire_5: -3551542914978531822
+      Sprite-sheet-campfire_50: -3357135167829690172
+      Sprite-sheet-campfire_51: -6374799290139698375
+      Sprite-sheet-campfire_52: -357630864285820463
+      Sprite-sheet-campfire_53: 3431025102428902709
+      Sprite-sheet-campfire_54: -2036529054956495391
+      Sprite-sheet-campfire_55: -8401335492793822645
+      Sprite-sheet-campfire_56: 4287194830536897870
+      Sprite-sheet-campfire_57: -4273265393246102407
+      Sprite-sheet-campfire_58: -8064790117821363679
+      Sprite-sheet-campfire_59: -8833069670218280968
+      Sprite-sheet-campfire_6: 5680249859620256577
+      Sprite-sheet-campfire_60: 7651737753213021545
+      Sprite-sheet-campfire_61: -3968056341869129737
+      Sprite-sheet-campfire_62: 8322945736544758415
+      Sprite-sheet-campfire_63: 32252088955426458
+      Sprite-sheet-campfire_64: 7691757653716070759
+      Sprite-sheet-campfire_65: 6775036199479730423
+      Sprite-sheet-campfire_66: 7571088138017930522
+      Sprite-sheet-campfire_67: -478434747182809023
+      Sprite-sheet-campfire_68: 8861384626435519096
+      Sprite-sheet-campfire_69: 6202512731640946182
+      Sprite-sheet-campfire_7: -4696514063948768032
+      Sprite-sheet-campfire_70: -2344335145501915658
+      Sprite-sheet-campfire_71: -1301473147982926306
+      Sprite-sheet-campfire_72: -10160718608159962
+      Sprite-sheet-campfire_73: 3981510030550932601
+      Sprite-sheet-campfire_74: -7998067371759639545
+      Sprite-sheet-campfire_75: 848385307232465134
+      Sprite-sheet-campfire_76: -609770545686162528
+      Sprite-sheet-campfire_77: 1360318378388620699
+      Sprite-sheet-campfire_78: 3283315565284010097
+      Sprite-sheet-campfire_79: -370325014906551663
+      Sprite-sheet-campfire_8: -3917499688757120942
+      Sprite-sheet-campfire_80: 5905192937421423968
+      Sprite-sheet-campfire_81: 6856849246390050889
+      Sprite-sheet-campfire_82: -356003036852671492
+      Sprite-sheet-campfire_83: -5213135554637861633
+      Sprite-sheet-campfire_84: -8490053631761916280
+      Sprite-sheet-campfire_85: 1131659230645390489
+      Sprite-sheet-campfire_86: -5378157290468960776
+      Sprite-sheet-campfire_87: -9199838842971630452
+      Sprite-sheet-campfire_88: 4425759319874146698
+      Sprite-sheet-campfire_89: -6808188290070830956
+      Sprite-sheet-campfire_9: -7578481769336532367
+      Sprite-sheet-campfire_90: -7933632675087353353
+      Sprite-sheet-campfire_91: -3469843444762378023
+      Sprite-sheet-campfire_92: 6177242700550347346
+      Sprite-sheet-campfire_93: -464343528110768044
+      Sprite-sheet-campfire_94: 8729498657988739650
+      Sprite-sheet-campfire_95: 8784044297480388529
+      Sprite-sheet-campfire_96: 5223505449615344788
+      Sprite-sheet-campfire_97: -3118397779489891302
+      Sprite-sheet-campfire_98: -3427163082921658655
+      Sprite-sheet-campfire_99: 4247653022923354408
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
