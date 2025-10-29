@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
@@ -19,9 +18,16 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     
     [Header("State")]
-    private Vector2 moveInput;
+    private float horizontalInput;
     private bool isGrounded;
     private bool isSprinting;
+    
+    // Cache animator parameter hashes for better performance
+    private int isRunHash;
+    private int isWalkHash;
+    private int isGroundedHash;
+    private int isJumpHash;
+    private bool hasAnimator;
     
     private void Awake()
     {
@@ -29,41 +35,67 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         
+        // Cache animator parameter hashes
+        if (animator != null && animator.runtimeAnimatorController != null)
+        {
+            hasAnimator = true;
+            isRunHash = Animator.StringToHash("IsRun");
+            isWalkHash = Animator.StringToHash("IsWalk");
+            isGroundedHash = Animator.StringToHash("IsGrounded");
+            isJumpHash = Animator.StringToHash("IsJump");
+        }
+        else
+        {
+            hasAnimator = false;
+            Debug.LogWarning($"Animator or RuntimeAnimatorController not found on {gameObject.name}. Animations will not work.");
+        }
+        
         if (groundCheckPoint == null)
         {
             // Create ground check point if not assigned
             GameObject groundCheck = new GameObject("GroundCheck");
             groundCheck.transform.SetParent(transform);
-            groundCheck.transform.localPosition = Vector2.zero;
+            groundCheck.transform.localPosition = new Vector3(0, -0.5f, 0);
             groundCheckPoint = groundCheck.transform;
         }
     }
     
     private void Update()
     {
-        CheckGrounded();
-        HandleMovement();
-        UpdateAnimations();
-        FlipSprite();
-    }
-    
-    public void OnMove(InputAction.CallbackContext context)
-    {
-        moveInput = context.ReadValue<Vector2>();
-    }
-    
-    public void OnJump(InputAction.CallbackContext context)
-    {
-        if (context.performed && isGrounded)
+        // Read input directly using Input class
+        horizontalInput = Input.GetAxisRaw("Horizontal");
+        isSprinting = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
+        
+        // Jump input
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             Jump();
         }
+        
+        // Flip sprite based on movement direction
+        if (horizontalInput > 0)
+        {
+            spriteRenderer.flipX = false;
+        }
+        else if (horizontalInput < 0)
+        {
+            spriteRenderer.flipX = true;
+        }
     }
     
-    public void OnSprint(InputAction.CallbackContext context)
+    private void FixedUpdate()
     {
-        isSprinting = context.performed || context.started;
+        CheckGrounded();
+        HandleMovement();
+        UpdateAnimations();
     }
+    
+    // Legacy callback methods kept for compatibility but not used
+    public void OnMove(UnityEngine.InputSystem.InputAction.CallbackContext context) { }
+    
+    public void OnJump(UnityEngine.InputSystem.InputAction.CallbackContext context) { }
+    
+    public void OnSprint(UnityEngine.InputSystem.InputAction.CallbackContext context) { }
     
     private void HandleMovement()
     {
@@ -73,16 +105,18 @@ public class PlayerController : MonoBehaviour
             currentSpeed *= sprintMultiplier;
         }
         
-        rb.velocity = new Vector2(moveInput.x * currentSpeed, rb.velocity.y);
+        // Apply horizontal movement
+        float targetVelocityX = horizontalInput * currentSpeed;
+        rb.linearVelocity = new Vector2(targetVelocityX, rb.linearVelocity.y);
     }
     
     private void Jump()
     {
-        rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+        rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
         
-        if (animator != null)
+        if (hasAnimator)
         {
-            animator.SetTrigger("IsJump");
+            SafeSetTrigger(isJumpHash);
         }
     }
     
@@ -90,26 +124,49 @@ public class PlayerController : MonoBehaviour
     {
         isGrounded = Physics2D.OverlapCircle(groundCheckPoint.position, groundCheckRadius, groundLayer);
         
-        if (animator != null)
+        if (hasAnimator)
         {
-            animator.SetBool("IsGrounded", isGrounded);
+            SafeSetBool(isGroundedHash, isGrounded);
         }
     }
     
     private void UpdateAnimations()
     {
-        if (animator == null) return;
+        if (!hasAnimator) return;
         
-        bool isMoving = Mathf.Abs(moveInput.x) > 0.1f;
-        animator.SetBool("IsRun", isMoving && isSprinting);
-        animator.SetBool("IsWalk", isMoving && !isSprinting);
+        bool isMoving = Mathf.Abs(horizontalInput) > 0.1f;
+        SafeSetBool(isRunHash, isMoving && isSprinting);
+        SafeSetBool(isWalkHash, isMoving && !isSprinting);
     }
     
-    private void FlipSprite()
+    private void SafeSetBool(int parameterHash, bool value)
     {
-        if (spriteRenderer == null || moveInput.x == 0) return;
-        
-        spriteRenderer.flipX = moveInput.x < 0;
+        if (animator != null)
+        {
+            foreach (var param in animator.parameters)
+            {
+                if (param.nameHash == parameterHash)
+                {
+                    animator.SetBool(parameterHash, value);
+                    return;
+                }
+            }
+        }
+    }
+    
+    private void SafeSetTrigger(int parameterHash)
+    {
+        if (animator != null)
+        {
+            foreach (var param in animator.parameters)
+            {
+                if (param.nameHash == parameterHash)
+                {
+                    animator.SetTrigger(parameterHash);
+                    return;
+                }
+            }
+        }
     }
     
     private void OnDrawGizmosSelected()

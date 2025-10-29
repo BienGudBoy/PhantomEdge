@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 public class EnemyHealth : MonoBehaviour
 {
@@ -8,6 +9,10 @@ public class EnemyHealth : MonoBehaviour
     
     [Header("Components")]
     private EnemyController enemyController;
+    
+    // Events
+    public event Action OnDeath;
+    public event Action<int, int> OnHealthChanged; // current, max
     
     private bool isDead = false;
     
@@ -26,6 +31,7 @@ public class EnemyHealth : MonoBehaviour
         if (isDead || damage <= 0) return;
         
         currentHealth = Mathf.Max(0, currentHealth - damage);
+        OnHealthChanged?.Invoke(currentHealth, maxHealth);
         
         // Notify enemy controller about damage
         if (enemyController != null)
@@ -44,6 +50,9 @@ public class EnemyHealth : MonoBehaviour
         if (isDead) return;
         
         isDead = true;
+        
+        // Invoke death event
+        OnDeath?.Invoke();
         
         // Notify enemy controller about death
         if (enemyController != null)
@@ -69,4 +78,7 @@ public class EnemyHealth : MonoBehaviour
         Destroy(gameObject, 3f);
     }
 }
+
+
+
 

@@ -7,7 +7,7 @@ public class HealthSystem : MonoBehaviour
     [SerializeField] private int maxHealth = 100;
     [SerializeField] private int currentHealth;
     
-    [Header("Events")]
+    // Events
     public event Action<int, int> OnHealthChanged; // current, max
     public event Action OnDeath;
     public event Action<int> OnDamageTaken; // damage amount
@@ -83,7 +83,7 @@ public class HealthSystem : MonoBehaviour
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         if (rb != null)
         {
-            rb.velocity = Vector2.zero;
+            rb.linearVelocity = Vector2.zero;
             rb.isKinematic = true;
         }
     }
@@ -118,4 +118,7 @@ public class HealthSystem : MonoBehaviour
         }
     }
 }
+
+
+
 

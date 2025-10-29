@@ -61,7 +61,7 @@ public class Collectible : MonoBehaviour
                 break;
         }
         
-        // Play kosound
+        // Play sound
         if (AudioManager.Instance != null)
         {
             AudioManager.Instance.PlayScoreSound();

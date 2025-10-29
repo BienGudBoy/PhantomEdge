@@ -6,13 +6,13 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     
-    [Header("Game State")]
+    // Game State]
     private GameState currentState = GameState.Menu;
     
-    [Header("Score")]
+    // Score]
     private int score = 0;
     
-    [Header("Events")]
+    // Events
     public event Action<int> OnScoreChanged;
     public event Action<GameState> OnStateChanged;
     
@@ -188,4 +188,7 @@ public class GameManager : MonoBehaviour
         }
     }
 }
+
+
+
 

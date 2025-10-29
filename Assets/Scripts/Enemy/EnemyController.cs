@@ -25,6 +25,13 @@ public class EnemyController : MonoBehaviour
     private float stateTimer = 0f;
     private float idleDuration = 2f;
     
+    // Cache animator parameter hashes
+    private int isRunHash;
+    private int isAttackHash;
+    private int isTakehitHash;
+    private int isDeathHash;
+    private bool hasAnimator;
+    
     private enum EnemyState
     {
         Idle,
@@ -42,6 +49,21 @@ public class EnemyController : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         startPosition = transform.position;
         patrolTarget = startPosition;
+        
+        // Cache animator parameter hashes
+        if (animator != null && animator.runtimeAnimatorController != null)
+        {
+            hasAnimator = true;
+            isRunHash = Animator.StringToHash("IsRun");
+            isAttackHash = Animator.StringToHash("IsAttack");
+            isTakehitHash = Animator.StringToHash("IsTakehit");
+            isDeathHash = Animator.StringToHash("IsDeath");
+        }
+        else
+        {
+            hasAnimator = false;
+            Debug.LogWarning($"Animator or RuntimeAnimatorController not found on {gameObject.name}. Animations will not work.");
+        }
     }
     
     private void Start()
@@ -156,11 +178,11 @@ public class EnemyController : MonoBehaviour
     
     private void HandleAttack()
     {
-        rb.velocity = Vector2.zero;
+        rb.linearVelocity = Vector2.zero;
         
-        if (animator != null)
+        if (hasAnimator)
         {
-            animator.SetTrigger("IsAttack");
+            SafeSetTrigger(isAttackHash);
         }
         
         // Reset to chase after attack
@@ -169,11 +191,11 @@ public class EnemyController : MonoBehaviour
     
     private void HandleHurt()
     {
-        rb.velocity = Vector2.zero;
+        rb.linearVelocity = Vector2.zero;
         
-        if (animator != null)
+        if (hasAnimator)
         {
-            animator.SetTrigger("IsTakehit");
+            SafeSetTrigger(isTakehitHash);
         }
         
         // Return to chase after being hurt
@@ -182,11 +204,11 @@ public class EnemyController : MonoBehaviour
     
     private void HandleDead()
     {
-        rb.velocity = Vector2.zero;
+        rb.linearVelocity = Vector2.zero;
         
-        if (animator != null)
+        if (hasAnimator)
         {
-            animator.SetTrigger("IsDeath");
+            SafeSetTrigger(isDeathHash);
         }
     }
     
@@ -201,7 +223,7 @@ public class EnemyController : MonoBehaviour
     private void MoveTowards(Vector2 target, float speed)
     {
         Vector2 direction = (target - (Vector2)transform.position).normalized;
-        rb.velocity = new Vector2(direction.x * speed, rb.velocity.y);
+        rb.linearVelocity = new Vector2(direction.x * speed, rb.linearVelocity.y);
         
         // Flip sprite based on direction
         if (spriteRenderer != null)
@@ -226,10 +248,40 @@ public class EnemyController : MonoBehaviour
     
     private void UpdateAnimations()
     {
-        if (animator == null) return;
+        if (!hasAnimator) return;
         
-        bool isMoving = Mathf.Abs(rb.velocity.x) > 0.1f;
-        animator.SetBool("IsRun", isMoving && currentState == EnemyState.Chase);
+        bool isMoving = Mathf.Abs(rb.linearVelocity.x) > 0.1f;
+        SafeSetBool(isRunHash, isMoving && currentState == EnemyState.Chase);
+    }
+    
+    private void SafeSetBool(int parameterHash, bool value)
+    {
+        if (animator != null)
+        {
+            foreach (var param in animator.parameters)
+            {
+                if (param.nameHash == parameterHash)
+                {
+                    animator.SetBool(parameterHash, value);
+                    return;
+                }
+            }
+        }
+    }
+    
+    private void SafeSetTrigger(int parameterHash)
+    {
+        if (animator != null)
+        {
+            foreach (var param in animator.parameters)
+            {
+                if (param.nameHash == parameterHash)
+                {
+                    animator.SetTrigger(parameterHash);
+                    return;
+                }
+            }
+        }
     }
     
     public void TakeDamage()

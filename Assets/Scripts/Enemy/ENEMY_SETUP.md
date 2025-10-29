@@ -49,3 +49,6 @@ Enemies will automatically:
 5. **Hurt**: When taking damage
 6. **Dead**: When health reaches 0
 
+
+
+
