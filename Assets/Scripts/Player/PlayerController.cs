@@ -1,41 +1,40 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
     [Header("Movement Settings")]
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float sprintMultiplier = 1.5f;
-    
+
     [Header("Jump Settings")]
     [SerializeField] private float jumpForce = 10f;
     [SerializeField] private float groundCheckRadius = 0.2f;
     [SerializeField] private Transform groundCheckPoint;
     [SerializeField] private LayerMask groundLayer;
-    
+
     [Header("Components")]
     private Rigidbody2D rb;
     private Animator animator;
     private SpriteRenderer spriteRenderer;
-    
+
     [Header("State")]
     private float horizontalInput;
     private bool isGrounded;
     private bool isSprinting;
-    
-    // Cache animator parameter hashes for better performance
+
+    // Animator hash
     private int isRunHash;
     private int isWalkHash;
     private int isGroundedHash;
     private int isJumpHash;
     private bool hasAnimator;
-    
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        
-        // Cache animator parameter hashes
+
         if (animator != null && animator.runtimeAnimatorController != null)
         {
             hasAnimator = true;
@@ -49,96 +48,80 @@ public class PlayerController : MonoBehaviour
             hasAnimator = false;
             Debug.LogWarning($"Animator or RuntimeAnimatorController not found on {gameObject.name}. Animations will not work.");
         }
-        
+
         if (groundCheckPoint == null)
         {
-            // Create ground check point if not assigned
             GameObject groundCheck = new GameObject("GroundCheck");
             groundCheck.transform.SetParent(transform);
             groundCheck.transform.localPosition = new Vector3(0, -0.5f, 0);
             groundCheckPoint = groundCheck.transform;
         }
     }
-    
+
     private void Update()
     {
-        // Read input directly using Input class
         horizontalInput = Input.GetAxisRaw("Horizontal");
         isSprinting = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
-        
-        // Jump input
+
+        // ✅ Jump bằng Space
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             Jump();
         }
-        
-        // Flip sprite based on movement direction
+
+        // Flip sprite
         if (horizontalInput > 0)
-        {
             spriteRenderer.flipX = false;
-        }
         else if (horizontalInput < 0)
-        {
             spriteRenderer.flipX = true;
-        }
     }
-    
+
     private void FixedUpdate()
     {
         CheckGrounded();
         HandleMovement();
         UpdateAnimations();
     }
-    
-    // Legacy callback methods kept for compatibility but not used
-    public void OnMove(UnityEngine.InputSystem.InputAction.CallbackContext context) { }
-    
-    public void OnJump(UnityEngine.InputSystem.InputAction.CallbackContext context) { }
-    
-    public void OnSprint(UnityEngine.InputSystem.InputAction.CallbackContext context) { }
-    
+
     private void HandleMovement()
     {
-        float currentSpeed = moveSpeed;
-        if (isSprinting)
-        {
-            currentSpeed *= sprintMultiplier;
-        }
-        
-        // Apply horizontal movement
-        float targetVelocityX = horizontalInput * currentSpeed;
-        rb.linearVelocity = new Vector2(targetVelocityX, rb.linearVelocity.y);
+        float currentSpeed = isSprinting ? moveSpeed * sprintMultiplier : moveSpeed;
+
+        // ✅ SỬA LẠI CHỖ NÀY
+        rb.linearVelocity = new Vector2(horizontalInput * currentSpeed, rb.linearVelocity.y);
     }
-    
+
     private void Jump()
     {
-        rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-        
+        // ✅ Reset Y trước khi nhảy
+        rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0);
+
+        // ✅ Add lực nhảy
+        rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+
+        isGrounded = false;
+
         if (hasAnimator)
-        {
             SafeSetTrigger(isJumpHash);
-        }
     }
-    
+
     private void CheckGrounded()
     {
         isGrounded = Physics2D.OverlapCircle(groundCheckPoint.position, groundCheckRadius, groundLayer);
-        
+
         if (hasAnimator)
-        {
             SafeSetBool(isGroundedHash, isGrounded);
-        }
     }
-    
+
     private void UpdateAnimations()
     {
         if (!hasAnimator) return;
-        
+
         bool isMoving = Mathf.Abs(horizontalInput) > 0.1f;
         SafeSetBool(isRunHash, isMoving && isSprinting);
         SafeSetBool(isWalkHash, isMoving && !isSprinting);
     }
-    
+
     private void SafeSetBool(int parameterHash, bool value)
     {
         if (animator != null)
@@ -153,7 +136,7 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-    
+
     private void SafeSetTrigger(int parameterHash)
     {
         if (animator != null)
@@ -168,7 +151,7 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-    
+
     private void OnDrawGizmosSelected()
     {
         if (groundCheckPoint != null)
@@ -178,4 +161,3 @@ public class PlayerController : MonoBehaviour
         }
     }
 }
-
