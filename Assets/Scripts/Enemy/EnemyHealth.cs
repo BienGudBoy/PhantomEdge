@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using System.Collections;
 
 public class EnemyHealth : MonoBehaviour
 {
@@ -7,14 +8,27 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private int maxHealth = 50;
     [SerializeField] private int currentHealth;
     
+    [Header("Visual Feedback")]
+    [SerializeField] private float flashDuration = 0.1f;
+    [SerializeField] private Color damageColor = Color.red;
+    [SerializeField] private int flashCount = 2;
+    
+    [Header("Knockback")]
+    [SerializeField] private float knockbackForce = 5f;
+    [SerializeField] private float knockbackDuration = 0.2f;
+    
     [Header("Components")]
     private EnemyController enemyController;
+    private SpriteRenderer spriteRenderer;
+    private Rigidbody2D rb;
+    private Color originalColor;
     
     // Events
     public event Action OnDeath;
     public event Action<int, int> OnHealthChanged; // current, max
     
     private bool isDead = false;
+    private bool isFlashing = false;
     
     public int MaxHealth => maxHealth;
     public int CurrentHealth => currentHealth;
@@ -24,6 +38,13 @@ public class EnemyHealth : MonoBehaviour
     {
         currentHealth = maxHealth;
         enemyController = GetComponent<EnemyController>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        rb = GetComponent<Rigidbody2D>();
+        
+        if (spriteRenderer != null)
+        {
+            originalColor = spriteRenderer.color;
+        }
     }
     
     public void TakeDamage(int damage)
@@ -32,6 +53,15 @@ public class EnemyHealth : MonoBehaviour
         
         currentHealth = Mathf.Max(0, currentHealth - damage);
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
+        
+        // Start damage flash effect
+        if (!isFlashing && spriteRenderer != null)
+        {
+            StartCoroutine(FlashDamage());
+        }
+        
+        // Apply knockback effect
+        ApplyKnockback();
         
         // Notify enemy controller about damage
         if (enemyController != null)
@@ -45,11 +75,65 @@ public class EnemyHealth : MonoBehaviour
         }
     }
     
+    private void ApplyKnockback()
+    {
+        if (rb == null) return;
+        
+        // Find the player to determine knockback direction
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            // Calculate direction from player to enemy
+            Vector2 direction = (transform.position - player.transform.position).normalized;
+            
+            // Apply knockback force
+            rb.linearVelocity = direction * knockbackForce;
+            
+            // Reset velocity after a short duration
+            StartCoroutine(ResetVelocityAfterDelay());
+        }
+    }
+    
+    private IEnumerator ResetVelocityAfterDelay()
+    {
+        yield return new WaitForSeconds(knockbackDuration);
+        
+        if (rb != null && !isDead)
+        {
+            rb.linearVelocity = Vector2.zero;
+        }
+    }
+    
+    private IEnumerator FlashDamage()
+    {
+        isFlashing = true;
+        
+        for (int i = 0; i < flashCount; i++)
+        {
+            // Flash to damage color
+            spriteRenderer.color = damageColor;
+            yield return new WaitForSeconds(flashDuration);
+            
+            // Flash back to original color
+            spriteRenderer.color = originalColor;
+            yield return new WaitForSeconds(flashDuration);
+        }
+        
+        isFlashing = false;
+    }
+    
     private void Die()
     {
         if (isDead) return;
         
         isDead = true;
+        
+        // Stop any ongoing flash effect
+        StopAllCoroutines();
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.color = originalColor;
+        }
         
         // Invoke death event
         OnDeath?.Invoke();
@@ -67,15 +151,50 @@ public class EnemyHealth : MonoBehaviour
             col.enabled = false;
         }
         
+        // Disable physics to prevent sliding
+        if (rb != null)
+        {
+            rb.linearVelocity = Vector2.zero;
+            rb.bodyType = RigidbodyType2D.Static;
+        }
+        
         // Add score (if GameManager exists)
-        GameManager gameManager = FindObjectOfType<GameManager>();
+        GameManager gameManager = FindFirstObjectByType<GameManager>();
         if (gameManager != null)
         {
             gameManager.AddScore(10); // 10 points per enemy
         }
         
-        // Destroy after delay
-        Destroy(gameObject, 3f);
+        // Start death sequence with fade out
+        StartCoroutine(DeathSequence());
+    }
+    
+    private IEnumerator DeathSequence()
+    {
+        // Wait for death animation to play (if any)
+        yield return new WaitForSeconds(0.5f);
+        
+        // Fade out effect
+        float fadeTime = 1.0f;
+        float elapsed = 0f;
+        
+        while (elapsed < fadeTime && spriteRenderer != null)
+        {
+            elapsed += Time.deltaTime;
+            float alpha = Mathf.Lerp(1f, 0f, elapsed / fadeTime);
+            Color color = spriteRenderer.color;
+            color.a = alpha;
+            spriteRenderer.color = color;
+            
+            // Scale down slightly while fading
+            float scale = Mathf.Lerp(1f, 0.8f, elapsed / fadeTime);
+            transform.localScale = Vector3.one * scale;
+            
+            yield return null;
+        }
+        
+        // Destroy the game object
+        Destroy(gameObject);
     }
 }
 
