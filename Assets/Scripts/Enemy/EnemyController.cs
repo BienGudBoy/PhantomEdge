@@ -9,6 +9,10 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float detectionRange = 8f;
     [SerializeField] private float attackRange = 1.5f;
     
+    [Header("Combat Settings")]
+    [SerializeField] private int attackDamage = 10;
+    [SerializeField] private float attackCooldown = 1f;
+    
     [Header("Components")]
     private Rigidbody2D rb;
     private Animator animator;
@@ -24,6 +28,7 @@ public class EnemyController : MonoBehaviour
     private EnemyState currentState = EnemyState.Idle;
     private float stateTimer = 0f;
     private float idleDuration = 2f;
+    private float lastAttackTime = 0f;
     
     // Cache animator parameter hashes
     private int isRunHash;
@@ -31,6 +36,10 @@ public class EnemyController : MonoBehaviour
     private int isTakehitHash;
     private int isDeathHash;
     private bool hasAnimator;
+    private bool hasRunParameter;
+    private bool hasAttackParameter;
+    private bool hasTakehitParameter;
+    private bool hasDeathParameter;
     
     private enum EnemyState
     {
@@ -54,16 +63,68 @@ public class EnemyController : MonoBehaviour
         if (animator != null && animator.runtimeAnimatorController != null)
         {
             hasAnimator = true;
-            isRunHash = Animator.StringToHash("IsRun");
-            isAttackHash = Animator.StringToHash("IsAttack");
-            isTakehitHash = Animator.StringToHash("IsTakehit");
-            isDeathHash = Animator.StringToHash("IsDeath");
+            
+            // Try different variations of run/walk parameter names
+            string[] runParams = { "IsRun", "IsRunning", "IsWalk", "IsFlight" };
+            foreach (string param in runParams)
+            {
+                if (HasParameter(param))
+                {
+                    isRunHash = Animator.StringToHash(param);
+                    hasRunParameter = true;
+                    Debug.Log($"{gameObject.name}: Found run parameter '{param}'");
+                    break;
+                }
+            }
+            
+            // Check for attack parameter
+            if (HasParameter("IsAttack"))
+            {
+                isAttackHash = Animator.StringToHash("IsAttack");
+                hasAttackParameter = true;
+                Debug.Log($"{gameObject.name}: Found attack parameter 'IsAttack'");
+            }
+            
+            // Check for takehit parameter
+            if (HasParameter("IsTakehit"))
+            {
+                isTakehitHash = Animator.StringToHash("IsTakehit");
+                hasTakehitParameter = true;
+                Debug.Log($"{gameObject.name}: Found takehit parameter 'IsTakehit'");
+            }
+            
+            // Check for death parameter
+            if (HasParameter("IsDeath"))
+            {
+                isDeathHash = Animator.StringToHash("IsDeath");
+                hasDeathParameter = true;
+                Debug.Log($"{gameObject.name}: Found death parameter 'IsDeath'");
+            }
+            
+            if (!hasRunParameter && !hasAttackParameter)
+            {
+                Debug.LogWarning($"{gameObject.name}: No animation parameters found. Check animator controller.");
+            }
         }
         else
         {
             hasAnimator = false;
             Debug.LogWarning($"Animator or RuntimeAnimatorController not found on {gameObject.name}. Animations will not work.");
         }
+    }
+    
+    private bool HasParameter(string parameterName)
+    {
+        if (animator == null) return false;
+        
+        foreach (AnimatorControllerParameter param in animator.parameters)
+        {
+            if (param.name == parameterName)
+            {
+                return true;
+            }
+        }
+        return false;
     }
     
     private void Start()
@@ -124,10 +185,20 @@ public class EnemyController : MonoBehaviour
     private void HandlePatrol()
     {
         // Check if player is in range
-        if (player != null && Vector2.Distance(transform.position, player.position) <= detectionRange)
+        if (player != null)
         {
-            currentState = EnemyState.Chase;
-            return;
+            float distanceToPlayer = Vector2.Distance(transform.position, player.position);
+            
+            // Check if player is alive before chasing
+            HealthSystem playerHealth = player.GetComponent<HealthSystem>();
+            bool playerAlive = playerHealth == null || !playerHealth.IsDead;
+            
+            if (distanceToPlayer <= detectionRange && playerAlive)
+            {
+                currentState = EnemyState.Chase;
+                Debug.Log($"{gameObject.name} detected player! Switching to chase mode.");
+                return;
+            }
         }
         
         // Move towards patrol target
@@ -158,6 +229,14 @@ public class EnemyController : MonoBehaviour
         
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
         
+        // Check if player is dead
+        HealthSystem playerHealth = player.GetComponent<HealthSystem>();
+        if (playerHealth != null && playerHealth.IsDead)
+        {
+            currentState = EnemyState.Patrol;
+            return;
+        }
+        
         // Lost player, go back to patrol
         if (distanceToPlayer > detectionRange * 1.5f)
         {
@@ -180,22 +259,66 @@ public class EnemyController : MonoBehaviour
     {
         rb.linearVelocity = Vector2.zero;
         
-        if (hasAnimator)
+        // Check if player is still in attack range
+        if (player != null)
         {
-            SafeSetTrigger(isAttackHash);
+            float distanceToPlayer = Vector2.Distance(transform.position, player.position);
+            
+            // If player moved out of range, chase them
+            if (distanceToPlayer > attackRange)
+            {
+                currentState = EnemyState.Chase;
+                return;
+            }
+            
+            // Attack on cooldown
+            if (Time.time >= lastAttackTime + attackCooldown)
+            {
+                lastAttackTime = Time.time;
+                
+                // Trigger attack animation
+                if (hasAnimator && hasAttackParameter)
+                {
+                    SafeSetTrigger(isAttackHash);
+                    Debug.Log($"{gameObject.name} triggered attack animation");
+                }
+                
+                // Deal damage to player
+                DealDamageToPlayer();
+            }
         }
+        else
+        {
+            // No player, go back to patrol
+            currentState = EnemyState.Patrol;
+        }
+    }
+    
+    private void DealDamageToPlayer()
+    {
+        if (player == null) return;
         
-        // Reset to chase after attack
-        Invoke(nameof(ResetToChase), 1f);
+        // Check if player is still in range (they might have moved)
+        float distanceToPlayer = Vector2.Distance(transform.position, player.position);
+        if (distanceToPlayer <= attackRange)
+        {
+            HealthSystem playerHealth = player.GetComponent<HealthSystem>();
+            if (playerHealth != null && !playerHealth.IsDead)
+            {
+                playerHealth.TakeDamage(attackDamage);
+                Debug.Log($"{gameObject.name} dealt {attackDamage} damage to player!");
+            }
+        }
     }
     
     private void HandleHurt()
     {
         rb.linearVelocity = Vector2.zero;
         
-        if (hasAnimator)
+        if (hasAnimator && hasTakehitParameter)
         {
             SafeSetTrigger(isTakehitHash);
+            Debug.Log($"{gameObject.name} triggered takehit animation");
         }
         
         // Return to chase after being hurt
@@ -206,9 +329,10 @@ public class EnemyController : MonoBehaviour
     {
         rb.linearVelocity = Vector2.zero;
         
-        if (hasAnimator)
+        if (hasAnimator && hasDeathParameter)
         {
             SafeSetTrigger(isDeathHash);
+            Debug.Log($"{gameObject.name} triggered death animation");
         }
     }
     
@@ -250,8 +374,13 @@ public class EnemyController : MonoBehaviour
     {
         if (!hasAnimator) return;
         
-        bool isMoving = Mathf.Abs(rb.linearVelocity.x) > 0.1f;
-        SafeSetBool(isRunHash, isMoving && currentState == EnemyState.Chase);
+        // Update run/walk animation based on movement
+        if (hasRunParameter)
+        {
+            bool isMoving = Mathf.Abs(rb.linearVelocity.x) > 0.1f;
+            bool shouldRun = isMoving && (currentState == EnemyState.Chase || currentState == EnemyState.Patrol);
+            SafeSetBool(isRunHash, shouldRun);
+        }
     }
     
     private void SafeSetBool(int parameterHash, bool value)
