@@ -784,7 +784,34 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      spritesheet_smoke_whisp_0: -3420824790660696673
+      spritesheet_smoke_whisp_1: -4616208929338812984
+      spritesheet_smoke_whisp_10: 4614100532816720612
+      spritesheet_smoke_whisp_11: 1075680560322453963
+      spritesheet_smoke_whisp_12: 7226696625417330365
+      spritesheet_smoke_whisp_13: -8093192088817906287
+      spritesheet_smoke_whisp_14: -3090391697668701984
+      spritesheet_smoke_whisp_15: 5573959170954653772
+      spritesheet_smoke_whisp_16: -1587030640519786979
+      spritesheet_smoke_whisp_17: 8330034956177508442
+      spritesheet_smoke_whisp_18: -1135559705796568691
+      spritesheet_smoke_whisp_19: -8146762217758391301
+      spritesheet_smoke_whisp_2: 2928997503691664981
+      spritesheet_smoke_whisp_20: 3180786116808425771
+      spritesheet_smoke_whisp_21: -6244091793941206212
+      spritesheet_smoke_whisp_22: 4199402524275759572
+      spritesheet_smoke_whisp_23: -424385817936748509
+      spritesheet_smoke_whisp_24: 3768824679461772217
+      spritesheet_smoke_whisp_25: 7805023598442481657
+      spritesheet_smoke_whisp_26: -1073123139146744001
+      spritesheet_smoke_whisp_3: 1862215116468043613
+      spritesheet_smoke_whisp_4: 5088708275325375196
+      spritesheet_smoke_whisp_5: 22385450027623480
+      spritesheet_smoke_whisp_6: -5975740990099414183
+      spritesheet_smoke_whisp_7: -8316564881980874790
+      spritesheet_smoke_whisp_8: 6925694775114920923
+      spritesheet_smoke_whisp_9: -8992589327193658784
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
