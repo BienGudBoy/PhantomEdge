@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded;
     private bool isSprinting;
     private Vector2 moveInput;
+    public bool IsAttacking { get; set; } = false;
 
     // Animator hash
     private int isRunHash;
@@ -90,7 +91,8 @@ public class PlayerController : MonoBehaviour
 
     public void OnAttack(InputValue value)
     {
-        if (playerCombat != null)
+        // Only trigger attack on button press, not while holding
+        if (playerCombat != null && value.isPressed)
         {
             playerCombat.OnAttackInput();
         }
@@ -149,6 +151,13 @@ public class PlayerController : MonoBehaviour
     private void UpdateAnimations()
     {
         if (!hasAnimator) return;
+        
+        // Don't update movement animations while attacking
+        if (IsAttacking)
+        {
+            Debug.Log("Skipping UpdateAnimations - IsAttacking is true");
+            return;
+        }
 
         bool isMoving = Mathf.Abs(horizontalInput) > 0.1f;
         SafeSetBool(isRunHash, isMoving && isSprinting);

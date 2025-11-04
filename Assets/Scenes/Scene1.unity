@@ -2713,6 +2713,8 @@ MonoBehaviour:
   m_Script: {fileID: 1634623453}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeIndicator: {fileID: 0}
+  inactiveIndicator: {fileID: 0}
 --- !u!4 &430926103
 Transform:
   m_ObjectHideFlags: 0
@@ -8661,6 +8663,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7657227170476053204, guid: 43befc11d59f1bd449fcb07c431d7d78, type: 3}
+      propertyPath: currentHealth
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 1097264649929090728, guid: 43befc11d59f1bd449fcb07c431d7d78, type: 3}
       propertyPath: m_SortingLayer
       value: 5
@@ -8755,6 +8761,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1852442213466439685, guid: 43befc11d59f1bd449fcb07c431d7d78, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1313654555}
+    - targetCorrespondingSourceObject: {fileID: 1852442213466439685, guid: 43befc11d59f1bd449fcb07c431d7d78, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1313654564}
   m_SourcePrefab: {fileID: 100100000, guid: 43befc11d59f1bd449fcb07c431d7d78, type: 3}
 --- !u!1001 &911760541
 PrefabInstance:
@@ -9689,6 +9698,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Move
   jumpForce: 10
+--- !u!114 &1313654564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1313654536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
+  m_Actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1001 &1326643780
 PrefabInstance:
   m_ObjectHideFlags: 0

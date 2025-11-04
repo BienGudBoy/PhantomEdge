@@ -5,7 +5,7 @@ public class PlayerCombat : MonoBehaviour
     [Header("Combat Settings")]
     [SerializeField] private float attackRange = 1.5f;
     [SerializeField] private int attackDamage = 10;
-    [SerializeField] private float attackCooldown = 0.5f;
+    [SerializeField] private float attackDuration = 0.85f; // Match animation length
     [SerializeField] private Transform attackPoint;
     
     [Header("Components")]
@@ -15,6 +15,7 @@ public class PlayerCombat : MonoBehaviour
     [Header("State")]
     private float lastAttackTime = 0f;
     private LayerMask enemyLayer;
+    private bool isAttacking = false;
     
     private void Awake()
     {
@@ -34,14 +35,51 @@ public class PlayerCombat : MonoBehaviour
     
     public void Attack()
     {
-        if (Time.time < lastAttackTime + attackCooldown) return;
+        if (Time.time < lastAttackTime + attackDuration) return;
+        if (isAttacking) return; // Prevent attacking while already attacking
         
         lastAttackTime = Time.time;
+        isAttacking = true;
+        
+        Debug.Log($"Attack started at time: {Time.time}, duration: {attackDuration}");
+        
+        // Notify PlayerController to stop movement animations
+        PlayerController controller = GetComponent<PlayerController>();
+        if (controller != null)
+        {
+            controller.IsAttacking = true;
+        }
         
         // Trigger attack animation
         if (animator != null)
         {
-            animator.SetTrigger("IsAttack");
+            // First reset ALL other animation parameters
+            animator.SetBool("IsRun", false);
+            animator.SetBool("IsWalk", false);
+            animator.SetBool("IsJump", false);
+            
+            // Use SetBool instead of Trigger for better control
+            // But first check if parameter exists as bool or trigger
+            bool isAttackParamExists = false;
+            foreach (var param in animator.parameters)
+            {
+                if (param.name == "IsAttack")
+                {
+                    isAttackParamExists = true;
+                    // If it's a trigger, use trigger, otherwise use bool
+                    if (param.type == AnimatorControllerParameterType.Trigger)
+                    {
+                        animator.ResetTrigger("IsAttack");
+                        animator.SetTrigger("IsAttack");
+                    }
+                    else if (param.type == AnimatorControllerParameterType.Bool)
+                    {
+                        animator.SetBool("IsAttack", true);
+                    }
+                    break;
+                }
+            }
+            Debug.Log($"Attack animation triggered. IsAttack param exists: {isAttackParamExists}");
         }
         
         // Play attack sound
@@ -60,6 +98,32 @@ public class PlayerCombat : MonoBehaviour
             {
                 enemyHealth.TakeDamage(attackDamage);
             }
+        }
+        
+        // Reset attack state after animation completes
+        Invoke(nameof(ResetAttack), attackDuration);
+    }
+    
+    private void ResetAttack()
+    {
+        isAttacking = false;
+        Debug.Log("ResetAttack called - attack should be done now");
+        
+        // Reset the IsAttack parameter
+        if (animator != null)
+        {
+            // Reset both trigger and bool versions
+            animator.ResetTrigger("IsAttack");
+            animator.SetBool("IsAttack", false);
+            Debug.Log("IsAttack parameter reset to false");
+        }
+        
+        // Notify PlayerController that attack is done
+        PlayerController controller = GetComponent<PlayerController>();
+        if (controller != null)
+        {
+            controller.IsAttacking = false;
+            Debug.Log("PlayerController.IsAttacking set to false");
         }
     }
     
