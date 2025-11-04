@@ -32,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5.134, y: 0.935, z: 0}
-  m_LocalScale: {x: 0.192, y: 0.2102, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -198,6 +198,8 @@ MonoBehaviour:
   patrolDistance: 5
   detectionRange: 8
   attackRange: 1.5
+  attackDamage: 10
+  attackCooldown: 1
 --- !u!114 &3958603205521196186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,3 +214,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 50
   currentHealth: 0
+  flashDuration: 0.1
+  damageColor: {r: 1, g: 0, b: 0, a: 1}
+  flashCount: 2
+  knockbackForce: 5
+  knockbackDuration: 0.2
