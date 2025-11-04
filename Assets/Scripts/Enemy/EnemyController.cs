@@ -12,6 +12,7 @@ public class EnemyController : MonoBehaviour
     [Header("Combat Settings")]
     [SerializeField] private int attackDamage = 10;
     [SerializeField] private float attackCooldown = 1f;
+    [SerializeField] private float attackDamageDelay = 0.4f; // When in the attack animation to deal damage
     
     [Header("Components")]
     private Rigidbody2D rb;
@@ -283,8 +284,8 @@ public class EnemyController : MonoBehaviour
                     Debug.Log($"{gameObject.name} triggered attack animation");
                 }
                 
-                // Deal damage to player
-                DealDamageToPlayer();
+                // Delay damage to match the animation hit frame
+                Invoke(nameof(DealDamageToPlayer), attackDamageDelay);
             }
         }
         else
