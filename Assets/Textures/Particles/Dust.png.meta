@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: db1a5e4d004688c4db9fb61c8f3c8ee0
+guid: 7f71ee9992157714c9fd38e308979695
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6695950386315148514
-    second: BG_0
+      213: 1670660276820739667
+    second: Dust_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BG_0
+      name: Dust_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 554
-        height: 333
+        x: 3
+        y: 4
+        width: 10
+        height: 10
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e13cb0ea9943313a0800000000000000
-      internalID: -6695950386315148514
+      spriteID: 35681449ba06f2710800000000000000
+      internalID: 1670660276820739667
       vertices: []
       indices: 
       edges: []
