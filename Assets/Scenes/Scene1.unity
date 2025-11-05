@@ -9313,6 +9313,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 998150836}
+  - component: {fileID: 998150837}
   m_Layer: 5
   m_Name: Thanhmau
   m_TagString: Untagged
@@ -9340,6 +9341,23 @@ RectTransform:
   m_AnchoredPosition: {x: -132.6, y: 35.6}
   m_SizeDelta: {x: 99.3904, y: 103.3527}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &998150837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 998150835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c76f8b11f2954f419322882baf6bb6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HealthBarUI
+  healthBarFill: {fileID: 253430322}
+  findPlayerAutomatically: 1
+  playerObject: {fileID: 0}
+  lerpSpeed: 5
+  smoothTransition: 1
 --- !u!1001 &1011318107
 PrefabInstance:
   m_ObjectHideFlags: 0
