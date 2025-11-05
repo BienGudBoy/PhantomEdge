@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 461755469268055777}
   - component: {fileID: -8287017786095214683}
   - component: {fileID: 8929147757538848564}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -3.25, y: -1.15, z: -0.022858787}
-  m_LocalScale: {x: 1.051, y: 1.1613, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -56,6 +56,8 @@ SpriteRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -77,6 +79,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 1004
   m_SortingLayer: 4
   m_SortingOrder: 50
@@ -172,6 +175,8 @@ MonoBehaviour:
   patrolDistance: 5
   detectionRange: 8
   attackRange: 1.5
+  attackDamage: 10
+  attackCooldown: 1
 --- !u!114 &8929147757538848564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,3 +191,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 50
   currentHealth: 0
+  flashDuration: 0.1
+  damageColor: {r: 1, g: 0, b: 0, a: 1}
+  flashCount: 2
+  knockbackForce: 5
+  knockbackDuration: 0.2

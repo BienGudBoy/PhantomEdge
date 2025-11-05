@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
@@ -16,11 +17,15 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
     private SpriteRenderer spriteRenderer;
+    private PlayerCombat playerCombat;
+    private PlayerInput playerInput;
 
     [Header("State")]
     private float horizontalInput;
     private bool isGrounded;
     private bool isSprinting;
+    private Vector2 moveInput;
+    public bool IsAttacking { get; set; } = false;
 
     // Animator hash
     private int isRunHash;
@@ -34,6 +39,14 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        playerCombat = GetComponent<PlayerCombat>();
+        playerInput = GetComponent<PlayerInput>();
+        
+        if (playerInput == null)
+        {
+            Debug.LogWarning("PlayerInput component not found. Adding it now.");
+            playerInput = gameObject.AddComponent<PlayerInput>();
+        }
 
         if (animator != null && animator.runtimeAnimatorController != null)
         {
@@ -60,20 +73,42 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        horizontalInput = Input.GetAxisRaw("Horizontal");
-        isSprinting = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
-
-        // ✅ Jump bằng Space
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
-        {
-            Jump();
-        }
+        // Use the stored move input from OnMove callback
+        horizontalInput = moveInput.x;
 
         // Flip sprite
         if (horizontalInput > 0)
             spriteRenderer.flipX = false;
         else if (horizontalInput < 0)
             spriteRenderer.flipX = true;
+    }
+
+    // Input System callback methods (called by PlayerInput component)
+    public void OnMove(InputValue value)
+    {
+        moveInput = value.Get<Vector2>();
+    }
+
+    public void OnAttack(InputValue value)
+    {
+        // Only trigger attack on button press, not while holding
+        if (playerCombat != null && value.isPressed)
+        {
+            playerCombat.OnAttackInput();
+        }
+    }
+
+    public void OnJump(InputValue value)
+    {
+        if (isGrounded && value.isPressed)
+        {
+            Jump();
+        }
+    }
+
+    public void OnSprint(InputValue value)
+    {
+        isSprinting = value.isPressed;
     }
 
     private void FixedUpdate()
@@ -116,6 +151,13 @@ public class PlayerController : MonoBehaviour
     private void UpdateAnimations()
     {
         if (!hasAnimator) return;
+        
+        // Don't update movement animations while attacking
+        if (IsAttacking)
+        {
+            Debug.Log("Skipping UpdateAnimations - IsAttacking is true");
+            return;
+        }
 
         bool isMoving = Mathf.Abs(horizontalInput) > 0.1f;
         SafeSetBool(isRunHash, isMoving && isSprinting);
