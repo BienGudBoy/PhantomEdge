@@ -64,7 +64,7 @@ public class UIManager : MonoBehaviour
             if (playerHealth != null)
             {
                 playerHealth.OnHealthChanged += UpdateHealth;
-                playerHealth.OnDeath += ShowGameOver;
+                // Note: Death is handled by GameManager -> YouDiedScreen, not here
                 
                 // Initialize health display
                 UpdateHealth(playerHealth.CurrentHealth, playerHealth.MaxHealth);
@@ -99,7 +99,8 @@ public class UIManager : MonoBehaviour
         switch (newState)
         {
             case GameManager.GameState.GameOver:
-                ShowGameOver();
+                // GameOver is now handled by YouDiedScreen, not the old gameOverPanel
+                // Keep this for backwards compatibility if needed
                 break;
             case GameManager.GameState.Victory:
                 ShowVictory();
@@ -193,7 +194,6 @@ public class UIManager : MonoBehaviour
         if (playerHealth != null)
         {
             playerHealth.OnHealthChanged -= UpdateHealth;
-            playerHealth.OnDeath -= ShowGameOver;
         }
     }
 }

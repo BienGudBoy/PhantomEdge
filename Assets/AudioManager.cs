@@ -8,6 +8,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip damageClip;
     public AudioClip scoreClip;
     public AudioClip clickClip;
+    public AudioClip youDiedClip;
 
     private AudioSource audioSource;
 
@@ -24,21 +25,44 @@ public class AudioManager : MonoBehaviour
             Destroy(gameObject);
         }
 
+        // Get or add AudioSource component
         audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+            Debug.LogWarning("AudioManager: AudioSource component was missing and has been added automatically.");
+        }
     }
 
     public void PlayDamageSound()
     {
-        audioSource.PlayOneShot(damageClip);
+        if (audioSource != null && damageClip != null)
+        {
+            audioSource.PlayOneShot(damageClip);
+        }
     }
 
     public void PlayScoreSound()
     {
-        audioSource.PlayOneShot(scoreClip);
+        if (audioSource != null && scoreClip != null)
+        {
+            audioSource.PlayOneShot(scoreClip);
+        }
     }
 
     public void PlayClickSound()
     {
-        audioSource.PlayOneShot(clickClip);
+        if (audioSource != null && clickClip != null)
+        {
+            audioSource.PlayOneShot(clickClip);
+        }
+    }
+
+    public void PlayYouDiedSound()
+    {
+        if (audioSource != null && youDiedClip != null)
+        {
+            audioSource.PlayOneShot(youDiedClip);
+        }
     }
 }

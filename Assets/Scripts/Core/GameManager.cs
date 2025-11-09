@@ -237,16 +237,20 @@ public class GameManager : MonoBehaviour
     
     private void HandlePlayerDeath()
     {
+        Debug.Log("GameManager: HandlePlayerDeath() called");
         SetState(GameState.GameOver);
         
-        // Show game over screen after delay
-        Invoke(nameof(ShowGameOver), 2f);
-    }
-    
-    private void ShowGameOver()
-    {
-        // TODO: Show game over UI
-        Debug.Log("Game Over! Final Score: " + score);
+        // Show "YOU DIED" screen
+        YouDiedScreen deathScreen = FindFirstObjectByType<YouDiedScreen>();
+        if (deathScreen != null)
+        {
+            Debug.Log("GameManager: Found YouDiedScreen, calling ShowDeathScreen()");
+            deathScreen.ShowDeathScreen();
+        }
+        else
+        {
+            Debug.LogWarning("GameManager: YouDiedScreen not found in scene! Please run Tools > Setup YouDiedScreen");
+        }
     }
     
     private void OnDestroy()

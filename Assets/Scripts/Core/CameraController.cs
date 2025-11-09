@@ -12,6 +12,17 @@ public class CameraController : MonoBehaviour
     [SerializeField] private float minX, maxX;
     [SerializeField] private float minY, maxY;
     
+    private void Awake()
+    {
+        // Ensure AudioListener exists on the camera
+        AudioListener audioListener = GetComponent<AudioListener>();
+        if (audioListener == null)
+        {
+            audioListener = gameObject.AddComponent<AudioListener>();
+            Debug.LogWarning("CameraController: AudioListener component was missing and has been added automatically.");
+        }
+    }
+    
     private void LateUpdate()
     {
         if (target == null)
