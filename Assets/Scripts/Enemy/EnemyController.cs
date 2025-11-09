@@ -14,11 +14,32 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float attackCooldown = 1f;
     [SerializeField] private float attackDamageDelay = 0.4f; // When in the attack animation to deal damage
     
+    [Header("Night Buff Settings")]
+    [SerializeField] private float nightSpeedMultiplier = 1.5f; // Speed multiplier at night (1.5 = 50% faster)
+    [SerializeField] private float nightDamageMultiplier = 1.5f; // Damage multiplier at night (1.5 = 50% more damage)
+    [SerializeField] private float nightDetectionRangeMultiplier = 1.2f; // Detection range multiplier at night
+    [SerializeField] private float nightAttackCooldownMultiplier = 0.8f; // Attack cooldown multiplier (0.8 = 20% faster attacks)
+    
+    // Base values (stored to restore when day comes)
+    private float basePatrolSpeed;
+    private float baseChaseSpeed;
+    private int baseAttackDamage;
+    private float baseAttackCooldown;
+    private float baseDetectionRange;
+    
+    // Current buffed values
+    private float currentPatrolSpeed;
+    private float currentChaseSpeed;
+    private int currentAttackDamage;
+    private float currentAttackCooldown;
+    private float currentDetectionRange;
+    
     [Header("Components")]
     private Rigidbody2D rb;
     private Animator animator;
     private SpriteRenderer spriteRenderer;
     private Transform player;
+    private DayNightCycle dayNightCycle;
     
     [Header("Patrol")]
     private Vector2 startPosition;
@@ -63,6 +84,20 @@ public class EnemyController : MonoBehaviour
         startPosition = transform.position;
         // Initialize patrol target to the right
         patrolTarget = startPosition + Vector2.right * patrolDistance;
+        
+        // Store base values
+        basePatrolSpeed = patrolSpeed;
+        baseChaseSpeed = chaseSpeed;
+        baseAttackDamage = attackDamage;
+        baseAttackCooldown = attackCooldown;
+        baseDetectionRange = detectionRange;
+        
+        // Initialize current values to base
+        currentPatrolSpeed = basePatrolSpeed;
+        currentChaseSpeed = baseChaseSpeed;
+        currentAttackDamage = baseAttackDamage;
+        currentAttackCooldown = baseAttackCooldown;
+        currentDetectionRange = baseDetectionRange;
         
         // Cache animator parameter hashes
         if (animator != null && animator.runtimeAnimatorController != null)
@@ -142,6 +177,80 @@ public class EnemyController : MonoBehaviour
         }
         
         currentState = EnemyState.Patrol;
+        
+        // Subscribe to day/night cycle events
+        dayNightCycle = FindObjectOfType<DayNightCycle>();
+        if (dayNightCycle != null)
+        {
+            dayNightCycle.OnDayNightChanged += OnDayNightChanged;
+            
+            // Apply initial state (if already night)
+            if (!dayNightCycle.IsDay)
+            {
+                ApplyNightBuff();
+            }
+        }
+        else
+        {
+            Debug.LogWarning($"{gameObject.name}: DayNightCycle not found! Night buffs will not work.");
+        }
+    }
+    
+    private void OnDestroy()
+    {
+        // Unsubscribe from events
+        if (dayNightCycle != null)
+        {
+            dayNightCycle.OnDayNightChanged -= OnDayNightChanged;
+        }
+    }
+    
+    private void OnDayNightChanged(bool isDay)
+    {
+        if (isDay)
+        {
+            RemoveNightBuff();
+            Debug.Log($"{gameObject.name}: Night buff removed");
+        }
+        else
+        {
+            ApplyNightBuff();
+            Debug.Log($"{gameObject.name}: Night buff applied");
+        }
+    }
+    
+    private void ApplyNightBuff()
+    {
+        // Apply night multipliers
+        currentPatrolSpeed = basePatrolSpeed * nightSpeedMultiplier;
+        currentChaseSpeed = baseChaseSpeed * nightSpeedMultiplier;
+        currentAttackDamage = Mathf.RoundToInt(baseAttackDamage * nightDamageMultiplier);
+        currentAttackCooldown = baseAttackCooldown * nightAttackCooldownMultiplier;
+        currentDetectionRange = baseDetectionRange * nightDetectionRangeMultiplier;
+        
+        // Update active values
+        patrolSpeed = currentPatrolSpeed;
+        chaseSpeed = currentChaseSpeed;
+        attackDamage = currentAttackDamage;
+        attackCooldown = currentAttackCooldown;
+        detectionRange = currentDetectionRange;
+    }
+    
+    private void RemoveNightBuff()
+    {
+        // Restore base values
+        patrolSpeed = basePatrolSpeed;
+        chaseSpeed = baseChaseSpeed;
+        attackDamage = baseAttackDamage;
+        attackCooldown = baseAttackCooldown;
+        detectionRange = baseDetectionRange;
+        
+        // Update current values
+        currentPatrolSpeed = basePatrolSpeed;
+        currentChaseSpeed = baseChaseSpeed;
+        currentAttackDamage = baseAttackDamage;
+        currentAttackCooldown = baseAttackCooldown;
+        currentDetectionRange = baseDetectionRange;
     }
     
     private void Update()
