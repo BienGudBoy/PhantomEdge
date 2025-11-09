@@ -8,6 +8,7 @@ public class YouDiedScreen : MonoBehaviour
     [Header("UI Elements")]
     [SerializeField] private GameObject deathScreenPanel;
     [SerializeField] private Image darkOverlay;
+    [SerializeField] private Image textBackground; // Dark background bar behind "YOU DIED" text
     [SerializeField] private TextMeshProUGUI youDiedText;
     [SerializeField] private TextMeshProUGUI continueText;
     [SerializeField] private Button restartButton;
@@ -50,6 +51,12 @@ public class YouDiedScreen : MonoBehaviour
         else
         {
             Debug.LogError("YouDiedScreen: darkOverlay is null in Awake!");
+        }
+        
+        if (textBackground != null)
+        {
+            textBackground.color = new Color(0, 0, 0, 0f); // Start transparent
+            Debug.Log("YouDiedScreen: TextBackground initialized");
         }
         
         if (youDiedText != null)
@@ -153,6 +160,11 @@ public class YouDiedScreen : MonoBehaviour
             darkOverlay.color = new Color(overlayColor.r, overlayColor.g, overlayColor.b, 0f);
         }
         
+        if (textBackground != null)
+        {
+            textBackground.color = new Color(0, 0, 0, 0f);
+        }
+        
         if (youDiedText != null)
         {
             youDiedText.color = new Color(textColor.r, textColor.g, textColor.b, 0f);
@@ -205,22 +217,39 @@ public class YouDiedScreen : MonoBehaviour
         // Wait before showing text
         yield return new WaitForSecondsRealtime(textDelay);
         
-        // Fade in "YOU DIED" text
+        // Fade in "YOU DIED" text and background bar together
         if (youDiedText != null)
         {
             float textElapsed = 0f;
             Color textStartColor = new Color(textColor.r, textColor.g, textColor.b, 0f);
             Color textTargetColor = textColor;
             
+            // Background bar color (dark, semi-transparent)
+            Color backgroundStartColor = new Color(0, 0, 0, 0f);
+            Color backgroundTargetColor = new Color(0, 0, 0, 0.8f); // Dark background with 80% opacity
+            
             while (textElapsed < textFadeInDuration)
             {
                 textElapsed += Time.unscaledDeltaTime;
                 float t = textElapsed / textFadeInDuration;
+                
+                // Fade in text
                 youDiedText.color = Color.Lerp(textStartColor, textTargetColor, t);
+                
+                // Fade in background bar
+                if (textBackground != null)
+                {
+                    textBackground.color = Color.Lerp(backgroundStartColor, backgroundTargetColor, t);
+                }
+                
                 yield return null;
             }
             
             youDiedText.color = textTargetColor;
+            if (textBackground != null)
+            {
+                textBackground.color = backgroundTargetColor;
+            }
         }
         
         // Wait before showing continue text
