@@ -15454,7 +15454,7 @@ MonoBehaviour:
   damageClip: {fileID: 0}
   scoreClip: {fileID: 0}
   clickClip: {fileID: 0}
-  youDiedClip: {fileID: 0}
+  youDiedClip: {fileID: 8300000, guid: a54d1941501724ef39e7a34cb94707be, type: 3}
 --- !u!4 &1602132160
 Transform:
   m_ObjectHideFlags: 0
