@@ -12358,7 +12358,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 0}
   healthText: {fileID: 0}
-  scoreText: {fileID: 0}
+  scoreText: {fileID: 869244934}
   gameOverPanel: {fileID: 76159789}
   finalScoreText: {fileID: 0}
   victoryPanel: {fileID: 125368635}
