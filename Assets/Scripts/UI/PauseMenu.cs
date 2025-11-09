@@ -12,6 +12,16 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private Button mainMenuButton;
     [SerializeField] private Button quitButton;
     
+    // Public method for Editor setup
+    public void SetupButtons(GameObject panel, Button resume, Button restart, Button mainMenu, Button quit)
+    {
+        pauseMenuPanel = panel;
+        resumeButton = resume;
+        restartButton = restart;
+        mainMenuButton = mainMenu;
+        quitButton = quit;
+    }
+    
     private void Start()
     {
         // Subscribe to GameManager state changes
@@ -48,21 +58,7 @@ public class PauseMenu : MonoBehaviour
         }
     }
     
-    private void Update()
-    {
-        // Toggle pause with Escape key (backup if GameManager doesn't handle it)
-        if (Input.GetKeyDown(KeyCode.Escape) && GameManager.Instance != null)
-        {
-            if (GameManager.Instance.CurrentState == GameManager.GameState.Playing)
-            {
-                ShowPauseMenu();
-            }
-            else if (GameManager.Instance.CurrentState == GameManager.GameState.Paused)
-            {
-                OnResumeButton();
-            }
-        }
-    }
+    // Removed Update() - GameManager handles Escape key to avoid conflicts
     
     private void HandleStateChanged(GameManager.GameState newState)
     {

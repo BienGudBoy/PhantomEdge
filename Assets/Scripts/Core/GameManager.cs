@@ -38,6 +38,8 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            // Subscribe to scene loaded event
+            SceneManager.sceneLoaded += OnSceneLoaded;
         }
         else
         {
@@ -46,9 +48,64 @@ public class GameManager : MonoBehaviour
         }
     }
     
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // Only set state if we're not already paused (don't override pause state)
+        if (currentState == GameState.Paused)
+        {
+            return;
+        }
+        
+        // Set state based on loaded scene
+        if (scene.name == "Mainmenu")
+        {
+            SetState(GameState.Menu);
+        }
+        else
+        {
+            // We're in a gameplay scene
+            SetState(GameState.Playing);
+            
+            // Find player health
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            if (player != null)
+            {
+                playerHealth = player.GetComponent<HealthSystem>();
+                if (playerHealth != null)
+                {
+                    playerHealth.OnDeath -= HandlePlayerDeath;
+                    playerHealth.OnDeath += HandlePlayerDeath;
+                }
+            }
+        }
+    }
+    
     private void Start()
     {
-        SetState(GameState.Menu);
+        // Check if we're in a gameplay scene or menu scene
+        string currentScene = SceneManager.GetActiveScene().name;
+        
+        if (currentScene == "Mainmenu")
+        {
+            SetState(GameState.Menu);
+        }
+        else
+        {
+            // We're in a gameplay scene (Scene1, Scene2, Hub, etc.)
+            SetState(GameState.Playing);
+            
+            // Find player health
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            if (player != null)
+            {
+                playerHealth = player.GetComponent<HealthSystem>();
+                if (playerHealth != null)
+                {
+                    playerHealth.OnDeath -= HandlePlayerDeath;
+                    playerHealth.OnDeath += HandlePlayerDeath;
+                }
+            }
+        }
     }
     
     private void Update()
@@ -94,16 +151,28 @@ public class GameManager : MonoBehaviour
     
     public void PauseGame()
     {
+        if (currentState == GameState.Paused)
+        {
+            return; // Already paused
+        }
+        
         isPaused = true;
         SetState(GameState.Paused);
         Time.timeScale = 0f;
+        Debug.Log("Game Paused");
     }
     
     public void ResumeGame()
     {
+        if (currentState != GameState.Paused)
+        {
+            return; // Not paused
+        }
+        
         isPaused = false;
         SetState(GameState.Playing);
         Time.timeScale = 1f;
+        Debug.Log("Game Resumed");
     }
     
     public void RestartGame()
@@ -182,6 +251,9 @@ public class GameManager : MonoBehaviour
     
     private void OnDestroy()
     {
+        // Unsubscribe from scene loaded event
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+        
         if (playerHealth != null)
         {
             playerHealth.OnDeath -= HandlePlayerDeath;
