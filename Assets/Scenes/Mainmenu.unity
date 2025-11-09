@@ -284,11 +284,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a037e77975330194aa3299cf9c2415b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startButton: {fileID: 0}
+  startButton: {fileID: 666283687}
   continueButton: {fileID: 0}
-  settingsButton: {fileID: 0}
+  settingsButton: {fileID: 131634745}
   creditsButton: {fileID: 0}
-  quitButton: {fileID: 0}
+  quitButton: {fileID: 1611439079}
   settingsPanel: {fileID: 0}
   volumeSlider: {fileID: 0}
   settingsCloseButton: {fileID: 0}
