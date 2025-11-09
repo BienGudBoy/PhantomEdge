@@ -8284,7 +8284,7 @@ GameObject:
   - component: {fileID: 869244935}
   - component: {fileID: 869244934}
   m_Layer: 5
-  m_Name: Score
+  m_Name: ScoreText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11395,7 +11395,7 @@ GameObject:
   - component: {fileID: 1664517886}
   - component: {fileID: 1664517885}
   m_Layer: 5
-  m_Name: Time
+  m_Name: TimeText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
