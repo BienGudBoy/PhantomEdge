@@ -7499,7 +7499,7 @@ GameObject:
   m_Component:
   - component: {fileID: 645822470}
   m_Layer: 0
-  m_Name: Background
+  m_Name: Background_Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9452,6 +9452,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1238189782}
   - component: {fileID: 1238189781}
+  - component: {fileID: 1238189783}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -9486,6 +9487,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1238189783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1238189780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9818fda393bde433195e0704b839f55b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DayNightCycle
+  dayDuration: 60
+  transitionDuration: 2
+  lightBackgroundParent: {fileID: 0}
+  darkBackgroundParent: {fileID: 0}
+  useColorTinting: 1
+  dayColor: {r: 1, g: 1, b: 1, a: 1}
+  nightColor: {r: 0.3, g: 0.3, b: 0.4, a: 1}
 --- !u!1 &1313654536 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1852442213466439685, guid: 43befc11d59f1bd449fcb07c431d7d78, type: 3}
