@@ -57,8 +57,12 @@ public class EnemyController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        
+        if (rb == null) Debug.LogError($"{gameObject.name}: Rigidbody2D not found!");
+        
         startPosition = transform.position;
-        patrolTarget = startPosition;
+        // Initialize patrol target to the right
+        patrolTarget = startPosition + Vector2.right * patrolDistance;
         
         // Cache animator parameter hashes
         if (animator != null && animator.runtimeAnimatorController != null)
@@ -142,6 +146,12 @@ public class EnemyController : MonoBehaviour
     
     private void Update()
     {
+        // Update non-physics state logic here if needed
+        // Most state logic is now in FixedUpdate for physics consistency
+    }
+    
+    private void FixedUpdate()
+    {
         UpdateState();
     }
     
@@ -174,6 +184,7 @@ public class EnemyController : MonoBehaviour
     
     private void HandleIdle()
     {
+        rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
         stateTimer += Time.deltaTime;
         
         if (stateTimer >= idleDuration)
@@ -197,7 +208,6 @@ public class EnemyController : MonoBehaviour
             if (distanceToPlayer <= detectionRange && playerAlive)
             {
                 currentState = EnemyState.Chase;
-                Debug.Log($"{gameObject.name} detected player! Switching to chase mode.");
                 return;
             }
         }
@@ -281,7 +291,6 @@ public class EnemyController : MonoBehaviour
                 if (hasAnimator && hasAttackParameter)
                 {
                     SafeSetTrigger(isAttackHash);
-                    Debug.Log($"{gameObject.name} triggered attack animation");
                 }
                 
                 // Delay damage to match the animation hit frame
@@ -347,8 +356,18 @@ public class EnemyController : MonoBehaviour
     
     private void MoveTowards(Vector2 target, float speed)
     {
+        if (rb == null) return;
+        
+        // Wake up the rigidbody if it's sleeping
+        if (rb.IsSleeping())
+        {
+            rb.WakeUp();
+        }
+        
         Vector2 direction = (target - (Vector2)transform.position).normalized;
-        rb.linearVelocity = new Vector2(direction.x * speed, rb.linearVelocity.y);
+        Vector2 newVelocity = new Vector2(direction.x * speed, rb.linearVelocity.y);
+        
+        rb.linearVelocity = newVelocity;
         
         // Flip sprite based on direction
         if (spriteRenderer != null)
