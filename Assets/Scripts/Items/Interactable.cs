@@ -29,8 +29,7 @@ public class Interactable : MonoBehaviour
             
             if (showPrompt)
             {
-                // TODO: Show UI prompt
-                Debug.Log(interactPrompt);
+                ShowPrompt();
             }
         }
     }
@@ -41,6 +40,31 @@ public class Interactable : MonoBehaviour
         {
             canInteract = false;
             nearbyPlayer = null;
+            
+            if (showPrompt)
+            {
+                HidePrompt();
+            }
+        }
+    }
+    
+    protected virtual void ShowPrompt()
+    {
+        if (UIManager.Instance != null)
+        {
+            UIManager.Instance.ShowInteractPrompt(interactPrompt);
+        }
+        else
+        {
+            Debug.Log(interactPrompt);
+        }
+    }
+    
+    protected virtual void HidePrompt()
+    {
+        if (UIManager.Instance != null)
+        {
+            UIManager.Instance.HideInteractPrompt();
         }
     }
     

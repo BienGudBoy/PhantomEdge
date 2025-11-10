@@ -19,6 +19,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject victoryPanel;
     [SerializeField] private TextMeshProUGUI victoryScoreText;
     
+    [Header("Interact Prompt")]
+    [SerializeField] private GameObject interactPromptPanel;
+    [SerializeField] private TextMeshProUGUI interactPromptText;
+    
     private HealthSystem playerHealth;
     
     private void Awake()
@@ -53,6 +57,7 @@ public class UIManager : MonoBehaviour
         // Hide panels at start
         if (gameOverPanel != null) gameOverPanel.SetActive(false);
         if (victoryPanel != null) victoryPanel.SetActive(false);
+        if (interactPromptPanel != null) interactPromptPanel.SetActive(false);
     }
     
     private void FindAndSubscribeToPlayer()
@@ -141,6 +146,27 @@ public class UIManager : MonoBehaviour
     {
         if (gameOverPanel != null) gameOverPanel.SetActive(false);
         if (victoryPanel != null) victoryPanel.SetActive(false);
+    }
+    
+    public void ShowInteractPrompt(string promptText)
+    {
+        if (interactPromptPanel != null)
+        {
+            interactPromptPanel.SetActive(true);
+        }
+        
+        if (interactPromptText != null)
+        {
+            interactPromptText.text = promptText;
+        }
+    }
+    
+    public void HideInteractPrompt()
+    {
+        if (interactPromptPanel != null)
+        {
+            interactPromptPanel.SetActive(false);
+        }
     }
     
     public void OnRestartButton()

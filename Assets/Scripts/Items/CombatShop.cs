@@ -8,22 +8,6 @@ public class CombatShop : Shop
     
     private static int upgradeCount = 0; // Track upgrades across all CombatShops
     
-    protected override void Start()
-    {
-        shopName = "Combat Shop";
-        shopDescription = $"Increase attack damage by {damageIncrease}";
-        base.Start();
-        
-        // Update description if max upgrades reached
-        if (upgradeCount >= maxUpgrades)
-        {
-            interactPrompt = $"{shopName}\nMax upgrades reached!";
-        }
-        else
-        {
-            interactPrompt = $"{shopName}\n{shopDescription}\nCost: {cost} Score\nUpgrades: {upgradeCount}/{maxUpgrades}";
-        }
-    }
     
     protected override bool TryPurchase()
     {
@@ -50,6 +34,19 @@ public class CombatShop : Shop
         ShowMessage($"Damage increased! New damage: {combat.GetAttackDamage()}");
         
         // Update prompt for next purchase
+        UpdatePrompt();
+        
+        // Refresh the prompt if player is still in range
+        if (canInteract)
+        {
+            ShowPrompt();
+        }
+        
+        return true;
+    }
+    
+    private void UpdatePrompt()
+    {
         if (upgradeCount >= maxUpgrades)
         {
             interactPrompt = $"{shopName}\nMax upgrades reached!";
@@ -58,8 +55,16 @@ public class CombatShop : Shop
         {
             interactPrompt = $"{shopName}\n{shopDescription}\nCost: {cost} Score\nUpgrades: {upgradeCount}/{maxUpgrades}";
         }
+    }
+    
+    protected override void Start()
+    {
+        shopName = "Combat Shop";
+        shopDescription = $"Increase attack damage by {damageIncrease}";
+        base.Start();
         
-        return true;
+        // Update description if max upgrades reached
+        UpdatePrompt();
     }
     
     // Reset upgrade count (useful for new game/level)
