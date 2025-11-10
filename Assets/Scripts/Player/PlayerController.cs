@@ -78,6 +78,16 @@ public class PlayerController : MonoBehaviour
         // Use the stored move input from OnMove callback
         horizontalInput = moveInput.x;
 
+        // Read sprint state directly from input action to ensure it's always current
+        if (playerInput != null && playerInput.actions != null)
+        {
+            var sprintAction = playerInput.actions.FindAction("Sprint");
+            if (sprintAction != null)
+            {
+                isSprinting = sprintAction.IsPressed();
+            }
+        }
+
         // Flip sprite
         if (horizontalInput > 0)
             spriteRenderer.flipX = false;
