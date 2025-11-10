@@ -142,10 +142,19 @@ public class PlayerCombat : MonoBehaviour
     
     public void OnAttackInput()
     {
-        if (healthSystem != null && !healthSystem.IsDead)
+        // Don't attack if player is dead
+        if (healthSystem != null && healthSystem.IsDead)
         {
-            Attack();
+            return;
         }
+        
+        // Don't attack if game is paused
+        if (GameManager.Instance != null && GameManager.Instance.CurrentState == GameManager.GameState.Paused)
+        {
+            return;
+        }
+        
+        Attack();
     }
     
     private void OnDrawGizmosSelected()

@@ -99,6 +99,12 @@ public class PlayerController : MonoBehaviour
             return;
         }
         
+        // Don't attack if game is paused
+        if (GameManager.Instance != null && GameManager.Instance.CurrentState == GameManager.GameState.Paused)
+        {
+            return;
+        }
+        
         // Only trigger attack on button press, not while holding
         if (playerCombat != null && value.isPressed)
         {
