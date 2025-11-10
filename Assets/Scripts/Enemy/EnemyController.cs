@@ -167,6 +167,8 @@ public class EnemyController : MonoBehaviour
         return false;
     }
     
+    private static bool enemyCollisionsIgnored = false;
+    
     private void Start()
     {
         // Find player if exists
@@ -177,6 +179,19 @@ public class EnemyController : MonoBehaviour
         }
         
         currentState = EnemyState.Patrol;
+        
+        // Ignore collisions between enemies at the layer level (one-time setup)
+        if (!enemyCollisionsIgnored)
+        {
+            int enemyLayer = LayerMask.NameToLayer("Enemy");
+            if (enemyLayer != -1)
+            {
+                // Ignore collisions between Enemy layer and itself
+                Physics2D.IgnoreLayerCollision(enemyLayer, enemyLayer, true);
+                enemyCollisionsIgnored = true;
+                Debug.Log("Enemy-to-enemy collisions disabled - enemies can now pass through each other");
+            }
+        }
         
         // Subscribe to day/night cycle events
         dayNightCycle = FindObjectOfType<DayNightCycle>();
