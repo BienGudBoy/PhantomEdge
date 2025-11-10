@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private PlayerCombat playerCombat;
     private PlayerInput playerInput;
+    private HealthSystem healthSystem;
 
     [Header("State")]
     private float horizontalInput;
@@ -41,6 +42,7 @@ public class PlayerController : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         playerCombat = GetComponent<PlayerCombat>();
         playerInput = GetComponent<PlayerInput>();
+        healthSystem = GetComponent<HealthSystem>();
         
         if (playerInput == null)
         {
@@ -91,6 +93,12 @@ public class PlayerController : MonoBehaviour
 
     public void OnAttack(InputValue value)
     {
+        // Don't attack if player is dead
+        if (healthSystem != null && healthSystem.IsDead)
+        {
+            return;
+        }
+        
         // Only trigger attack on button press, not while holding
         if (playerCombat != null && value.isPressed)
         {
@@ -100,6 +108,12 @@ public class PlayerController : MonoBehaviour
 
     public void OnJump(InputValue value)
     {
+        // Don't jump if player is dead
+        if (healthSystem != null && healthSystem.IsDead)
+        {
+            return;
+        }
+        
         if (isGrounded && value.isPressed)
         {
             Jump();
@@ -120,6 +134,12 @@ public class PlayerController : MonoBehaviour
 
     private void HandleMovement()
     {
+        // Don't move if player is dead
+        if (healthSystem != null && healthSystem.IsDead)
+        {
+            return;
+        }
+        
         float currentSpeed = isSprinting ? moveSpeed * sprintMultiplier : moveSpeed;
 
         // ✅ SỬA LẠI CHỖ NÀY
@@ -151,6 +171,12 @@ public class PlayerController : MonoBehaviour
     private void UpdateAnimations()
     {
         if (!hasAnimator) return;
+        
+        // Don't update movement animations if player is dead
+        if (healthSystem != null && healthSystem.IsDead)
+        {
+            return;
+        }
         
         // Don't update movement animations while attacking
         if (IsAttacking)

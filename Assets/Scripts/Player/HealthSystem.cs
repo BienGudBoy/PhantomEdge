@@ -69,7 +69,8 @@ public class HealthSystem : MonoBehaviour
         Animator animator = GetComponent<Animator>();
         if (animator != null)
         {
-            animator.SetTrigger("IsDeath");
+            // IsDeath is a Bool parameter, not a Trigger
+            animator.SetBool("IsDeath", true);
         }
         
         // Disable player controller
@@ -114,7 +115,8 @@ public class HealthSystem : MonoBehaviour
         Animator animator = GetComponent<Animator>();
         if (animator != null)
         {
-            animator.ResetTrigger("IsDeath");
+            // IsDeath is a Bool parameter, not a Trigger
+            animator.SetBool("IsDeath", false);
         }
     }
 }
