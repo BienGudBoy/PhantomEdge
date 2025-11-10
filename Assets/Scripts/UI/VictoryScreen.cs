@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections;
+using System;
 
 public class VictoryScreen : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class VictoryScreen : MonoBehaviour
     [Header("Colors")]
     [SerializeField] private Color overlayColor = new Color(0, 0, 0, 0.9f);
     [SerializeField] private Color textColor = new Color(0.9f, 0.7f, 0.1f, 1f); // Golden yellow
+    
+    public event Action OnVictorySequenceComplete;
     
     private Coroutine fadeCoroutine;
     
@@ -107,6 +110,7 @@ public class VictoryScreen : MonoBehaviour
         if (fadeCoroutine != null)
         {
             StopCoroutine(fadeCoroutine);
+            fadeCoroutine = null;
         }
         
         // Reset UI state
@@ -244,8 +248,14 @@ public class VictoryScreen : MonoBehaviour
             textBackground.color = backgroundFadeOutEnd;
         }
         
-        // Hide the panel
-        HideVictoryScreen();
+        // Deactivate the panel now that the sequence has finished
+        if (victoryScreenPanel != null)
+        {
+            victoryScreenPanel.SetActive(false);
+        }
+        
+        fadeCoroutine = null;
+        OnVictorySequenceComplete?.Invoke();
     }
 }
 

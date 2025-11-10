@@ -20,6 +20,12 @@ public class GameManager : MonoBehaviour
     private HealthSystem playerHealth;
     private bool isPaused = false;
     
+    private int storedPlayerHealth = -1;
+    private int storedPlayerMaxHealth = -1;
+    private bool pendingPlayerRestore = false;
+    private Coroutine scoreRefreshCoroutine;
+    private Coroutine healthRefreshCoroutine;
+    
     public enum GameState
     {
         Menu,
@@ -66,18 +72,7 @@ public class GameManager : MonoBehaviour
         {
             // We're in a gameplay scene
             SetState(GameState.Playing);
-            
-            // Find player health
-            GameObject player = GameObject.FindGameObjectWithTag("Player");
-            if (player != null)
-            {
-                playerHealth = player.GetComponent<HealthSystem>();
-                if (playerHealth != null)
-                {
-                    playerHealth.OnDeath -= HandlePlayerDeath;
-                    playerHealth.OnDeath += HandlePlayerDeath;
-                }
-            }
+            InitializePlayerReferences();
         }
     }
     
@@ -94,18 +89,7 @@ public class GameManager : MonoBehaviour
         {
             // We're in a gameplay scene (Scene1, Scene2, Hub, etc.)
             SetState(GameState.Playing);
-            
-            // Find player health
-            GameObject player = GameObject.FindGameObjectWithTag("Player");
-            if (player != null)
-            {
-                playerHealth = player.GetComponent<HealthSystem>();
-                if (playerHealth != null)
-                {
-                    playerHealth.OnDeath -= HandlePlayerDeath;
-                    playerHealth.OnDeath += HandlePlayerDeath;
-                }
-            }
+            InitializePlayerReferences();
         }
     }
     
@@ -135,19 +119,11 @@ public class GameManager : MonoBehaviour
     {
         SetState(GameState.Playing);
         score = 0;
-        OnScoreChanged?.Invoke(score);
+        pendingPlayerRestore = false;
+        storedPlayerHealth = -1;
+        storedPlayerMaxHealth = -1;
         
-        // Find player health
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        if (player != null)
-        {
-            playerHealth = player.GetComponent<HealthSystem>();
-            if (playerHealth != null)
-            {
-                playerHealth.OnDeath -= HandlePlayerDeath;
-                playerHealth.OnDeath += HandlePlayerDeath;
-            }
-        }
+        InitializePlayerReferences();
     }
     
     public void PauseGame()
@@ -199,10 +175,17 @@ public class GameManager : MonoBehaviour
         score += points;
         OnScoreChanged?.Invoke(score);
         
-        // Play score sound
-        if (AudioManager.Instance != null)
+        if (scoreRefreshCoroutine == null)
         {
-            AudioManager.Instance.PlayScoreSound();
+            scoreRefreshCoroutine = StartCoroutine(NotifyScoreAfterFrame());
+        }
+
+        if (playerHealth != null)
+        {
+            if (healthRefreshCoroutine == null)
+            {
+                healthRefreshCoroutine = StartCoroutine(NotifyHealthAfterFrame());
+            }
         }
     }
     
@@ -244,6 +227,26 @@ public class GameManager : MonoBehaviour
         {
             // No more levels, go to victory
             SetState(GameState.Victory);
+
+            if (playerHealth != null)
+            {
+                storedPlayerHealth = Mathf.Max(1, playerHealth.CurrentHealth);
+                storedPlayerMaxHealth = Mathf.Max(1, playerHealth.MaxHealth);
+                pendingPlayerRestore = true;
+            }
+
+            VictoryScreen victoryScreen = FindFirstObjectByType<VictoryScreen>();
+            if (victoryScreen != null)
+            {
+                Debug.Log("GameManager: Found VictoryScreen, calling ShowVictoryScreen()");
+                victoryScreen.OnVictorySequenceComplete -= OnVictoryScreenSequenceComplete;
+                victoryScreen.OnVictorySequenceComplete += OnVictoryScreenSequenceComplete;
+                victoryScreen.ShowVictoryScreen();
+            }
+            else
+            {
+                Debug.LogWarning("GameManager: VictoryScreen not found in scene! Please run Tools > Setup VictoryScreen");
+            }
         }
     }
     
@@ -277,12 +280,25 @@ public class GameManager : MonoBehaviour
         if (victoryScreen != null)
         {
             Debug.Log("GameManager: Found VictoryScreen, calling ShowVictoryScreen()");
+            victoryScreen.OnVictorySequenceComplete -= OnVictoryScreenSequenceComplete;
+            victoryScreen.OnVictorySequenceComplete += OnVictoryScreenSequenceComplete;
             victoryScreen.ShowVictoryScreen();
         }
         else
         {
             Debug.LogWarning("GameManager: VictoryScreen not found in scene! Please run Tools > Setup VictoryScreen");
         }
+    }
+
+    private void OnVictoryScreenSequenceComplete()
+    {
+        VictoryScreen victoryScreen = FindFirstObjectByType<VictoryScreen>();
+        if (victoryScreen != null)
+        {
+            victoryScreen.OnVictorySequenceComplete -= OnVictoryScreenSequenceComplete;
+        }
+
+        NextLevel();
     }
     
     private IEnumerator WaitForDeathAnimationThenPause()
@@ -338,6 +354,47 @@ public class GameManager : MonoBehaviour
         {
             playerHealth.OnDeath -= HandlePlayerDeath;
         }
+    }
+
+    private void InitializePlayerReferences()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            playerHealth = player.GetComponent<HealthSystem>();
+            if (playerHealth != null)
+            {
+                playerHealth.OnDeath -= HandlePlayerDeath;
+                playerHealth.OnDeath += HandlePlayerDeath;
+
+                if (pendingPlayerRestore && storedPlayerHealth > 0 && storedPlayerMaxHealth > 0)
+                {
+                    playerHealth.SetHealthState(storedPlayerHealth, storedPlayerMaxHealth);
+                    pendingPlayerRestore = false;
+                    storedPlayerHealth = -1;
+                    storedPlayerMaxHealth = -1;
+                }
+            }
+        }
+
+        OnScoreChanged?.Invoke(score);
+    }
+
+    private IEnumerator NotifyScoreAfterFrame()
+    {
+        yield return null;
+        OnScoreChanged?.Invoke(score);
+        scoreRefreshCoroutine = null;
+    }
+
+    private IEnumerator NotifyHealthAfterFrame()
+    {
+        yield return null;
+        if (playerHealth != null)
+        {
+            playerHealth.RefreshHealthEvent();
+        }
+        healthRefreshCoroutine = null;
     }
 }
 

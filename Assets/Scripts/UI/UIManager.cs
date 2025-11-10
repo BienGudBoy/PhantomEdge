@@ -52,7 +52,14 @@ public class UIManager : MonoBehaviour
         FindAndSubscribeToPlayer();
         
         // Initialize UI
-        UpdateScore(0);
+        if (GameManager.Instance != null)
+        {
+            UpdateScore(GameManager.Instance.Score);
+        }
+        else
+        {
+            UpdateScore(0);
+        }
         
         // Hide panels at start
         if (gameOverPanel != null) gameOverPanel.SetActive(false);

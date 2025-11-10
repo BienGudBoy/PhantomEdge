@@ -80,6 +80,19 @@ public class HealthSystem : MonoBehaviour
         currentHealth = maxHealth;
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
     }
+
+    public void SetHealthState(int newCurrentHealth, int newMaxHealth)
+    {
+        maxHealth = Mathf.Max(1, newMaxHealth);
+        currentHealth = Mathf.Clamp(newCurrentHealth, 1, maxHealth);
+        isDead = false;
+        OnHealthChanged?.Invoke(currentHealth, maxHealth);
+    }
+
+    public void RefreshHealthEvent()
+    {
+        OnHealthChanged?.Invoke(currentHealth, maxHealth);
+    }
     
     private void Die()
     {
