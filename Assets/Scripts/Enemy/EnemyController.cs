@@ -14,6 +14,19 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float attackCooldown = 1f;
     [SerializeField] private float attackDamageDelay = 0.4f; // When in the attack animation to deal damage
     
+    [Header("Jump & Obstacle Settings")]
+    [SerializeField] private bool enableAutoJump = true;
+    [SerializeField] private float jumpForce = 20.0f;
+    [SerializeField] private float jumpCooldown = 1.5f;
+    [SerializeField] private Transform groundCheckPoint;
+    [SerializeField] private float groundCheckRadius = 0.8f;
+    [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private LayerMask obstacleLayers;
+    [SerializeField] private float obstacleCheckHeight = 0.4f;
+    [SerializeField] private float obstacleCheckDistance = 2.0f;
+    [SerializeField] private float groundAheadCheckDistance = 2.0f;
+    [SerializeField] private float ceilingCheckDistance = 3.0f;
+    
     [Header("Night Buff Settings")]
     [SerializeField] private float nightSpeedMultiplier = 1.5f; // Speed multiplier at night (1.5 = 50% faster)
     [SerializeField] private float nightDamageMultiplier = 1.5f; // Damage multiplier at night (1.5 = 50% more damage)
@@ -40,6 +53,7 @@ public class EnemyController : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Transform player;
     private DayNightCycle dayNightCycle;
+    private Collider2D bodyCollider;
     
     [Header("Patrol")]
     private Vector2 startPosition;
@@ -51,6 +65,8 @@ public class EnemyController : MonoBehaviour
     private float stateTimer = 0f;
     private float idleDuration = 2f;
     private float lastAttackTime = 0f;
+    private float lastJumpTime = Mathf.NegativeInfinity;
+    private bool isGrounded;
     
     // Cache animator parameter hashes
     private int isRunHash;
@@ -78,12 +94,39 @@ public class EnemyController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        bodyCollider = GetComponent<Collider2D>();
+        if (bodyCollider == null)
+        {
+            bodyCollider = GetComponentInChildren<Collider2D>();
+        }
         
         if (rb == null) Debug.LogError($"{gameObject.name}: Rigidbody2D not found!");
         
         startPosition = transform.position;
         // Initialize patrol target to the right
         patrolTarget = startPosition + Vector2.right * patrolDistance;
+        
+        if (groundCheckPoint == null)
+        {
+            GameObject groundCheck = new GameObject("GroundCheck");
+            groundCheck.transform.SetParent(transform);
+            groundCheck.transform.localPosition = new Vector3(0f, -0.5f, 0f);
+            groundCheckPoint = groundCheck.transform;
+        }
+        
+        if (groundLayer == 0)
+        {
+            groundLayer = LayerMask.GetMask("Ground");
+            if (groundLayer == 0)
+            {
+                groundLayer = LayerMask.GetMask("Default");
+            }
+        }
+        
+        if (obstacleLayers == 0)
+        {
+            obstacleLayers = groundLayer != 0 ? groundLayer : LayerMask.GetMask("Ground", "Default");
+        }
         
         // Store base values
         basePatrolSpeed = patrolSpeed;
@@ -276,6 +319,7 @@ public class EnemyController : MonoBehaviour
     
     private void FixedUpdate()
     {
+        UpdateGroundState();
         UpdateState();
     }
     
@@ -488,15 +532,25 @@ public class EnemyController : MonoBehaviour
             rb.WakeUp();
         }
         
-        Vector2 direction = (target - (Vector2)transform.position).normalized;
-        Vector2 newVelocity = new Vector2(direction.x * speed, rb.linearVelocity.y);
+        float directionX = target.x - transform.position.x;
+        float moveDir = Mathf.Abs(directionX) > 0.05f ? Mathf.Sign(directionX) : 0f;
+        
+        if (enableAutoJump)
+        {
+            TryJumpOverObstacle(moveDir);
+        }
+        
+        Vector2 newVelocity = new Vector2(moveDir * speed, rb.linearVelocity.y);
         
         rb.linearVelocity = newVelocity;
         
         // Flip sprite based on direction
         if (spriteRenderer != null)
         {
-            spriteRenderer.flipX = direction.x < 0;
+            if (moveDir != 0f)
+            {
+                spriteRenderer.flipX = moveDir < 0;
+            }
         }
     }
     
@@ -595,6 +649,92 @@ public class EnemyController : MonoBehaviour
         Gizmos.color = Color.blue;
         Gizmos.DrawLine(transform.position, transform.position + Vector3.right * patrolDistance);
         Gizmos.DrawLine(transform.position, transform.position + Vector3.left * patrolDistance);
+        
+        if (groundCheckPoint != null)
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawWireSphere(groundCheckPoint.position, groundCheckRadius);
+        }
+        
+        if (enableAutoJump)
+        {
+            Gizmos.color = Color.magenta;
+            Vector3 highOrigin = transform.position + Vector3.up * obstacleCheckHeight;
+            Gizmos.DrawLine(highOrigin, highOrigin + Vector3.right * obstacleCheckDistance);
+            Gizmos.DrawLine(highOrigin, highOrigin + Vector3.left * obstacleCheckDistance);
+        }
+    }
+    
+    private void UpdateGroundState()
+    {
+        bool overlapGround = groundCheckPoint != null &&
+                             Physics2D.OverlapCircle(groundCheckPoint.position, groundCheckRadius, groundLayer);
+        
+        bool colliderGround = bodyCollider != null && groundLayer != 0 && bodyCollider.IsTouchingLayers(groundLayer);
+        
+        isGrounded = overlapGround || colliderGround;
+    }
+    
+    private void TryJumpOverObstacle(float moveDir)
+    {
+        if (!enableAutoJump || !isGrounded || Mathf.Approximately(moveDir, 0f))
+        {
+            return;
+        }
+        
+        if (Time.time < lastJumpTime + jumpCooldown)
+        {
+            return;
+        }
+        
+        Vector2 direction = new Vector2(moveDir, 0f);
+        Vector2 basePosition = (Vector2)transform.position;
+        Vector2 lowOrigin = basePosition + new Vector2(moveDir * 0.3f, 0.1f);
+        Vector2 highOrigin = basePosition + new Vector2(moveDir * 0.3f, obstacleCheckHeight);
+        
+        bool obstacleAhead = Physics2D.Raycast(lowOrigin, direction, obstacleCheckDistance, obstacleLayers) ||
+                             Physics2D.Raycast(highOrigin, direction, obstacleCheckDistance, obstacleLayers);
+        
+        if (!obstacleAhead)
+        {
+            // If we're already blocked (velocity nearly zero) try a slightly closer check
+            if (Mathf.Abs(rb.linearVelocity.x) > 0.05f)
+            {
+                return;
+            }
+            obstacleAhead = Physics2D.Raycast(basePosition, direction, obstacleCheckDistance, obstacleLayers);
+            if (!obstacleAhead)
+            {
+                return;
+            }
+        }
+        
+        // Ensure there is ground ahead to land on
+        Vector2 groundProbeOrigin = basePosition + new Vector2(moveDir * groundAheadCheckDistance, 0.5f);
+        bool groundAhead = Physics2D.Raycast(groundProbeOrigin, Vector2.down, 1.5f, groundLayer);
+        if (!groundAhead)
+        {
+            return;
+        }
+        
+        // Make sure there is headroom
+        bool blockedAbove = Physics2D.Raycast(highOrigin, Vector2.up, ceilingCheckDistance, obstacleLayers);
+        if (blockedAbove)
+        {
+            return;
+        }
+        
+        PerformJump();
+    }
+    
+    private void PerformJump()
+    {
+        if (rb == null) return;
+        
+        rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
+        rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        isGrounded = false;
+        lastJumpTime = Time.time;
     }
 }
 
