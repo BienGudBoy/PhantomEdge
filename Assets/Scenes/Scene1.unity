@@ -3557,8 +3557,6 @@ MonoBehaviour:
   m_Script: {fileID: 1634623453}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeIndicator: {fileID: 0}
-  inactiveIndicator: {fileID: 0}
 --- !u!4 &430926103
 Transform:
   m_ObjectHideFlags: 0
@@ -11327,7 +11325,7 @@ GameObject:
   - component: {fileID: 979978112}
   - component: {fileID: 979978113}
   m_Layer: 0
-  m_Name: 460317-removebg-preview_0
+  m_Name: Castle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
