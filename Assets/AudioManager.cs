@@ -9,6 +9,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip scoreClip;
     public AudioClip clickClip;
     public AudioClip youDiedClip;
+    public AudioClip victoryClip;
 
     private AudioSource audioSource;
 
@@ -63,6 +64,14 @@ public class AudioManager : MonoBehaviour
         if (audioSource != null && youDiedClip != null)
         {
             audioSource.PlayOneShot(youDiedClip);
+        }
+    }
+
+    public void PlayVictorySound()
+    {
+        if (audioSource != null && victoryClip != null)
+        {
+            audioSource.PlayOneShot(victoryClip);
         }
     }
 }

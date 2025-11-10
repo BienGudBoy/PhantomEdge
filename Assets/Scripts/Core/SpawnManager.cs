@@ -37,6 +37,7 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private GameObject bossPrefab;
     [SerializeField] private int bossSpawnScore = 100;
     [SerializeField] private bool bossSpawned = false;
+    private GameObject currentBoss = null;
     
     [Header("Current State")]
     [SerializeField] private int currentWaveIndex = 0;
@@ -194,6 +195,19 @@ public class SpawnManager : MonoBehaviour
             enemiesAlive--;
             
             Debug.Log($"Enemy defeated. Remaining: {enemiesAlive}");
+            
+            // Check if this is the boss that died
+            if (enemy == currentBoss)
+            {
+                Debug.Log("BOSS DEFEATED! Victory achieved!");
+                currentBoss = null;
+                
+                // Notify GameManager about boss death
+                if (GameManager.Instance != null)
+                {
+                    GameManager.Instance.HandleBossDeath();
+                }
+            }
         }
     }
     
@@ -262,6 +276,7 @@ public class SpawnManager : MonoBehaviour
         GameObject boss = Instantiate(bossPrefab, spawnPosition, Quaternion.identity);
         activeEnemies.Add(boss);
         enemiesAlive++;
+        currentBoss = boss; // Track the boss
         
         // Subscribe to boss death
         EnemyHealth bossHealth = boss.GetComponent<EnemyHealth>();

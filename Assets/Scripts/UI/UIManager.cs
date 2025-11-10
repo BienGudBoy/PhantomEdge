@@ -15,9 +15,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private TextMeshProUGUI finalScoreText;
     
-    [Header("Victory Panel")]
-    [SerializeField] private GameObject victoryPanel;
-    [SerializeField] private TextMeshProUGUI victoryScoreText;
+    // [Header("Victory Panel")]
+    // [SerializeField] private GameObject victoryPanel;
+    // [SerializeField] private TextMeshProUGUI victoryScoreText;
     
     [Header("Interact Prompt")]
     [SerializeField] private GameObject interactPromptPanel;
@@ -56,7 +56,7 @@ public class UIManager : MonoBehaviour
         
         // Hide panels at start
         if (gameOverPanel != null) gameOverPanel.SetActive(false);
-        if (victoryPanel != null) victoryPanel.SetActive(false);
+        // if (victoryPanel != null) victoryPanel.SetActive(false);
         if (interactPromptPanel != null) interactPromptPanel.SetActive(false);
     }
     
@@ -107,9 +107,9 @@ public class UIManager : MonoBehaviour
                 // GameOver is now handled by YouDiedScreen, not the old gameOverPanel
                 // Keep this for backwards compatibility if needed
                 break;
-            case GameManager.GameState.Victory:
-                ShowVictory();
-                break;
+            // case GameManager.GameState.Victory:
+                // ShowVictory();
+                // break;
             case GameManager.GameState.Playing:
                 HideAllPanels();
                 break;
@@ -129,23 +129,23 @@ public class UIManager : MonoBehaviour
         }
     }
     
-    private void ShowVictory()
-    {
-        if (victoryPanel != null)
-        {
-            victoryPanel.SetActive(true);
+    // private void ShowVictory()
+    // {
+    //     if (victoryPanel != null)
+    //     {
+    //         victoryPanel.SetActive(true);
             
-            if (victoryScoreText != null && GameManager.Instance != null)
-            {
-                victoryScoreText.text = $"Final Score: {GameManager.Instance.Score}";
-            }
-        }
-    }
+    //         if (victoryScoreText != null && GameManager.Instance != null)
+    //         {
+    //             victoryScoreText.text = $"Final Score: {GameManager.Instance.Score}";
+    //         }
+    //     }
+    // }
     
     private void HideAllPanels()
     {
         if (gameOverPanel != null) gameOverPanel.SetActive(false);
-        if (victoryPanel != null) victoryPanel.SetActive(false);
+        // if (victoryPanel != null) victoryPanel.SetActive(false);
     }
     
     public void ShowInteractPrompt(string promptText)

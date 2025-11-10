@@ -268,6 +268,23 @@ public class GameManager : MonoBehaviour
         }
     }
     
+    public void HandleBossDeath()
+    {
+        Debug.Log("GameManager: HandleBossDeath() called");
+        SetState(GameState.Victory);
+
+        VictoryScreen victoryScreen = FindFirstObjectByType<VictoryScreen>();
+        if (victoryScreen != null)
+        {
+            Debug.Log("GameManager: Found VictoryScreen, calling ShowVictoryScreen()");
+            victoryScreen.ShowVictoryScreen();
+        }
+        else
+        {
+            Debug.LogWarning("GameManager: VictoryScreen not found in scene! Please run Tools > Setup VictoryScreen");
+        }
+    }
+    
     private IEnumerator WaitForDeathAnimationThenPause()
     {
         // Get the death animation length from the player's animator
