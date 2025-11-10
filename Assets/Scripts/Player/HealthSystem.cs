@@ -118,6 +118,26 @@ public class HealthSystem : MonoBehaviour
             rb.linearVelocity = Vector2.zero;
             rb.isKinematic = true;
         }
+        
+        // Disable all colliders to prevent enemies from detecting/attacking the dead player
+        Collider2D[] colliders = GetComponents<Collider2D>();
+        foreach (Collider2D col in colliders)
+        {
+            if (col != null)
+            {
+                col.enabled = false;
+            }
+        }
+        
+        // Also disable colliders in children (e.g., attack points, hurtboxes)
+        Collider2D[] childColliders = GetComponentsInChildren<Collider2D>();
+        foreach (Collider2D col in childColliders)
+        {
+            if (col != null && col.gameObject != gameObject)
+            {
+                col.enabled = false;
+            }
+        }
     }
     
     public void Revive(int healthAmount)
@@ -142,10 +162,35 @@ public class HealthSystem : MonoBehaviour
             rb.isKinematic = false;
         }
         
+        // Re-enable all colliders
+        Collider2D[] colliders = GetComponents<Collider2D>();
+        foreach (Collider2D col in colliders)
+        {
+            if (col != null)
+            {
+                col.enabled = true;
+            }
+        }
+        
+        // Re-enable colliders in children
+        Collider2D[] childColliders = GetComponentsInChildren<Collider2D>();
+        foreach (Collider2D col in childColliders)
+        {
+            if (col != null && col.gameObject != gameObject)
+            {
+                col.enabled = true;
+            }
+        }
+        
         // Reset death animation
         Animator animator = GetComponent<Animator>();
         if (animator != null)
         {
+            // Re-enable animator if it was disabled
+            if (!animator.enabled)
+            {
+                animator.enabled = true;
+            }
             // IsDeath is a Bool parameter, not a Trigger
             animator.SetBool("IsDeath", false);
         }

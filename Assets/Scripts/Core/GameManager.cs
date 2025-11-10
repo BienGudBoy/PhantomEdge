@@ -283,25 +283,22 @@ public class GameManager : MonoBehaviour
             }
         }
         
-        // Wait for 90% of the death animation to play (pause slightly before it completes)
-        // This prevents the weird transition state
-        float waitTime = deathAnimationLength * 0.9f;
-        yield return new WaitForSeconds(waitTime);
+        yield return new WaitForSeconds(deathAnimationLength);
         
-        // Pause the animator first to freeze it in the Death state
+        // Lock the animator in the death state to prevent any transitions
+        // This ensures the death animation doesn't loop or get interrupted
         if (playerAnimator != null)
         {
+            // Ensure IsDeath stays true
+            playerAnimator.SetBool("IsDeath", true);
+            
+            // Disable the animator to freeze it in the current state
+            // This prevents any state transitions that might cause the death animation to loop
             playerAnimator.enabled = false;
-            Debug.Log("GameManager: Animator paused");
+            Debug.Log("GameManager: Animator locked in death state");
         }
         
-        // Small delay to ensure animator is frozen
-        yield return new WaitForSeconds(0.05f);
-        
-        // Now pause the game (keep state as GameOver, not Paused)
-        Time.timeScale = 0f;
-        isPaused = true;
-        Debug.Log("GameManager: Game paused after death animation");
+        Debug.Log("GameManager: finished waiting for death animation - player state is now locked");
     }
     
     private void OnDestroy()

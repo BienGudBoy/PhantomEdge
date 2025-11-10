@@ -15,7 +15,7 @@ public class DamageDealer : MonoBehaviour
             if (targetTag == "Player")
             {
                 HealthSystem health = other.GetComponent<HealthSystem>();
-                if (health != null)
+                if (health != null && !health.IsDead)
                 {
                     health.TakeDamage(damageAmount);
                     
