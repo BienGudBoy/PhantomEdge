@@ -26,7 +26,7 @@ public class HealthShop : Shop
         // Check if player needs healing
         if (health.CurrentHealth >= health.MaxHealth)
         {
-            ShowMessage("You're already at full health!");
+            // This will be handled by the parent Shop class's ShowFloatingText
             return false;
         }
         
@@ -42,6 +42,16 @@ public class HealthShop : Shop
         }
         
         return true;
+    }
+    
+    protected override void ShowFloatingText(string message, bool isSuccess)
+    {
+        // Override to show custom message for health shop
+        if (!isSuccess && message == "Purchase failed!")
+        {
+            message = "Already at full health!";
+        }
+        base.ShowFloatingText(message, isSuccess);
     }
 }
 

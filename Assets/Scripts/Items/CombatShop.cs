@@ -16,7 +16,7 @@ public class CombatShop : Shop
         // Check if max upgrades reached
         if (upgradeCount >= maxUpgrades)
         {
-            ShowMessage($"Maximum upgrades reached! ({maxUpgrades})");
+            // This will be handled by the parent Shop class's ShowFloatingText
             return false;
         }
         
@@ -31,8 +31,6 @@ public class CombatShop : Shop
         combat.IncreaseDamage(damageIncrease);
         upgradeCount++;
         
-        ShowMessage($"Damage increased! New damage: {combat.GetAttackDamage()}");
-        
         // Update prompt for next purchase
         UpdatePrompt();
         
@@ -43,6 +41,28 @@ public class CombatShop : Shop
         }
         
         return true;
+    }
+    
+    protected override void ShowFloatingText(string message, bool isSuccess)
+    {
+        // Override to show custom message for combat shop
+        if (!isSuccess && message == "Purchase failed!")
+        {
+            message = $"Max upgrades reached!\n({upgradeCount}/{maxUpgrades})";
+        }
+        else if (isSuccess)
+        {
+            // Show damage increase info
+            if (player != null)
+            {
+                PlayerCombat combat = player.GetComponent<PlayerCombat>();
+                if (combat != null)
+                {
+                    message = $"Damage +{damageIncrease}!";
+                }
+            }
+        }
+        base.ShowFloatingText(message, isSuccess);
     }
     
     private void UpdatePrompt()

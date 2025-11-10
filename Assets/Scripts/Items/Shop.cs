@@ -40,19 +40,25 @@ public class Shop : Interactable
             return;
         }
         
+        // Try to purchase
+        bool purchaseSuccess = false;
+        string message = "";
+        
         if (GameManager.Instance.Score < cost)
         {
-            ShowMessage($"Not enough score! Need {cost}, have {GameManager.Instance.Score}");
+            message = $"Not enough score!";
+            ShowFloatingText(message, false);
+            ShowMessage(message);
             return;
         }
         
-        // Try to purchase
         if (TryPurchase())
         {
             // Deduct cost from score
             if (GameManager.Instance.SpendScore(cost))
             {
-                ShowMessage("Purchase successful!");
+                purchaseSuccess = true;
+                message = "Purchase successful!";
                 
                 // Play purchase sound
                 if (AudioManager.Instance != null)
@@ -62,13 +68,16 @@ public class Shop : Interactable
             }
             else
             {
-                ShowMessage("Failed to deduct score!");
+                message = "Failed to deduct score!";
             }
         }
         else
         {
-            ShowMessage("Purchase failed!");
+            message = "Purchase failed!";
         }
+        
+        // Show floating text above the shop
+        ShowFloatingText(message, purchaseSuccess);
     }
     
     protected virtual bool TryPurchase()
@@ -82,8 +91,25 @@ public class Shop : Interactable
         if (showPurchaseMessage)
         {
             Debug.Log($"{shopName}: {message}");
-            // TODO: Show UI message
         }
+    }
+    
+    protected virtual void ShowFloatingText(string message, bool isSuccess)
+    {
+        // Get the shop's position (center of the shop)
+        Vector3 shopPosition = transform.position;
+        
+        // Offset upward to show above the shop
+        Vector3 textPosition = shopPosition + Vector3.up * 1.5f;
+        
+        // Choose color based on success
+        Color textColor = isSuccess ? Color.green : Color.red;
+        
+        // Create floating text
+        FloatingText.Create(textPosition, message, textColor, 2f);
+        
+        // Also log to console
+        ShowMessage(message);
     }
 }
 
