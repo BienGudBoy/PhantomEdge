@@ -33,6 +33,11 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private float spawnRadius = 0.5f;
     [SerializeField] private LayerMask obstacleLayer;
     
+    [Header("Boss Spawning")]
+    [SerializeField] private GameObject bossPrefab;
+    [SerializeField] private int bossSpawnScore = 100;
+    [SerializeField] private bool bossSpawned = false;
+    
     [Header("Current State")]
     [SerializeField] private int currentWaveIndex = 0;
     [SerializeField] private int enemiesAlive = 0;
@@ -55,6 +60,12 @@ public class SpawnManager : MonoBehaviour
             {
                 spawnPoints = spawnParent.GetComponentsInChildren<Transform>();
             }
+        }
+        
+        // Subscribe to score changes for boss spawning
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.OnScoreChanged += OnScoreChanged;
         }
         
         if (autoStartWaves && waves.Count > 0)
@@ -227,6 +238,41 @@ public class SpawnManager : MonoBehaviour
         }
     }
     
+    private void OnScoreChanged(int newScore)
+    {
+        // Spawn boss when score threshold is reached (only once)
+        if (!bossSpawned && newScore >= bossSpawnScore && bossPrefab != null)
+        {
+            SpawnBoss();
+        }
+    }
+    
+    private void SpawnBoss()
+    {
+        if (bossPrefab == null)
+        {
+            Debug.LogWarning("Boss prefab is not assigned!");
+            return;
+        }
+        
+        bossSpawned = true;
+        Vector3 spawnPosition = GetSpawnPosition();
+        
+        // Spawn boss
+        GameObject boss = Instantiate(bossPrefab, spawnPosition, Quaternion.identity);
+        activeEnemies.Add(boss);
+        enemiesAlive++;
+        
+        // Subscribe to boss death
+        EnemyHealth bossHealth = boss.GetComponent<EnemyHealth>();
+        if (bossHealth != null)
+        {
+            bossHealth.OnDeath += () => OnEnemyDeath(boss);
+        }
+        
+        Debug.Log($"BOSS SPAWNED: {bossPrefab.name} at {spawnPosition}!");
+    }
+    
     private void OnDrawGizmosSelected()
     {
         // Draw spawn points
@@ -240,6 +286,15 @@ public class SpawnManager : MonoBehaviour
                     Gizmos.DrawWireSphere(spawnPoint.position, spawnRadius);
                 }
             }
+        }
+    }
+    
+    private void OnDestroy()
+    {
+        // Unsubscribe from score changes
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.OnScoreChanged -= OnScoreChanged;
         }
     }
 }
