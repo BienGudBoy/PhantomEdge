@@ -157,6 +157,17 @@ public class PlayerCombat : MonoBehaviour
         Attack();
     }
     
+    public void IncreaseDamage(int amount)
+    {
+        attackDamage += amount;
+        Debug.Log($"PlayerCombat: Damage increased by {amount}. New damage: {attackDamage}");
+    }
+    
+    public int GetAttackDamage()
+    {
+        return attackDamage;
+    }
+    
     private void OnDrawGizmosSelected()
     {
         if (attackPoint != null)

@@ -3557,6 +3557,8 @@ MonoBehaviour:
   m_Script: {fileID: 1634623453}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeIndicator: {fileID: 0}
+  inactiveIndicator: {fileID: 0}
 --- !u!4 &430926103
 Transform:
   m_ObjectHideFlags: 0
@@ -13397,6 +13399,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1343904208}
   m_CullTransparentMesh: 1
+--- !u!1 &1347638113 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 369748840289811352, guid: 7160a33f645bf96499b18222861c6501, type: 3}
+  m_PrefabInstance: {fileID: 1958884849}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1354476972
 GameObject:
   m_ObjectHideFlags: 0
@@ -17405,8 +17412,10 @@ GameObject:
   - component: {fileID: 1904195845}
   - component: {fileID: 1904195847}
   - component: {fileID: 1904195846}
+  - component: {fileID: 1904195849}
+  - component: {fileID: 1904195848}
   m_Layer: 0
-  m_Name: shop_anim_4
+  m_Name: CombatShop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17507,6 +17516,75 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &1904195848
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1904195844}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.19, y: 1.28}
+    newSize: {x: 1.19, y: 1.28}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 2, y: 2}
+  m_EdgeRadius: 0
+--- !u!114 &1904195849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1904195844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e844a6a39dfdc43da918ea845a6da78b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CombatShop
+  interactPrompt: Press E to interact
+  showPrompt: 1
+  OnInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  cost: 50
+  shopName: Shop
+  shopDescription: Press E to purchase
+  showPurchaseMessage: 1
+  damageIncrease: 5
+  maxUpgrades: 3
 --- !u!1 &1911440362
 GameObject:
   m_ObjectHideFlags: 0
@@ -17790,7 +17868,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 369748840289811352, guid: 7160a33f645bf96499b18222861c6501, type: 3}
       propertyPath: m_Name
-      value: shop_0
+      value: HealthShop
       objectReference: {fileID: 0}
     - target: {fileID: 1230198364648602896, guid: 7160a33f645bf96499b18222861c6501, type: 3}
       propertyPath: m_LocalPosition.x
@@ -17847,13 +17925,87 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 369748840289811352, guid: 7160a33f645bf96499b18222861c6501, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1958884852}
+    - targetCorrespondingSourceObject: {fileID: 369748840289811352, guid: 7160a33f645bf96499b18222861c6501, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1958884851}
   m_SourcePrefab: {fileID: 100100000, guid: 7160a33f645bf96499b18222861c6501, type: 3}
 --- !u!4 &1958884850 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1230198364648602896, guid: 7160a33f645bf96499b18222861c6501, type: 3}
   m_PrefabInstance: {fileID: 1958884849}
   m_PrefabAsset: {fileID: 0}
+--- !u!61 &1958884851
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1347638113}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3.6875, y: 3.0625}
+    newSize: {x: 3.6875, y: 3.0625}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 2, y: 2}
+  m_EdgeRadius: 0
+--- !u!114 &1958884852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1347638113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19f3b578536024c9fbcc3f13a030ef69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HealthShop
+  interactPrompt: Press E to interact
+  showPrompt: 1
+  OnInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  cost: 50
+  shopName: Shop
+  shopDescription: Press E to purchase
+  showPurchaseMessage: 1
+  healAmount: 0
 --- !u!1 &1961967038
 GameObject:
   m_ObjectHideFlags: 0

@@ -206,6 +206,17 @@ public class GameManager : MonoBehaviour
         }
     }
     
+    public bool SpendScore(int points)
+    {
+        if (score >= points)
+        {
+            score -= points;
+            OnScoreChanged?.Invoke(score);
+            return true;
+        }
+        return false;
+    }
+    
     public void LoadScene(string sceneName)
     {
         Time.timeScale = 1f;

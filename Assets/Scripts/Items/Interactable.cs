@@ -3,14 +3,14 @@ using UnityEngine;
 public class Interactable : MonoBehaviour
 {
     [Header("Interactable Settings")]
-    [SerializeField] private string interactPrompt = "Press E to interact";
+    [SerializeField] protected string interactPrompt = "Press E to interact";
     [SerializeField] private bool showPrompt = true;
     
     [Header("Event")]
     public UnityEngine.Events.UnityEvent OnInteract;
     
-    private bool canInteract = false;
-    private GameObject nearbyPlayer;
+    protected bool canInteract = false;
+    protected GameObject nearbyPlayer;
     
     private void Update()
     {
