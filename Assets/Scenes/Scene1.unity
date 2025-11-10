@@ -3557,8 +3557,6 @@ MonoBehaviour:
   m_Script: {fileID: 1634623453}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeIndicator: {fileID: 0}
-  inactiveIndicator: {fileID: 0}
 --- !u!4 &430926103
 Transform:
   m_ObjectHideFlags: 0
@@ -15454,9 +15452,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d54e233b42714849a7d99e543fa8578, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageClip: {fileID: 0}
-  scoreClip: {fileID: 0}
-  clickClip: {fileID: 0}
+  damageClip: {fileID: 8300000, guid: 09c379462a392ac42871779aa73075b9, type: 3}
+  scoreClip: {fileID: 8300000, guid: c603b5ceb7d075245a40379cb9458357, type: 3}
+  clickClip: {fileID: 8300000, guid: fd1f2ca01c02a6644b907707d1331514, type: 3}
   youDiedClip: {fileID: 8300000, guid: a54d1941501724ef39e7a34cb94707be, type: 3}
 --- !u!4 &1602132160
 Transform:
