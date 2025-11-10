@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System;
+using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
@@ -240,6 +241,9 @@ public class GameManager : MonoBehaviour
         Debug.Log("GameManager: HandlePlayerDeath() called");
         SetState(GameState.GameOver);
         
+        // Wait for death animation to play before pausing
+        StartCoroutine(WaitForDeathAnimationThenPause());
+        
         // Show "YOU DIED" screen
         YouDiedScreen deathScreen = FindFirstObjectByType<YouDiedScreen>();
         if (deathScreen != null)
@@ -251,6 +255,53 @@ public class GameManager : MonoBehaviour
         {
             Debug.LogWarning("GameManager: YouDiedScreen not found in scene! Please run Tools > Setup YouDiedScreen");
         }
+    }
+    
+    private IEnumerator WaitForDeathAnimationThenPause()
+    {
+        // Get the death animation length from the player's animator
+        float deathAnimationLength = 1.5f; // Default fallback duration
+        Animator playerAnimator = null;
+        
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            playerAnimator = player.GetComponent<Animator>();
+            if (playerAnimator != null && playerAnimator.runtimeAnimatorController != null)
+            {
+                // Try to find the Death animation clip length
+                RuntimeAnimatorController ac = playerAnimator.runtimeAnimatorController;
+                foreach (AnimationClip clip in ac.animationClips)
+                {
+                    if (clip.name == "Death")
+                    {
+                        deathAnimationLength = clip.length;
+                        Debug.Log($"GameManager: Found Death animation, length: {deathAnimationLength}");
+                        break;
+                    }
+                }
+            }
+        }
+        
+        // Wait for 90% of the death animation to play (pause slightly before it completes)
+        // This prevents the weird transition state
+        float waitTime = deathAnimationLength * 0.9f;
+        yield return new WaitForSeconds(waitTime);
+        
+        // Pause the animator first to freeze it in the Death state
+        if (playerAnimator != null)
+        {
+            playerAnimator.enabled = false;
+            Debug.Log("GameManager: Animator paused");
+        }
+        
+        // Small delay to ensure animator is frozen
+        yield return new WaitForSeconds(0.05f);
+        
+        // Now pause the game (keep state as GameOver, not Paused)
+        Time.timeScale = 0f;
+        isPaused = true;
+        Debug.Log("GameManager: Game paused after death animation");
     }
     
     private void OnDestroy()

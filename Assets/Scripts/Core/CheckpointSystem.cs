@@ -76,10 +76,11 @@ public class CheckpointSystem : MonoBehaviour
     
     private void OnPlayerDeath()
     {
-        if (hasCheckpoint)
-        {
-            Invoke(nameof(RespawnPlayer), respawnDelay);
-        }
+        // Automatic respawn disabled - player must manually restart from death screen
+        // if (hasCheckpoint)
+        // {
+        //     Invoke(nameof(RespawnPlayer), respawnDelay);
+        // }
     }
     
     private void RespawnPlayer()
