@@ -32,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -12.8712, y: 3.863, z: 0}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -200,6 +200,11 @@ MonoBehaviour:
   attackRange: 1.5
   attackDamage: 10
   attackCooldown: 1
+  attackDamageDelay: 0.4
+  nightSpeedMultiplier: 1.5
+  nightDamageMultiplier: 1.5
+  nightDetectionRangeMultiplier: 1.2
+  nightAttackCooldownMultiplier: 0.8
 --- !u!114 &3069371448190900247
 MonoBehaviour:
   m_ObjectHideFlags: 0
