@@ -13158,6 +13158,9 @@ MonoBehaviour:
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 0
+  bossPrefab: {fileID: 982987016167170477, guid: a7f853d696a3de54a8a92a977096e136, type: 3}
+  bossSpawnScore: 100
+  bossSpawned: 0
   currentWaveIndex: 0
   enemiesAlive: 0
   isSpawning: 0
