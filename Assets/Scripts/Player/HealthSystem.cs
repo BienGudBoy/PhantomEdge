@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using System.Collections;
 
 public class HealthSystem : MonoBehaviour
 {
@@ -7,12 +8,22 @@ public class HealthSystem : MonoBehaviour
     [SerializeField] private int maxHealth = 100;
     [SerializeField] private int currentHealth;
     
+    [Header("Visual Feedback")]
+    [SerializeField] private float flashDuration = 0.1f;
+    [SerializeField] private Color damageColor = Color.red;
+    [SerializeField] private int flashCount = 2;
+    
+    [Header("Components")]
+    private SpriteRenderer spriteRenderer;
+    private Color originalColor;
+    
     // Events
     public event Action<int, int> OnHealthChanged; // current, max
     public event Action OnDeath;
     public event Action<int> OnDamageTaken; // damage amount
     
     private bool isDead = false;
+    private bool isFlashing = false;
     
     public int MaxHealth => maxHealth;
     public int CurrentHealth => currentHealth;
@@ -22,6 +33,12 @@ public class HealthSystem : MonoBehaviour
     private void Awake()
     {
         currentHealth = maxHealth;
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        
+        if (spriteRenderer != null)
+        {
+            originalColor = spriteRenderer.color;
+        }
     }
     
     private void Start()
@@ -36,6 +53,12 @@ public class HealthSystem : MonoBehaviour
         currentHealth = Mathf.Max(0, currentHealth - damage);
         OnDamageTaken?.Invoke(damage);
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
+        
+        // Start damage flash effect
+        if (!isFlashing && spriteRenderer != null)
+        {
+            StartCoroutine(FlashDamage());
+        }
         
         if (currentHealth <= 0 && !isDead)
         {
@@ -63,6 +86,14 @@ public class HealthSystem : MonoBehaviour
         if (isDead) return;
         
         isDead = true;
+        
+        // Stop any ongoing flash effect
+        StopAllCoroutines();
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.color = originalColor;
+        }
+        
         OnDeath?.Invoke();
         
         // Handle death animation
@@ -118,6 +149,30 @@ public class HealthSystem : MonoBehaviour
             // IsDeath is a Bool parameter, not a Trigger
             animator.SetBool("IsDeath", false);
         }
+        
+        // Reset sprite color
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.color = originalColor;
+        }
+    }
+    
+    private IEnumerator FlashDamage()
+    {
+        isFlashing = true;
+        
+        for (int i = 0; i < flashCount; i++)
+        {
+            // Flash to damage color
+            spriteRenderer.color = damageColor;
+            yield return new WaitForSeconds(flashDuration);
+            
+            // Flash back to original color
+            spriteRenderer.color = originalColor;
+            yield return new WaitForSeconds(flashDuration);
+        }
+        
+        isFlashing = false;
     }
 }
 
