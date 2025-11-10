@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     private PlayerCombat playerCombat;
     private PlayerInput playerInput;
     private HealthSystem healthSystem;
+    private Collider2D bodyCollider;
 
     [Header("State")]
     private float horizontalInput;
@@ -43,6 +44,11 @@ public class PlayerController : MonoBehaviour
         playerCombat = GetComponent<PlayerCombat>();
         playerInput = GetComponent<PlayerInput>();
         healthSystem = GetComponent<HealthSystem>();
+        bodyCollider = GetComponent<Collider2D>();
+        if (bodyCollider == null)
+        {
+            bodyCollider = GetComponentInChildren<Collider2D>();
+        }
         
         if (playerInput == null)
         {
@@ -70,6 +76,20 @@ public class PlayerController : MonoBehaviour
             groundCheck.transform.SetParent(transform);
             groundCheck.transform.localPosition = new Vector3(0, -0.5f, 0);
             groundCheckPoint = groundCheck.transform;
+        }
+
+        // Auto-detect Ground layer if not set
+        if (groundLayer == 0)
+        {
+            groundLayer = LayerMask.GetMask("Ground");
+            if (groundLayer == 0)
+            {
+                Debug.LogWarning("Ground layer not found! Make sure 'Ground' layer exists in Project Settings > Tags and Layers");
+            }
+            else
+            {
+                Debug.Log($"Auto-detected Ground layer mask: {groundLayer.value}");
+            }
         }
     }
 
@@ -127,12 +147,22 @@ public class PlayerController : MonoBehaviour
         // Don't jump if player is dead
         if (healthSystem != null && healthSystem.IsDead)
         {
+            Debug.Log("Jump blocked: Player is dead");
             return;
+        }
+        
+        if (value.isPressed)
+        {
+            Debug.Log($"Jump input received. isGrounded={isGrounded}, groundLayer={groundLayer.value}");
         }
         
         if (isGrounded && value.isPressed)
         {
             Jump();
+        }
+        else if (value.isPressed && !isGrounded)
+        {
+            Debug.LogWarning($"Jump blocked: Not grounded. Ground check: position={groundCheckPoint.position}, radius={groundCheckRadius}");
         }
     }
 
@@ -158,16 +188,13 @@ public class PlayerController : MonoBehaviour
         
         float currentSpeed = isSprinting ? moveSpeed * sprintMultiplier : moveSpeed;
 
-        // ✅ SỬA LẠI CHỖ NÀY
         rb.linearVelocity = new Vector2(horizontalInput * currentSpeed, rb.linearVelocity.y);
     }
 
     private void Jump()
     {
-        // ✅ Reset Y trước khi nhảy
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0);
 
-        // ✅ Add lực nhảy
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
 
         isGrounded = false;
@@ -178,7 +205,16 @@ public class PlayerController : MonoBehaviour
 
     private void CheckGrounded()
     {
-        isGrounded = Physics2D.OverlapCircle(groundCheckPoint.position, groundCheckRadius, groundLayer);
+        bool overlapHit = Physics2D.OverlapCircle(groundCheckPoint.position, groundCheckRadius, groundLayer);
+        bool colliderTouching = bodyCollider != null && bodyCollider.IsTouchingLayers(groundLayer);
+        isGrounded = overlapHit || colliderTouching;
+
+        // Debug logging (can be removed later)
+        if (Time.frameCount % 60 == 0) // Log every 60 frames to avoid spam
+        {
+            Collider2D hit = Physics2D.OverlapCircle(groundCheckPoint.position, groundCheckRadius, groundLayer);
+            Debug.Log($"Ground check: position={groundCheckPoint.position}, radius={groundCheckRadius}, layerMask={groundLayer.value}, overlapHit={overlapHit}, colliderTouching={colliderTouching}, isGrounded={isGrounded}, hit={hit?.name ?? "null"}");
+        }
 
         if (hasAnimator)
             SafeSetBool(isGroundedHash, isGrounded);
