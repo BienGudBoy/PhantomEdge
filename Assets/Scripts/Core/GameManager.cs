@@ -217,7 +217,17 @@ public class GameManager : MonoBehaviour
     
     public void NextLevel()
     {
-        int currentIndex = SceneManager.GetActiveScene().buildIndex;
+        Scene activeScene = SceneManager.GetActiveScene();
+        string activeSceneName = activeScene.name;
+
+        if (activeSceneName == "Scene2")
+        {
+            SceneManager.LoadScene("Scene1");
+            SetState(GameState.Playing);
+            return;
+        }
+
+        int currentIndex = activeScene.buildIndex;
         if (currentIndex < SceneManager.sceneCountInBuildSettings - 1)
         {
             SceneManager.LoadScene(currentIndex + 1);
@@ -225,28 +235,9 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            // No more levels, go to victory
-            SetState(GameState.Victory);
-
-            if (playerHealth != null)
-            {
-                storedPlayerHealth = Mathf.Max(1, playerHealth.CurrentHealth);
-                storedPlayerMaxHealth = Mathf.Max(1, playerHealth.MaxHealth);
-                pendingPlayerRestore = true;
-            }
-
-            VictoryScreen victoryScreen = FindFirstObjectByType<VictoryScreen>();
-            if (victoryScreen != null)
-            {
-                Debug.Log("GameManager: Found VictoryScreen, calling ShowVictoryScreen()");
-                victoryScreen.OnVictorySequenceComplete -= OnVictoryScreenSequenceComplete;
-                victoryScreen.OnVictorySequenceComplete += OnVictoryScreenSequenceComplete;
-                victoryScreen.ShowVictoryScreen();
-            }
-            else
-            {
-                Debug.LogWarning("GameManager: VictoryScreen not found in scene! Please run Tools > Setup VictoryScreen");
-            }
+            // No more levels, loop back to the first gameplay scene
+            SceneManager.LoadScene("Scene1");
+            SetState(GameState.Playing);
         }
     }
     
