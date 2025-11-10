@@ -13142,6 +13142,8 @@ MonoBehaviour:
       count: 3
     - enemyPrefab: {fileID: 9194631372446240923, guid: 3f2f4f623473cc64e97074455a8fefef, type: 3}
       count: 3
+    - enemyPrefab: {fileID: 3939826333125620943, guid: 9310fe7004f0c5641867d370983e2ffa, type: 3}
+      count: 3
     timeBetweenSpawns: 2
     delayBeforeNextWave: 5
   autoStartWaves: 1
