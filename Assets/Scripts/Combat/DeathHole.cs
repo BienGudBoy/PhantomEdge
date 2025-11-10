@@ -7,7 +7,7 @@ public class DeathHole : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // Check if it's a player
+        // Check if it's a player (by tag or component)
         if (other.CompareTag("Player"))
         {
             HealthSystem health = other.GetComponent<HealthSystem>();
@@ -18,15 +18,15 @@ public class DeathHole : MonoBehaviour
                 Debug.Log($"Player fell into hole and died!");
             }
         }
-        // Check if it's an enemy
-        else if (other.CompareTag("Enemy"))
+        // Check if it's an enemy (by component - more reliable than tag)
+        else
         {
             EnemyHealth enemyHealth = other.GetComponent<EnemyHealth>();
             if (enemyHealth != null && !enemyHealth.IsDead)
             {
                 // Deal massive damage to instantly kill the enemy
                 enemyHealth.TakeDamage(instantKillDamage);
-                Debug.Log($"Enemy fell into hole and died!");
+                Debug.Log($"Enemy ({other.gameObject.name}) fell into hole and died!");
             }
         }
     }
