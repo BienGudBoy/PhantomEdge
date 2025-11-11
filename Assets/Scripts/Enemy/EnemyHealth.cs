@@ -233,6 +233,22 @@ public class EnemyHealth : MonoBehaviour
 			Rigidbody2D crb = coin.GetComponent<Rigidbody2D>();
 			if (crb != null)
 			{
+				// Respect prefab setup: if collider is trigger, keep kinematic; if not, keep physics bounce
+				Collider2D coinCol = coin.GetComponent<Collider2D>();
+				if (coinCol != null && coinCol.isTrigger)
+				{
+					crb.gravityScale = 0f;
+					crb.bodyType = RigidbodyType2D.Kinematic;
+					crb.freezeRotation = true;
+				}
+				else
+				{
+					// Use default dynamic physics for bounce; add a small random upward impulse
+					crb.bodyType = RigidbodyType2D.Dynamic;
+					if (crb.gravityScale < 0.01f) crb.gravityScale = 1f;
+					crb.freezeRotation = false;
+				}
+				
 				Vector2 impulse = UnityEngine.Random.insideUnitCircle.normalized * UnityEngine.Random.Range(0.5f, 1.5f);
 				crb.AddForce(impulse, ForceMode2D.Impulse);
 				crb.AddTorque(UnityEngine.Random.Range(-5f, 5f), ForceMode2D.Impulse);
@@ -242,7 +258,7 @@ public class EnemyHealth : MonoBehaviour
 			SpriteRenderer sr = coin.GetComponent<SpriteRenderer>();
 			if (sr != null)
 			{
-				sr.sortingLayerName = "Midground";
+				sr.sortingLayerName = "Foreground";
 				if (sr.sortingOrder < 50) sr.sortingOrder = 100;
 				Color c = sr.color;
 				c.a = 1f;

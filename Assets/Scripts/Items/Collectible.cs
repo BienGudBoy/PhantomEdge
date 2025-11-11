@@ -22,6 +22,7 @@ public class Collectible : MonoBehaviour
         transform.Rotate(0, 0, spinSpeed * Time.deltaTime);
     }
     
+		// Trigger-based pickup (works when coin collider is trigger)
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (isCollected) return;
@@ -31,6 +32,17 @@ public class Collectible : MonoBehaviour
             Collect(other.gameObject);
         }
     }
+		
+		// Collision-based pickup (works when coin collider is NOT a trigger and uses physics bounce)
+		private void OnCollisionEnter2D(Collision2D collision)
+		{
+			if (isCollected) return;
+			
+			if (collision.collider != null && collision.collider.CompareTag("Player"))
+			{
+				Collect(collision.collider.gameObject);
+			}
+		}
     
     private void Collect(GameObject player)
     {
