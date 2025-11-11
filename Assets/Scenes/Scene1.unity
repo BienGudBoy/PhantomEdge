@@ -11726,6 +11726,8 @@ GameObject:
   m_Component:
   - component: {fileID: 979978112}
   - component: {fileID: 979978113}
+  - component: {fileID: 979978115}
+  - component: {fileID: 979978114}
   m_Layer: 0
   m_Name: Castle
   m_TagString: Untagged
@@ -11806,6 +11808,186 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!60 &979978114
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 979978111}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 4.65, y: 5.37}
+    newSize: {x: 4.65, y: 5.37}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.885, y: -2.2849998}
+      - {x: -0.615, y: -2.2949998}
+      - {x: -0.39499998, y: -2.2949998}
+      - {x: -0.114999995, y: -2.2849998}
+      - {x: 0.445, y: -2.2849998}
+      - {x: 0.705, y: -2.2749999}
+      - {x: 0.755, y: -2.2749999}
+      - {x: 1.135, y: -2.225}
+      - {x: 1.485, y: -2.205}
+      - {x: 1.625, y: -2.2749999}
+      - {x: 1.7049999, y: -2.2949998}
+      - {x: 1.915, y: -2.2949998}
+      - {x: 2.0449998, y: -2.245}
+      - {x: 2.155, y: -2.195}
+      - {x: 2.195, y: -2.145}
+      - {x: 2.195, y: -0.515}
+      - {x: 2.245, y: -0.515}
+      - {x: 2.325, y: -0.45499998}
+      - {x: 2.325, y: -0.355}
+      - {x: 2.175, y: -0.085}
+      - {x: 1.905, y: 0.355}
+      - {x: 1.8449999, y: 0.445}
+      - {x: 1.8149999, y: 0.445}
+      - {x: 1.775, y: 0.415}
+      - {x: 1.425, y: -0.175}
+      - {x: 1.355, y: -0.295}
+      - {x: 1.265, y: -0.114999995}
+      - {x: 1.2049999, y: -0.035}
+      - {x: 1.145, y: -0.055}
+      - {x: 1.015, y: 0.055}
+      - {x: 1.0749999, y: 0.085}
+      - {x: 1.135, y: 0.13499999}
+      - {x: 1.135, y: 0.175}
+      - {x: 0.905, y: 0.575}
+      - {x: 0.84499997, y: 0.695}
+      - {x: 0.78499997, y: 0.72499996}
+      - {x: 0.66499996, y: 0.53499997}
+      - {x: 0.45499998, y: 0.175}
+      - {x: 0.445, y: 0.125}
+      - {x: 0.585, y: 0.055}
+      - {x: 0.45499998, y: -0.085}
+      - {x: 0.385, y: -0.175}
+      - {x: 0.385, y: 0.24499999}
+      - {x: 0.45499998, y: 0.36499998}
+      - {x: 0.66499996, y: 0.775}
+      - {x: 0.73499995, y: 0.78499997}
+      - {x: 0.775, y: 0.825}
+      - {x: 0.78499997, y: 0.85499996}
+      - {x: 0.565, y: 1.225}
+      - {x: 0.49499997, y: 1.2049999}
+      - {x: 0.405, y: 1.015}
+      - {x: 0.385, y: 1.435}
+      - {x: 0.465, y: 1.425}
+      - {x: 0.625, y: 1.495}
+      - {x: 0.66499996, y: 1.555}
+      - {x: 0.66499996, y: 1.615}
+      - {x: 0.45499998, y: 1.995}
+      - {x: 0.325, y: 2.195}
+      - {x: 0.074999996, y: 2.615}
+      - {x: 0.035, y: 2.685}
+      - {x: -0.044999998, y: 2.685}
+      - {x: -0.225, y: 2.365}
+      - {x: -0.685, y: 1.625}
+      - {x: -0.655, y: 1.515}
+      - {x: -0.385, y: 1.425}
+      - {x: -0.385, y: 1.3349999}
+      - {x: -0.49499997, y: 1.165}
+      - {x: -0.59499997, y: 0.98499995}
+      - {x: -0.60499996, y: 0.945}
+      - {x: -0.435, y: 0.84499997}
+      - {x: -0.385, y: 0.78499997}
+      - {x: -0.385, y: -0.175}
+      - {x: -0.45499998, y: -0.085}
+      - {x: -0.475, y: -0.065}
+      - {x: -0.59499997, y: -0.065}
+      - {x: -0.59499997, y: 0.065}
+      - {x: -0.515, y: 0.074999996}
+      - {x: -0.445, y: 0.125}
+      - {x: -0.45499998, y: 0.175}
+      - {x: -0.515, y: 0.285}
+      - {x: -0.645, y: 0.505}
+      - {x: -0.775, y: 0.715}
+      - {x: -0.815, y: 0.72499996}
+      - {x: -0.97499996, y: 0.475}
+      - {x: -1.135, y: 0.175}
+      - {x: -1.145, y: 0.125}
+      - {x: -1.0649999, y: 0.074999996}
+      - {x: -1.005, y: 0.065}
+      - {x: -1.015, y: -0.065}
+      - {x: -1.145, y: -0.055}
+      - {x: -1.2049999, y: -0.024999999}
+      - {x: -1.265, y: -0.114999995}
+      - {x: -1.365, y: -0.315}
+      - {x: -1.375, y: -0.275}
+      - {x: -1.495, y: -0.074999996}
+      - {x: -1.685, y: 0.24499999}
+      - {x: -1.805, y: 0.435}
+      - {x: -1.8349999, y: 0.445}
+      - {x: -1.915, y: 0.33499998}
+      - {x: -1.935, y: 0.285}
+      - {x: -2.2849998, y: -0.305}
+      - {x: -2.325, y: -0.385}
+      - {x: -2.325, y: -0.45499998}
+      - {x: -2.2849998, y: -0.49499997}
+      - {x: -2.195, y: -0.53499997}
+      - {x: -2.195, y: -2.165}
+      - {x: -2.155, y: -2.215}
+      - {x: -2.0249999, y: -2.2749999}
+      - {x: -1.905, y: -2.325}
+      - {x: -1.6949999, y: -2.325}
+      - {x: -1.5849999, y: -2.315}
+      - {x: -1.4549999, y: -2.2749999}
+      - {x: -1.265, y: -2.2549999}
+      - {x: -1.025, y: -2.2749999}
+  m_UseDelaunayMesh: 0
+--- !u!114 &979978115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 979978111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3da2ec9b2e5a5496c901b36b016da0f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CastleEntrance
+  interactPrompt: Press E to enter
+  showPrompt: 1
+  OnInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  bossSceneName: Scene2
+  alwaysAllowEntry: 1
 --- !u!1 &980499048
 GameObject:
   m_ObjectHideFlags: 0
@@ -13473,6 +13655,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45c938709adb40d4f8522561cc9ec0c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FinalVictoryPending: 0
 --- !u!4 &1238189782
 Transform:
   m_ObjectHideFlags: 0
@@ -13685,6 +13868,7 @@ MonoBehaviour:
   bossPrefab: {fileID: 982987016167170477, guid: a7f853d696a3de54a8a92a977096e136, type: 3}
   bossSpawnScore: 100
   bossSpawned: 0
+  enableBossSpawningByScore: 0
   currentWaveIndex: 0
   enemiesAlive: 0
   isSpawning: 0
