@@ -14,8 +14,11 @@ public class LoadingSceneManager : MonoBehaviour
     
     private IEnumerator LoadTargetSceneCoroutine()
     {
-        // Wait a frame to ensure the scene (including AudioListener) is fully initialized
-        yield return null;
+        // Wait a few frames to ensure the scene is fully loaded and rendered
+        // This ensures the campfire and ninja are visible before the delay starts
+        yield return null; // Wait one frame for initialization
+        yield return new WaitForEndOfFrame(); // Wait for rendering to complete
+        yield return null; // Wait one more frame to ensure everything is rendered
         
         // Get the target scene name from GameManager
         string targetScene = GameManager.Instance != null 
