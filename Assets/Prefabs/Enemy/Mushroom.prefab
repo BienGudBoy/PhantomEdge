@@ -198,7 +198,7 @@ MonoBehaviour:
   patrolDistance: 5
   detectionRange: 8
   attackRange: 1.5
-  attackDamage: 10
+  attackDamage: 14
   attackCooldown: 1
   attackDamageDelay: 0.4
   enableAutoJump: 1
@@ -233,7 +233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b43bd68edbfc1fc489ab6ffed8830093, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 50
+  maxHealth: 900
   currentHealth: 0
   coinPrefab: {fileID: 6700375537857059503, guid: 1b4b0ba283a4e4675a089f459bfec920, type: 3}
   flashDuration: 0.1
