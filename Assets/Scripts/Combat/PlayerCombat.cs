@@ -207,6 +207,14 @@ public class PlayerCombat : MonoBehaviour
 		return attackDuration;
 	}
 	
+	// Reduce attack duration by a fixed amount (for Blade Empower upgrade)
+	public void ReduceAttackDuration(float reduction)
+	{
+		float previous = attackDuration;
+		attackDuration = Mathf.Max(0.1f, attackDuration - reduction); // Minimum 0.1s
+		Debug.Log($"PlayerCombat: Attack duration reduced by {reduction:F3}s. {previous:F3}s -> {attackDuration:F3}s");
+	}
+	
 	private bool IsBackstab(Transform enemyTransform)
 	{
 		Vector2 toPlayer = (Vector2)(transform.position - enemyTransform.position);

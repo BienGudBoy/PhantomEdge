@@ -122,9 +122,25 @@ public class GameManager : MonoBehaviour
     
     private void Update()
     {
-        // Handle pause with Escape key
+        // Handle pause with Escape key (but not if shop is open or just handled Escape)
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            // Check if shop handled Escape this frame (handles execution order issues)
+            if (CombatShopUI.WasEscapeHandledThisFrame())
+            {
+                return;
+            }
+            
+            // Check if shop is open or if shop panel is active (double-check for reliability)
+            CombatShopUI shopUI = FindFirstObjectByType<CombatShopUI>();
+            bool shopIsOpen = shopUI != null && (shopUI.IsShopOpen() || shopUI.IsShopPanelActive());
+            
+            if (shopIsOpen)
+            {
+                // Let the shop handle Escape key to close itself
+                return;
+            }
+            
             if (currentState == GameState.Playing)
             {
                 PauseGame();

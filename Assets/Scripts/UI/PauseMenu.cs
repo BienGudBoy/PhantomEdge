@@ -64,7 +64,11 @@ public class PauseMenu : MonoBehaviour
     {
         if (pauseMenuPanel != null)
         {
-            pauseMenuPanel.SetActive(newState == GameManager.GameState.Paused);
+            // Don't show pause menu if shop is open
+            CombatShopUI shopUI = FindFirstObjectByType<CombatShopUI>();
+            bool shopIsOpen = shopUI != null && shopUI.IsShopOpen();
+            
+            pauseMenuPanel.SetActive(newState == GameManager.GameState.Paused && !shopIsOpen);
         }
     }
     

@@ -273,6 +273,17 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void IncreaseMoveSpeed(float amount)
+    {
+        moveSpeed += amount;
+        Debug.Log($"PlayerController: Move speed increased by {amount}. New speed: {moveSpeed}");
+    }
+    
+    public float GetMoveSpeed()
+    {
+        return moveSpeed;
+    }
+    
     private void OnDrawGizmosSelected()
     {
         if (groundCheckPoint != null)
