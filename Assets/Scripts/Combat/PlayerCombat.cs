@@ -29,12 +29,25 @@ public class PlayerCombat : MonoBehaviour
     private float lastAttackTime = 0f;
     private LayerMask enemyLayer;
     private bool isAttacking = false;
+    private float baseAttackDuration; // Store the original attack duration for animation speed calculation
+    private float baseDamageDelay; // Store the original damage delay for scaling
+    private float normalAnimatorSpeed = 1.0f; // Store the normal animator speed to restore later
     
     private void Awake()
     {
         animator = GetComponent<Animator>();
         healthSystem = GetComponent<HealthSystem>();
 		playerController = GetComponent<PlayerController>();
+        
+        // Store the base attack duration and damage delay (the original serialized values)
+        baseAttackDuration = attackDuration;
+        baseDamageDelay = damageDelay;
+        
+        // Store the normal animator speed
+        if (animator != null)
+        {
+            normalAnimatorSpeed = animator.speed;
+        }
         
         enemyLayer = LayerMask.GetMask("Enemy");
         Debug.Log($"PlayerCombat initialized. Enemy layer mask value: {enemyLayer.value}");
@@ -72,6 +85,13 @@ public class PlayerCombat : MonoBehaviour
         // Trigger attack animation
         if (animator != null)
         {
+            // Calculate animation speed multiplier based on attack speed
+            // If attackDuration is shorter (faster), animation should play faster
+            // Speed multiplier = baseDuration / currentDuration
+            float animationSpeedMultiplier = baseAttackDuration / attackDuration;
+            animator.speed = normalAnimatorSpeed * animationSpeedMultiplier;
+            Debug.Log($"Attack animation speed set to {animator.speed:F2}x (base: {baseAttackDuration:F3}s, current: {attackDuration:F3}s)");
+            
             // First reset ALL other animation parameters
             animator.SetBool("IsRun", false);
             animator.SetBool("IsWalk", false);
@@ -101,8 +121,12 @@ public class PlayerCombat : MonoBehaviour
             Debug.Log($"Attack animation triggered. IsAttack param exists: {isAttackParamExists}");
         }
         
+        // Calculate scaled damage delay to match the animation hit frame
+        // Scale damageDelay proportionally with attack speed
+        float scaledDamageDelay = baseDamageDelay * (attackDuration / baseAttackDuration);
+        
         // Delay damage to match the animation hit frame
-        Invoke(nameof(DealDamage), damageDelay);
+        Invoke(nameof(DealDamage), scaledDamageDelay);
         
         // Reset attack state after animation completes
         Invoke(nameof(ResetAttack), attackDuration);
@@ -156,6 +180,9 @@ public class PlayerCombat : MonoBehaviour
         // Reset the IsAttack parameter
         if (animator != null)
         {
+            // Reset animator speed back to normal
+            animator.speed = normalAnimatorSpeed;
+            
             // Reset both trigger and bool versions
             animator.ResetTrigger("IsAttack");
             animator.SetBool("IsAttack", false);
