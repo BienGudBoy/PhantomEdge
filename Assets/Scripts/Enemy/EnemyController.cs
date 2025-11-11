@@ -51,11 +51,15 @@ public class EnemyController : MonoBehaviour
     [Header("Components")]
     private Rigidbody2D rb;
     private Animator animator;
-    private SpriteRenderer spriteRenderer;
+	private SpriteRenderer spriteRenderer;
     private Transform player;
     private DayNightCycle dayNightCycle;
     private Collider2D bodyCollider;
 	public int FacingDirection { get; private set; } = 1;
+	
+	[Header("Awareness & Facing")]
+	[SerializeField] private float minFacingFlipInterval = 0.4f; // Delay between facing flips to allow backstabs
+	private float lastFacingFlipTime = -999f;
     
     [Header("Patrol")]
     private Vector2 startPosition;
@@ -496,6 +500,9 @@ public class EnemyController : MonoBehaviour
     {
         rb.linearVelocity = Vector2.zero;
         
+		// While hurt, postpone flips to keep a brief vulnerability window
+		lastFacingFlipTime = Time.time;
+		
         if (hasAnimator && hasTakehitParameter)
         {
             SafeSetTrigger(isTakehitHash);
@@ -547,13 +554,21 @@ public class EnemyController : MonoBehaviour
         
         rb.linearVelocity = newVelocity;
         
-        // Flip sprite based on direction
-        if (spriteRenderer != null)
+		// Flip sprite based on direction with cooldown
+		if (spriteRenderer != null)
         {
             if (moveDir != 0f)
             {
-                spriteRenderer.flipX = moveDir < 0;
-				FacingDirection = moveDir >= 0f ? 1 : -1;
+				int desiredFacing = moveDir >= 0f ? 1 : -1;
+				if (desiredFacing != FacingDirection)
+				{
+					if (Time.time - lastFacingFlipTime >= minFacingFlipInterval)
+					{
+						spriteRenderer.flipX = desiredFacing < 0;
+						FacingDirection = desiredFacing;
+						lastFacingFlipTime = Time.time;
+					}
+				}
             }
         }
     }
@@ -642,6 +657,9 @@ public class EnemyController : MonoBehaviour
 	public void ApplyExternalStagger(float duration)
 	{
 		if (duration <= 0f || currentState == EnemyState.Dead) return;
+		
+		// Reset flip timer so enemy won't instantly turn during/after stagger
+		lastFacingFlipTime = Time.time;
 		
 		if (externalStaggerRoutine != null)
 		{
