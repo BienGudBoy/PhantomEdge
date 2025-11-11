@@ -39,11 +39,11 @@ public class Collectible : MonoBehaviour
         switch (type)
         {
             case CollectibleType.Coin:
-                // Add score
-                if (GameManager.Instance != null)
-                {
-                    GameManager.Instance.AddScore(value);
-                }
+				// Add coins
+				if (GameManager.Instance != null)
+				{
+					GameManager.Instance.AddCoins(value);
+				}
                 break;
                 
             case CollectibleType.HealthPotion:

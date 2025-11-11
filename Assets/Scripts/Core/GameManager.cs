@@ -12,9 +12,13 @@ public class GameManager : MonoBehaviour
     
     // Score]
     private int score = 0;
+		
+		// Currency]
+		private int coins = 0;
     
     // Events
     public event Action<int> OnScoreChanged;
+		public event Action<int> OnCoinsChanged;
     public event Action<GameState> OnStateChanged;
     
     private HealthSystem playerHealth;
@@ -37,6 +41,7 @@ public class GameManager : MonoBehaviour
     
     public GameState CurrentState => currentState;
     public int Score => score;
+		public int Coins => coins;
     
     private void Awake()
     {
@@ -159,6 +164,8 @@ public class GameManager : MonoBehaviour
         SetState(GameState.Playing);
         score = 0;
         OnScoreChanged?.Invoke(score);
+			coins = 0;
+			OnCoinsChanged?.Invoke(coins);
     }
     
     public void ReturnToMenu()
@@ -168,6 +175,8 @@ public class GameManager : MonoBehaviour
         SetState(GameState.Menu);
         score = 0;
         OnScoreChanged?.Invoke(score);
+			coins = 0;
+			OnCoinsChanged?.Invoke(coins);
     }
     
     public void AddScore(int points)
@@ -199,6 +208,26 @@ public class GameManager : MonoBehaviour
         }
         return false;
     }
+		
+		// Coins API
+		public void AddCoins(int amount)
+		{
+			if (amount <= 0) return;
+			coins += amount;
+			OnCoinsChanged?.Invoke(coins);
+		}
+		
+		public bool SpendCoins(int amount)
+		{
+			if (amount <= 0) return true;
+			if (coins >= amount)
+			{
+				coins -= amount;
+				OnCoinsChanged?.Invoke(coins);
+				return true;
+			}
+			return false;
+		}
     
     public void LoadScene(string sceneName)
     {

@@ -82,7 +82,7 @@ public class CombatShop : Shop
     
     protected override void Start()
     {
-        shopName = "Combat Shop";
+		shopName = "Combat Shop";
 		int percent = Mathf.RoundToInt((1f - durationMultiplier) * 100f);
 		shopDescription = $"Increase attack speed (-{percent}% duration)";
         base.Start();

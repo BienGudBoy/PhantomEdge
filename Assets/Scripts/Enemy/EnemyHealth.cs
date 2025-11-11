@@ -158,12 +158,54 @@ public class EnemyHealth : MonoBehaviour
             rb.bodyType = RigidbodyType2D.Static;
         }
         
-        // Add score (if GameManager exists)
-        GameManager gameManager = FindFirstObjectByType<GameManager>();
-        if (gameManager != null)
-        {
-            gameManager.AddScore(10); // 10 points per enemy
-        }
+		// Rewards
+		GameManager gameManager = FindFirstObjectByType<GameManager>();
+		if (gameManager != null)
+		{
+			// Score remains as overall tally
+			int scoreToAdd = 10;
+			EnemyReward reward = GetComponent<EnemyReward>();
+			if (reward != null)
+			{
+				scoreToAdd = reward.GetScore();
+				int coins = reward.GetCoins();
+				if (coins > 0)
+				{
+					gameManager.AddCoins(coins);
+				}
+			}
+			else
+			{
+				// Name-based fallback mapping if no reward component attached
+				string n = gameObject.name.ToLowerInvariant();
+				int coins = 0;
+				if (n.Contains("flying") || n.Contains("eye"))
+				{
+					coins = 2;
+				}
+				else if (n.Contains("goblin") || n.Contains("globlin"))
+				{
+					coins = UnityEngine.Random.Range(1, 4); // 1..3 inclusive
+				}
+				else if (n.Contains("skeleton"))
+				{
+					coins = 4;
+				}
+				else if (n.Contains("mushroom"))
+				{
+					coins = UnityEngine.Random.Range(15, 21); // 15..20 inclusive
+				}
+				else if (n.Contains("sword"))
+				{
+					coins = 0; // final boss, no coin
+				}
+				if (coins > 0)
+				{
+					gameManager.AddCoins(coins);
+				}
+			}
+			gameManager.AddScore(scoreToAdd);
+		}
         
         // Start death sequence with fade out
         StartCoroutine(DeathSequence());
