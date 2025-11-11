@@ -212,6 +212,7 @@ MonoBehaviour:
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 1
+  minFacingFlipInterval: 0.4
 --- !u!114 &6691032307845675094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,6 +227,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 50
   currentHealth: 0
+  coinPrefab: {fileID: 6700375537857059503, guid: 1b4b0ba283a4e4675a089f459bfec920, type: 3}
   flashDuration: 0.1
   damageColor: {r: 1, g: 0, b: 0, a: 1}
   flashCount: 2

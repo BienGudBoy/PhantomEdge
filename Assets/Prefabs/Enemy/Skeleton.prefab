@@ -201,10 +201,26 @@ MonoBehaviour:
   attackDamage: 10
   attackCooldown: 1
   attackDamageDelay: 0.4
+  enableAutoJump: 1
+  jumpForce: 20
+  jumpCooldown: 1.5
+  groundCheckPoint: {fileID: 0}
+  groundCheckRadius: 0.8
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  obstacleLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  obstacleCheckHeight: 0.4
+  obstacleCheckDistance: 2
+  groundAheadCheckDistance: 2
+  ceilingCheckDistance: 3
   nightSpeedMultiplier: 1.5
   nightDamageMultiplier: 1.5
   nightDetectionRangeMultiplier: 1.2
   nightAttackCooldownMultiplier: 0.8
+  minFacingFlipInterval: 0.4
 --- !u!114 &-6996950651651286329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,6 +235,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 50
   currentHealth: 0
+  coinPrefab: {fileID: 6700375537857059503, guid: 1b4b0ba283a4e4675a089f459bfec920, type: 3}
   flashDuration: 0.1
   damageColor: {r: 1, g: 0, b: 0, a: 1}
   flashCount: 2

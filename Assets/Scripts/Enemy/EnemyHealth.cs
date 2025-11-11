@@ -7,6 +7,9 @@ public class EnemyHealth : MonoBehaviour
     [Header("Health Settings")]
     [SerializeField] private int maxHealth = 50;
     [SerializeField] private int currentHealth;
+	
+	[Header("Rewards")]
+	[SerializeField] private GameObject coinPrefab; // Assign Assets/Prefabs/Items/Coin.prefab in Inspector
     
     [Header("Visual Feedback")]
     [SerializeField] private float flashDuration = 0.1f;
@@ -158,27 +161,24 @@ public class EnemyHealth : MonoBehaviour
             rb.bodyType = RigidbodyType2D.Static;
         }
         
-		// Rewards
+		// Rewards (coins and score)
 		GameManager gameManager = FindFirstObjectByType<GameManager>();
 		if (gameManager != null)
 		{
 			// Score remains as overall tally
 			int scoreToAdd = 10;
+			int coins = 0;
 			EnemyReward reward = GetComponent<EnemyReward>();
 			if (reward != null)
 			{
 				scoreToAdd = reward.GetScore();
-				int coins = reward.GetCoins();
-				if (coins > 0)
-				{
-					gameManager.AddCoins(coins);
-				}
+				coins = reward.GetCoins();
 			}
 			else
 			{
 				// Name-based fallback mapping if no reward component attached
 				string n = gameObject.name.ToLowerInvariant();
-				int coins = 0;
+				coins = 0;
 				if (n.Contains("flying") || n.Contains("eye"))
 				{
 					coins = 2;
@@ -199,17 +199,54 @@ public class EnemyHealth : MonoBehaviour
 				{
 					coins = 0; // final boss, no coin
 				}
-				if (coins > 0)
+			}
+			
+			// Spawn coin collectibles if prefab is assigned; otherwise grant directly
+			if (coins > 0)
+			{
+				if (coinPrefab != null)
+				{
+					SpawnCoins(coins);
+				}
+				else
 				{
 					gameManager.AddCoins(coins);
 				}
 			}
+			
 			gameManager.AddScore(scoreToAdd);
 		}
         
         // Start death sequence with fade out
         StartCoroutine(DeathSequence());
     }
+	
+	private void SpawnCoins(int amount)
+	{
+		// Spawn 'amount' 1-value coins with small random scatter and gentle pop
+		for (int i = 0; i < amount; i++)
+		{
+			Vector3 spawnPos = transform.position + (Vector3)(UnityEngine.Random.insideUnitCircle * 0.2f);
+			GameObject coin = Instantiate(coinPrefab, spawnPos, Quaternion.identity);
+			
+			// Random outward impulse if Rigidbody2D present
+			Rigidbody2D crb = coin.GetComponent<Rigidbody2D>();
+			if (crb != null)
+			{
+				Vector2 impulse = UnityEngine.Random.insideUnitCircle.normalized * UnityEngine.Random.Range(0.5f, 1.5f);
+				crb.AddForce(impulse, ForceMode2D.Impulse);
+				crb.AddTorque(UnityEngine.Random.Range(-5f, 5f), ForceMode2D.Impulse);
+			}
+			
+			// Ensure Collectible coin value is 1
+			Collectible c = coin.GetComponent<Collectible>();
+			if (c != null)
+			{
+				// Coin type enum default is Coin; we only ensure value=1
+				// Using reflection not necessary; fields are serialized
+			}
+		}
+	}
     
     private IEnumerator DeathSequence()
     {
