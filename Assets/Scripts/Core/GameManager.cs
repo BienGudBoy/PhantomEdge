@@ -22,6 +22,17 @@ public class GameManager : MonoBehaviour
 		// Boss flow
 		private BossManager.BossType nextBossType = BossManager.BossType.Mushroom;
 		private int mushroomVictoryCount = 0;
+		
+		// Upgrade stats (persistent across scenes)
+		private int totalHPIncrease = 0;
+		private float totalSpeedIncrease = 0f;
+		private int totalDamageIncrease = 0;
+		private float totalAttackSpeedReduction = 0f;
+		
+		// Purchase counts (for cost calculation)
+		private int vitalBoostPurchaseCount = 0;
+		private int speedSurgePurchaseCount = 0;
+		private int bladeEmpowerPurchaseCount = 0;
     
     // Events
     public event Action<int> OnScoreChanged;
@@ -479,11 +490,98 @@ public class GameManager : MonoBehaviour
                     storedPlayerHealth = -1;
                     storedPlayerMaxHealth = -1;
                 }
+                else
+                {
+                    // Restore HP upgrades (base is 100 from HealthSystem default)
+                    if (totalHPIncrease > 0)
+                    {
+                        int baseMaxHealth = 100; // Default max health
+                        int newMaxHealth = baseMaxHealth + totalHPIncrease;
+                        playerHealth.SetMaxHealth(newMaxHealth);
+                    }
+                }
+            }
+            
+            // Restore speed upgrades
+            PlayerController controller = player.GetComponent<PlayerController>();
+            if (controller != null)
+            {
+                // Base speed is 5f (from PlayerController default)
+                float baseSpeed = 5f;
+                float finalSpeed = baseSpeed + totalSpeedIncrease;
+                controller.SetMoveSpeed(finalSpeed);
+            }
+            
+            // Restore combat upgrades
+            PlayerCombat combat = player.GetComponent<PlayerCombat>();
+            if (combat != null)
+            {
+                // Base damage is 13, base attack duration is 0.70f (from PlayerCombat defaults)
+                int baseDamage = 13;
+                float baseAttackDuration = 0.70f;
+                
+                // Set final values directly
+                int finalDamage = baseDamage + totalDamageIncrease;
+                float finalAttackDuration = baseAttackDuration - totalAttackSpeedReduction;
+                
+                combat.SetDamage(finalDamage);
+                combat.SetAttackDuration(finalAttackDuration);
             }
         }
 
         OnScoreChanged?.Invoke(score);
     }
+    
+    // Upgrade stat persistence methods
+    public void AddHPUpgrade(int amount)
+    {
+        totalHPIncrease += amount;
+    }
+    
+    public void AddSpeedUpgrade(float amount)
+    {
+        totalSpeedIncrease += amount;
+    }
+    
+    public void AddDamageUpgrade(int amount)
+    {
+        totalDamageIncrease += amount;
+    }
+    
+    public void AddAttackSpeedUpgrade(float reduction)
+    {
+        totalAttackSpeedReduction += reduction;
+    }
+    
+    public void ResetAllUpgrades()
+    {
+        totalHPIncrease = 0;
+        totalSpeedIncrease = 0f;
+        totalDamageIncrease = 0;
+        totalAttackSpeedReduction = 0f;
+        vitalBoostPurchaseCount = 0;
+        speedSurgePurchaseCount = 0;
+        bladeEmpowerPurchaseCount = 0;
+    }
+    
+    // Get upgrade stats (for UI restoration)
+    public int GetTotalHPIncrease() => totalHPIncrease;
+    public float GetTotalSpeedIncrease() => totalSpeedIncrease;
+    public int GetTotalDamageIncrease() => totalDamageIncrease;
+    public float GetTotalAttackSpeedReduction() => totalAttackSpeedReduction;
+    
+    // Purchase count getters/setters
+    public int GetVitalBoostPurchaseCount() => vitalBoostPurchaseCount;
+    public int GetSpeedSurgePurchaseCount() => speedSurgePurchaseCount;
+    public int GetBladeEmpowerPurchaseCount() => bladeEmpowerPurchaseCount;
+    
+    public void SetVitalBoostPurchaseCount(int count) => vitalBoostPurchaseCount = count;
+    public void SetSpeedSurgePurchaseCount(int count) => speedSurgePurchaseCount = count;
+    public void SetBladeEmpowerPurchaseCount(int count) => bladeEmpowerPurchaseCount = count;
+    
+    public void IncrementVitalBoostPurchaseCount() => vitalBoostPurchaseCount++;
+    public void IncrementSpeedSurgePurchaseCount() => speedSurgePurchaseCount++;
+    public void IncrementBladeEmpowerPurchaseCount() => bladeEmpowerPurchaseCount++;
 
     private IEnumerator NotifyScoreAfterFrame()
     {

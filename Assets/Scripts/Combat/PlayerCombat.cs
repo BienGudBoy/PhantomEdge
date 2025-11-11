@@ -193,6 +193,18 @@ public class PlayerCombat : MonoBehaviour
         Debug.Log($"PlayerCombat: Damage increased by {amount}. New damage: {attackDamage}");
     }
     
+    public void SetDamage(int newDamage)
+    {
+        attackDamage = newDamage;
+        Debug.Log($"PlayerCombat: Damage set to {attackDamage}");
+    }
+    
+    public void SetAttackDuration(float newDuration)
+    {
+        attackDuration = Mathf.Max(0.1f, newDuration);
+        Debug.Log($"PlayerCombat: Attack duration set to {attackDuration}");
+    }
+    
 	// Multiplicatively reduce attackDuration to increase attack speed.
 	// Example: multiplier=0.9f reduces duration by 10% per upgrade. Clamped by minDuration.
 	public void ApplyAttackSpeedUpgrade(float multiplier = 0.9f, float minDuration = 0.45f)

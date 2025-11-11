@@ -146,6 +146,14 @@ public class CombatShopUI : MonoBehaviour
     
     private void Start()
     {
+        // Restore purchase counts from GameManager (persistent across scenes)
+        if (GameManager.Instance != null)
+        {
+            vitalBoostPurchaseCount = GameManager.Instance.GetVitalBoostPurchaseCount();
+            speedSurgePurchaseCount = GameManager.Instance.GetSpeedSurgePurchaseCount();
+            bladeEmpowerPurchaseCount = GameManager.Instance.GetBladeEmpowerPurchaseCount();
+        }
+        
         UpdateAllUI();
         
         // Subscribe to coin changes to update button states
@@ -275,6 +283,13 @@ public class CombatShopUI : MonoBehaviour
         GameManager.Instance.SpendCoins(currentCost);
         vitalBoostPurchaseCount++;
         
+        // Save to GameManager for persistence
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.AddHPUpgrade(hpIncrease);
+            GameManager.Instance.SetVitalBoostPurchaseCount(vitalBoostPurchaseCount);
+        }
+        
         ShowMessage($"Vital Boost purchased! +{hpIncrease} HP", true);
         UpdateVitalBoostUI();
         
@@ -338,6 +353,13 @@ public class CombatShopUI : MonoBehaviour
         // Deduct coins
         GameManager.Instance.SpendCoins(currentCost);
         speedSurgePurchaseCount++;
+        
+        // Save to GameManager for persistence
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.AddSpeedUpgrade(speedIncrease);
+            GameManager.Instance.SetSpeedSurgePurchaseCount(speedSurgePurchaseCount);
+        }
         
         ShowMessage($"Speed Surge purchased! +{speedIncrease:F2} Speed", true);
         UpdateSpeedSurgeUI();
@@ -408,6 +430,14 @@ public class CombatShopUI : MonoBehaviour
         GameManager.Instance.SpendCoins(currentCost);
         bladeEmpowerPurchaseCount++;
         
+        // Save to GameManager for persistence
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.AddDamageUpgrade(damageIncrease);
+            GameManager.Instance.AddAttackSpeedUpgrade(speedReduction);
+            GameManager.Instance.SetBladeEmpowerPurchaseCount(bladeEmpowerPurchaseCount);
+        }
+        
         ShowMessage($"Blade Empower purchased! +{damageIncrease} DMG, -{speedReduction:F2}s ATK", true);
         UpdateBladeEmpowerUI();
         
@@ -437,6 +467,12 @@ public class CombatShopUI : MonoBehaviour
             instance.speedSurgeOptionIndex = 0;
             instance.bladeEmpowerOptionIndex = 0;
             instance.UpdateAllUI();
+        }
+        
+        // Also reset in GameManager
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.ResetAllUpgrades();
         }
     }
     

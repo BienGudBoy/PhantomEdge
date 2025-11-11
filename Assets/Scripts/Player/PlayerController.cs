@@ -279,6 +279,12 @@ public class PlayerController : MonoBehaviour
         Debug.Log($"PlayerController: Move speed increased by {amount}. New speed: {moveSpeed}");
     }
     
+    public void SetMoveSpeed(float newSpeed)
+    {
+        moveSpeed = newSpeed;
+        Debug.Log($"PlayerController: Move speed set to {moveSpeed}");
+    }
+    
     public float GetMoveSpeed()
     {
         return moveSpeed;
