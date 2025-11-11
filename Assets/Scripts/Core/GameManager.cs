@@ -95,6 +95,11 @@ public class GameManager : MonoBehaviour
         if (scene.name == "Mainmenu")
         {
             SetState(GameState.Menu);
+            // Stop music when returning to menu
+            if (AudioManager.Instance != null)
+            {
+                AudioManager.Instance.StopMusic();
+            }
         }
         else
         {
@@ -107,6 +112,11 @@ public class GameManager : MonoBehaviour
         if (scene.name == "Scene1")
         {
             scene1EnterTime = Time.time;
+            // Play Scene1 background music
+            if (AudioManager.Instance != null)
+            {
+                AudioManager.Instance.PlayScene1Music();
+            }
         }
         else if (scene.name == "Scene2")
         {
@@ -114,6 +124,21 @@ public class GameManager : MonoBehaviour
             {
                 lastFarmingMinutes = Mathf.Max(0f, (Time.time - scene1EnterTime) / 60f);
             }
+            // Play Scene2 boss music based on boss type
+            // We need to wait a frame for BossManager to initialize, so use a coroutine
+            StartCoroutine(PlayScene2MusicAfterDelay());
+        }
+    }
+    
+    private System.Collections.IEnumerator PlayScene2MusicAfterDelay()
+    {
+        // Wait a frame for BossManager to initialize and determine boss type
+        yield return null;
+        
+        if (AudioManager.Instance != null)
+        {
+            BossManager.BossType bossType = GetNextBossType();
+            AudioManager.Instance.PlayScene2BossMusic(bossType);
         }
     }
     
@@ -125,12 +150,32 @@ public class GameManager : MonoBehaviour
         if (currentScene == "Mainmenu")
         {
             SetState(GameState.Menu);
+            // Stop music when in menu
+            if (AudioManager.Instance != null)
+            {
+                AudioManager.Instance.StopMusic();
+            }
         }
         else
         {
             // We're in a gameplay scene (Scene1, Scene2, Hub, etc.)
             SetState(GameState.Playing);
             InitializePlayerReferences();
+            
+            // Play music if we started directly in a scene (not loaded via OnSceneLoaded)
+            if (currentScene == "Scene1")
+            {
+                scene1EnterTime = Time.time;
+                if (AudioManager.Instance != null)
+                {
+                    AudioManager.Instance.PlayScene1Music();
+                }
+            }
+            else if (currentScene == "Scene2")
+            {
+                // Wait a frame for BossManager to initialize
+                StartCoroutine(PlayScene2MusicAfterDelay());
+            }
         }
     }
     
