@@ -63,6 +63,17 @@ public class BossManager : MonoBehaviour
 			enemyHealth.OnDeath += OnBossDefeated;
 		}
 		
+		// Setup encounter controller for UI toggles (HP bar and coins)
+		var encounter = currentBoss.GetComponent<BossEncounterController>();
+		if (encounter == null)
+		{
+			encounter = currentBoss.AddComponent<BossEncounterController>();
+		}
+		// Name
+		string displayName = prefab != null ? prefab.name : bossToSpawn.ToString();
+		var nameField = typeof(BossEncounterController).GetField("bossDisplayName", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+		nameField?.SetValue(encounter, displayName);
+		
 		// Apply scaling
 		var scaler = currentBoss.GetComponent<BossScaler>();
 		if (scaler == null)
