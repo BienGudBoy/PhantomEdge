@@ -15,6 +15,9 @@ public class GameManager : MonoBehaviour
 		
 		// Currency]
 		private int coins = 0;
+		
+		// Final victory control
+		public bool FinalVictoryPending = false;
     
     // Events
     public event Action<int> OnScoreChanged;
@@ -318,7 +321,16 @@ public class GameManager : MonoBehaviour
             victoryScreen.OnVictorySequenceComplete -= OnVictoryScreenSequenceComplete;
         }
 
-        NextLevel();
+        if (FinalVictoryPending)
+        {
+            FinalVictoryPending = false;
+            // End of game flow; return to Main Menu
+            LoadScene("Mainmenu");
+        }
+        else
+        {
+            NextLevel();
+        }
     }
     
     private IEnumerator WaitForDeathAnimationThenPause()

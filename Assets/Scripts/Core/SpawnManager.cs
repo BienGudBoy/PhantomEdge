@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class SpawnManager : MonoBehaviour
 {
@@ -52,9 +53,10 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private LayerMask obstacleLayer;
     
     [Header("Boss Spawning")]
-    [SerializeField] private GameObject bossPrefab;
-    [SerializeField] private int bossSpawnScore = 100;
-    [SerializeField] private bool bossSpawned = false;
+	[SerializeField] private GameObject bossPrefab;
+	[SerializeField] private int bossSpawnScore = 100;
+	[SerializeField] private bool bossSpawned = false;
+	[SerializeField] private bool enableBossSpawningByScore = false; // disabled per new design
     private GameObject currentBoss = null;
     
     [Header("Current State")]
@@ -72,6 +74,8 @@ public class SpawnManager : MonoBehaviour
     
     private void Start()
     {
+		string sceneName = SceneManager.GetActiveScene().name;
+		
         // Auto-populate spawn points if not set
         if (spawnPoints == null || spawnPoints.Length == 0)
         {
@@ -82,13 +86,22 @@ public class SpawnManager : MonoBehaviour
             }
         }
         
-        // Subscribe to score changes for boss spawning
-        if (GameManager.Instance != null)
+		// Subscribe to score changes for boss spawning (disabled by default)
+		if (enableBossSpawningByScore && GameManager.Instance != null)
         {
             GameManager.Instance.OnScoreChanged += OnScoreChanged;
         }
         
-        if (autoStartWaves && waves.Count > 0)
+		// Disable normal enemy spawns entirely in boss scene (Scene2)
+		if (sceneName == "Scene2")
+		{
+			autoStartWaves = false;
+			loopWaves = false;
+			isSpawning = false;
+			return;
+		}
+		
+		if (autoStartWaves && waves.Count > 0)
         {
             StartCoroutine(StartWavesSequence());
         }
@@ -338,7 +351,7 @@ public class SpawnManager : MonoBehaviour
     private void OnScoreChanged(int newScore)
     {
         // Spawn boss when score threshold is reached (only once)
-        if (!bossSpawned && newScore >= bossSpawnScore && bossPrefab != null)
+		if (enableBossSpawningByScore && !bossSpawned && newScore >= bossSpawnScore && bossPrefab != null)
         {
             SpawnBoss();
         }
@@ -390,7 +403,7 @@ public class SpawnManager : MonoBehaviour
     private void OnDestroy()
     {
         // Unsubscribe from score changes
-        if (GameManager.Instance != null)
+		if (enableBossSpawningByScore && GameManager.Instance != null)
         {
             GameManager.Instance.OnScoreChanged -= OnScoreChanged;
         }

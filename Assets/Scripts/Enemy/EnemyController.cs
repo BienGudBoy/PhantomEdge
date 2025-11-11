@@ -17,7 +17,7 @@ public class EnemyController : MonoBehaviour
     
     [Header("Jump & Obstacle Settings")]
     [SerializeField] private bool enableAutoJump = true;
-    [SerializeField] private float jumpForce = 20.0f;
+    [SerializeField] private float jumpForce = 5.0f;
     [SerializeField] private float jumpCooldown = 1.5f;
     [SerializeField] private Transform groundCheckPoint;
     [SerializeField] private float groundCheckRadius = 0.8f;
