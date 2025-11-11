@@ -11012,6 +11012,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7185306538502150906, guid: 43befc11d59f1bd449fcb07c431d7d78, type: 3}
+      propertyPath: attackRange
+      value: 1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7185306538502150906, guid: 43befc11d59f1bd449fcb07c431d7d78, type: 3}
+      propertyPath: damageDelay
+      value: 0.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 7185306538502150906, guid: 43befc11d59f1bd449fcb07c431d7d78, type: 3}
+      propertyPath: attackDamage
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 7185306538502150906, guid: 43befc11d59f1bd449fcb07c431d7d78, type: 3}
+      propertyPath: attackDuration
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 8659674461259344437, guid: 43befc11d59f1bd449fcb07c431d7d78, type: 3}
       propertyPath: m_Controller
       value: 
@@ -18159,7 +18175,8 @@ MonoBehaviour:
   shopName: Shop
   shopDescription: Press E to purchase
   showPurchaseMessage: 1
-  damageIncrease: 5
+  durationMultiplier: 0.9
+  minDuration: 0.45
   maxUpgrades: 3
 --- !u!1 &1911440362
 GameObject:
