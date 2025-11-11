@@ -15,6 +15,14 @@ public class BossScaler : MonoBehaviour
 		ApplyScaling();
 	}
 	
+	public void Configure(BossScalingConfig config, int baseMaxHealth, int baseAttackDamage, int round)
+	{
+		scalingConfig = config;
+		overrideBaseMaxHealth = baseMaxHealth;
+		overrideBaseAttackDamage = baseAttackDamage;
+		roundIndex = Mathf.Max(0, round);
+	}
+	
 	public void SetRoundIndex(int index)
 	{
 		roundIndex = Mathf.Max(0, index);

@@ -18,6 +18,10 @@ public class GameManager : MonoBehaviour
 		
 		// Final victory control
 		public bool FinalVictoryPending = false;
+		
+		// Boss flow
+		private BossManager.BossType nextBossType = BossManager.BossType.Mushroom;
+		private int mushroomVictoryCount = 0;
     
     // Events
     public event Action<int> OnScoreChanged;
@@ -259,6 +263,39 @@ public class GameManager : MonoBehaviour
         else
         {
             SetState(GameState.Playing);
+        }
+    }
+    
+    public BossManager.BossType GetNextBossType()
+    {
+        return nextBossType;
+    }
+    
+    public void SetNextBoss(BossManager.BossType bossType)
+    {
+        nextBossType = bossType;
+    }
+    
+    public int GetRoundIndexForBoss(BossManager.BossType bossType)
+    {
+        switch (bossType)
+        {
+            case BossManager.BossType.Mushroom:
+                return mushroomVictoryCount;
+            default:
+                return 0;
+        }
+    }
+    
+    public void RegisterBossVictory(BossManager.BossType bossType)
+    {
+        switch (bossType)
+        {
+            case BossManager.BossType.Mushroom:
+                mushroomVictoryCount = Mathf.Max(0, mushroomVictoryCount + 1);
+                break;
+            case BossManager.BossType.Sword:
+                break;
         }
     }
     

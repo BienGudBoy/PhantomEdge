@@ -12274,7 +12274,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3da2ec9b2e5a5496c901b36b016da0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CastleEntrance
-  interactPrompt: Press E to enter
+  interactPrompt: Press E to enter\nPress R for Final Boss
   showPrompt: 1
   OnInteract:
     m_PersistentCalls:

@@ -12,7 +12,7 @@ public class Interactable : MonoBehaviour
     protected bool canInteract = false;
     protected GameObject nearbyPlayer;
     
-    private void Update()
+    protected virtual void Update()
     {
         if (canInteract && Input.GetKeyDown(KeyCode.E))
         {

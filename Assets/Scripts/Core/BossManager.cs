@@ -26,6 +26,12 @@ public class BossManager : MonoBehaviour
 	
 	private void Start()
 	{
+		if (GameManager.Instance != null)
+		{
+			bossToSpawn = GameManager.Instance.GetNextBossType();
+			roundIndex = GameManager.Instance.GetRoundIndexForBoss(bossToSpawn);
+		}
+		
 		SpawnSelectedBoss();
 	}
 	
@@ -72,14 +78,7 @@ public class BossManager : MonoBehaviour
 			}
 			else
 			{
-				// assign via reflection of private fields
-				var cfgField = typeof(BossScaler).GetField("scalingConfig", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-				cfgField?.SetValue(scaler, cfg);
-				var baseHpField = typeof(BossScaler).GetField("overrideBaseMaxHealth", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-				baseHpField?.SetValue(scaler, mushroomBaseHP);
-				var baseDmgField = typeof(BossScaler).GetField("overrideBaseAttackDamage", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-				baseDmgField?.SetValue(scaler, mushroomBaseDamage);
-				scaler.SetRoundIndex(roundIndex);
+				scaler.Configure(cfg, mushroomBaseHP, mushroomBaseDamage, roundIndex);
 				scaler.ApplyScaling();
 			}
 		}
@@ -92,13 +91,7 @@ public class BossManager : MonoBehaviour
 			}
 			else
 			{
-				var cfgField = typeof(BossScaler).GetField("scalingConfig", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-				cfgField?.SetValue(scaler, cfg);
-				var baseHpField = typeof(BossScaler).GetField("overrideBaseMaxHealth", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-				baseHpField?.SetValue(scaler, swordBaseHP);
-				var baseDmgField = typeof(BossScaler).GetField("overrideBaseAttackDamage", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-				baseDmgField?.SetValue(scaler, swordBaseDamage);
-				scaler.SetRoundIndex(roundIndex);
+				scaler.Configure(cfg, swordBaseHP, swordBaseDamage, roundIndex);
 				scaler.ApplyScaling();
 			}
 		}
@@ -109,6 +102,11 @@ public class BossManager : MonoBehaviour
 		switch (bossToSpawn)
 		{
 			case BossType.Mushroom:
+				if (GameManager.Instance != null)
+				{
+					GameManager.Instance.RegisterBossVictory(BossType.Mushroom);
+				}
+				
 				// Show VictoryScreen first, then transition via GameManager.NextLevel to Scene1
 				if (GameManager.Instance != null)
 				{
@@ -125,6 +123,7 @@ public class BossManager : MonoBehaviour
 				if (GameManager.Instance != null)
 				{
 					GameManager.Instance.FinalVictoryPending = true;
+					GameManager.Instance.RegisterBossVictory(BossType.Sword);
 					GameManager.Instance.HandleBossDeath();
 				}
 				else
