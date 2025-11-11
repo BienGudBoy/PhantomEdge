@@ -238,9 +238,20 @@ public class EnemyHealth : MonoBehaviour
 				crb.AddTorque(UnityEngine.Random.Range(-5f, 5f), ForceMode2D.Impulse);
 			}
 			
+			// Ensure visible above ground
+			SpriteRenderer sr = coin.GetComponent<SpriteRenderer>();
+			if (sr != null)
+			{
+				sr.sortingLayerName = "Midground";
+				if (sr.sortingOrder < 50) sr.sortingOrder = 100;
+				Color c = sr.color;
+				c.a = 1f;
+				sr.color = c;
+			}
+			
 			// Ensure Collectible coin value is 1
-			Collectible c = coin.GetComponent<Collectible>();
-			if (c != null)
+			Collectible coinCollectible = coin.GetComponent<Collectible>();
+			if (coinCollectible != null)
 			{
 				// Coin type enum default is Coin; we only ensure value=1
 				// Using reflection not necessary; fields are serialized
