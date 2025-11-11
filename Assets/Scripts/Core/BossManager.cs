@@ -109,15 +109,14 @@ public class BossManager : MonoBehaviour
 		switch (bossToSpawn)
 		{
 			case BossType.Mushroom:
-				// Reward money for next round, then return to Scene1
+				// Show VictoryScreen first, then transition via GameManager.NextLevel to Scene1
 				if (GameManager.Instance != null)
 				{
-					// Optional: give coin reward here or let EnemyReward handle it
-					GameManager.Instance.LoadScene("Scene1");
+					GameManager.Instance.HandleBossDeath();
 				}
 				else
 				{
-					SceneManager.LoadScene("Scene1");
+					Debug.Log("Boss defeated. Victory screen sequence expected, but GameManager not found.");
 				}
 				break;
 				
