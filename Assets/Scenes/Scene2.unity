@@ -7252,6 +7252,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5da1cd275ce8e1d43af2a561accd914a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useWeightedSpawns: 1
+  weights:
+    goblinPrefab: {fileID: 0}
+    skeletonPrefab: {fileID: 0}
+    goblinWeight: 1
+    skeletonWeight: 0.4
+    goblinCost: 1
+    skeletonCost: 3
+    skeletonCap: 8
+  waveBudgetBase: 20
+  budgetGrowthPerWave: 0.15
   waves:
   - waveName: Wave 1
     enemies:
@@ -7278,6 +7289,7 @@ MonoBehaviour:
   bossPrefab: {fileID: 982987016167170477, guid: a7f853d696a3de54a8a92a977096e136, type: 3}
   bossSpawnScore: 100
   bossSpawned: 0
+  enableBossSpawningByScore: 0
   currentWaveIndex: 0
   enemiesAlive: 0
   isSpawning: 0
@@ -7613,6 +7625,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &871017082
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 871017083}
+  m_Layer: 0
+  m_Name: SpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &871017083
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 871017082}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 22, y: -1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &873484069
 GameObject:
   m_ObjectHideFlags: 0
@@ -8798,6 +8841,61 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4813506226767048708, guid: 4fc70a91180511b43b2e1062c8de7cf9, type: 3}
   m_PrefabInstance: {fileID: 975714673}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &985842877
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 985842879}
+  - component: {fileID: 985842878}
+  m_Layer: 0
+  m_Name: BossManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &985842878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 985842877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86348871b25e04a7faf4591d00dc6fd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BossManager
+  bossToSpawn: 0
+  mushroomBossPrefab: {fileID: 9198667894400246843, guid: f520d2e8f89d4624ab2acb04397cc29c, type: 3}
+  swordBossPrefab: {fileID: 982987016167170477, guid: a7f853d696a3de54a8a92a977096e136, type: 3}
+  bossSpawnPoint: {fileID: 871017083}
+  mushroomScaling: {fileID: 11400000, guid: c9b67a67cf2544fc5af4ef9f8d664005, type: 2}
+  swordScaling: {fileID: 11400000, guid: c9b67a67cf2544fc5af4ef9f8d664005, type: 2}
+  mushroomBaseHP: 600
+  mushroomBaseDamage: 18
+  swordBaseHP: 1200
+  swordBaseDamage: 25
+  roundIndex: 0
+--- !u!4 &985842879
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 985842877}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 92.70454, y: 0.53356, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1019003881
 GameObject:
   m_ObjectHideFlags: 0
@@ -12753,6 +12851,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45c938709adb40d4f8522561cc9ec0c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FinalVictoryPending: 0
 --- !u!4 &1740379643
 Transform:
   m_ObjectHideFlags: 0
@@ -14917,3 +15016,5 @@ SceneRoots:
   - {fileID: 15742978}
   - {fileID: 948921820}
   - {fileID: 586537399}
+  - {fileID: 985842879}
+  - {fileID: 871017083}
