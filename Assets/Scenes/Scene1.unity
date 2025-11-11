@@ -13648,6 +13648,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5da1cd275ce8e1d43af2a561accd914a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useWeightedSpawns: 1
+  weights:
+    goblinPrefab: {fileID: 5718763896691351218, guid: 39f4be0381034484787ce94ddda6df0a, type: 3}
+    skeletonPrefab: {fileID: 9194631372446240923, guid: 3f2f4f623473cc64e97074455a8fefef, type: 3}
+    goblinWeight: 1
+    skeletonWeight: 0.4
+    goblinCost: 1
+    skeletonCost: 3
+    skeletonCap: 8
+  waveBudgetBase: 20
+  budgetGrowthPerWave: 0.15
   waves:
   - waveName: Wave 1
     enemies:
