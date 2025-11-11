@@ -4,6 +4,24 @@ using System.Collections.Generic;
 
 public class SpawnManager : MonoBehaviour
 {
+	[System.Serializable]
+	public class SpawnWeights
+	{
+		public GameObject goblinPrefab;
+		public GameObject skeletonPrefab;
+		[Range(0f, 5f)] public float goblinWeight = 1.0f;
+		[Range(0f, 5f)] public float skeletonWeight = 0.4f;
+		public int goblinCost = 1;
+		public int skeletonCost = 3;
+		public int skeletonCap = 8;
+	}
+	
+	[Header("Dynamic Spawn Tuning")]
+	[SerializeField] private bool useWeightedSpawns = true;
+	[SerializeField] private SpawnWeights weights;
+	[SerializeField] private int waveBudgetBase = 20;
+	[SerializeField] private float budgetGrowthPerWave = 0.15f; // +15% per wave
+	
     [System.Serializable]
     public class Wave
     {
@@ -45,6 +63,7 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private bool isSpawning = false;
     
     private List<GameObject> activeEnemies = new List<GameObject>();
+	private int skeletonAlive = 0;
     
     public int CurrentWave => currentWaveIndex + 1;
     public int TotalWaves => waves.Count;
@@ -122,14 +141,66 @@ public class SpawnManager : MonoBehaviour
         
         Debug.Log($"Starting {wave.waveName}");
         
-        foreach (EnemySpawn enemySpawn in wave.enemies)
-        {
-            for (int i = 0; i < enemySpawn.count; i++)
-            {
-                SpawnEnemy(enemySpawn.enemyPrefab);
-                yield return new WaitForSeconds(wave.timeBetweenSpawns);
-            }
-        }
+		if (!useWeightedSpawns || weights == null || (weights.goblinPrefab == null && weights.skeletonPrefab == null))
+		{
+			foreach (EnemySpawn enemySpawn in wave.enemies)
+			{
+				for (int i = 0; i < enemySpawn.count; i++)
+				{
+					SpawnEnemy(enemySpawn.enemyPrefab);
+					yield return new WaitForSeconds(wave.timeBetweenSpawns);
+				}
+			}
+		}
+		else
+		{
+			// Budget-based weighted spawning
+			int budget = Mathf.RoundToInt(waveBudgetBase * Mathf.Pow(1f + budgetGrowthPerWave, waveIndex));
+			float wGoblin = Mathf.Max(0f, weights.goblinWeight);
+			float wSkeleton = Mathf.Max(0f, weights.skeletonWeight);
+			
+			while (budget > 0)
+			{
+				// Build candidate list based on weights and caps
+				List<(GameObject prefab, int cost, float weight)> choices = new List<(GameObject, int, float)>();
+				if (weights.goblinPrefab != null && weights.goblinCost <= budget)
+				{
+					choices.Add((weights.goblinPrefab, weights.goblinCost, wGoblin));
+				}
+				if (weights.skeletonPrefab != null && weights.skeletonCost <= budget && skeletonAlive < weights.skeletonCap)
+				{
+					choices.Add((weights.skeletonPrefab, weights.skeletonCost, wSkeleton));
+				}
+				
+				if (choices.Count == 0) break;
+				
+				// Weighted pick
+				float totalW = 0f;
+				foreach (var c in choices) totalW += c.weight;
+				float r = Random.Range(0f, totalW);
+				GameObject pick = null;
+				int pickCost = 0;
+				foreach (var c in choices)
+				{
+					r -= c.weight;
+					if (r <= 0f)
+					{
+						pick = c.prefab;
+						pickCost = c.cost;
+						break;
+					}
+				}
+				if (pick == null)
+				{
+					pick = choices[choices.Count - 1].prefab;
+					pickCost = choices[choices.Count - 1].cost;
+				}
+				
+				SpawnEnemy(pick);
+				budget -= pickCost;
+				yield return new WaitForSeconds(wave.timeBetweenSpawns);
+			}
+		}
         
         isSpawning = false;
     }
@@ -148,6 +219,12 @@ public class SpawnManager : MonoBehaviour
         GameObject enemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
         activeEnemies.Add(enemy);
         enemiesAlive++;
+		
+		// Track skeletons for cap
+		if (enemyPrefab.name.ToLowerInvariant().Contains("skeleton"))
+		{
+			skeletonAlive++;
+		}
         
         // Subscribe to enemy death
         EnemyHealth enemyHealth = enemy.GetComponent<EnemyHealth>();
@@ -193,6 +270,12 @@ public class SpawnManager : MonoBehaviour
         {
             activeEnemies.Remove(enemy);
             enemiesAlive--;
+			
+			// Decrement skeleton count if needed
+			if (enemy != null && enemy.name.ToLowerInvariant().Contains("skeleton"))
+			{
+				skeletonAlive = Mathf.Max(0, skeletonAlive - 1);
+			}
             
             Debug.Log($"Enemy defeated. Remaining: {enemiesAlive}");
             
