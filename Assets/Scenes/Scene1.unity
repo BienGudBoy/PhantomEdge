@@ -505,7 +505,7 @@ GameObject:
   - component: {fileID: 30807926}
   - component: {fileID: 30807925}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: NameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -732,7 +732,7 @@ GameObject:
   - component: {fileID: 51871749}
   - component: {fileID: 51871748}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: DecAmountButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1632,7 +1632,7 @@ GameObject:
   - component: {fileID: 89222450}
   - component: {fileID: 89222449}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: NameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2951,7 +2951,7 @@ GameObject:
   - component: {fileID: 142936947}
   - component: {fileID: 142936946}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: AmountText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3645,7 +3645,7 @@ GameObject:
   - component: {fileID: 197118105}
   - component: {fileID: 197118104}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: AmountText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4635,7 +4635,7 @@ GameObject:
   - component: {fileID: 284497619}
   - component: {fileID: 284497618}
   m_Layer: 5
-  m_Name: Image
+  m_Name: VitalBoost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4655,12 +4655,12 @@ RectTransform:
   m_Children:
   - {fileID: 621272245}
   - {fileID: 1382940959}
+  - {fileID: 930118467}
   - {fileID: 142936945}
+  - {fileID: 386358595}
   - {fileID: 2051666398}
   - {fileID: 1314335039}
   - {fileID: 1659308757}
-  - {fileID: 930118467}
-  - {fileID: 386358595}
   m_Father: {fileID: 814436662}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -5217,7 +5217,7 @@ GameObject:
   - component: {fileID: 383399835}
   - component: {fileID: 383399834}
   m_Layer: 5
-  m_Name: Button
+  m_Name: BuyButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5338,7 +5338,7 @@ GameObject:
   - component: {fileID: 386358597}
   - component: {fileID: 386358596}
   m_Layer: 5
-  m_Name: Button
+  m_Name: DecAmountButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6705,7 +6705,7 @@ GameObject:
   - component: {fileID: 582719167}
   - component: {fileID: 582719166}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: ChooseUpgradeText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11699,7 +11699,7 @@ GameObject:
   - component: {fileID: 691517909}
   - component: {fileID: 691517908}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: SpeedSurge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11718,10 +11718,10 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 681187519}
-  - {fileID: 51871747}
-  - {fileID: 2024743016}
   - {fileID: 89222448}
+  - {fileID: 2024743016}
   - {fileID: 197118103}
+  - {fileID: 51871747}
   - {fileID: 1259774536}
   - {fileID: 895929378}
   - {fileID: 717522075}
@@ -12146,7 +12146,7 @@ GameObject:
   - component: {fileID: 717522077}
   - component: {fileID: 717522076}
   m_Layer: 5
-  m_Name: Button
+  m_Name: BuyButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12899,7 +12899,7 @@ GameObject:
   - component: {fileID: 806296715}
   - component: {fileID: 806296714}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: IncAmountButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13024,7 +13024,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &814436662
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13037,10 +13037,10 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 284497617}
-  - {fileID: 1100699138}
-  - {fileID: 691517907}
   - {fileID: 582719165}
+  - {fileID: 284497617}
+  - {fileID: 691517907}
+  - {fileID: 1100699138}
   m_Father: {fileID: 1911440366}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.1166875, y: 0}
@@ -13925,7 +13925,7 @@ GameObject:
   - component: {fileID: 895929380}
   - component: {fileID: 895929379}
   m_Layer: 5
-  m_Name: Image
+  m_Name: CoinImg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14358,7 +14358,7 @@ GameObject:
   - component: {fileID: 930118469}
   - component: {fileID: 930118468}
   m_Layer: 5
-  m_Name: Button
+  m_Name: IncAmountButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15783,7 +15783,7 @@ GameObject:
   - component: {fileID: 1100699140}
   - component: {fileID: 1100699139}
   m_Layer: 5
-  m_Name: Image (2)
+  m_Name: BladeEmpower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15802,10 +15802,10 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2105069712}
-  - {fileID: 806296713}
-  - {fileID: 2074672872}
   - {fileID: 30807924}
+  - {fileID: 806296713}
   - {fileID: 1182240467}
+  - {fileID: 2074672872}
   - {fileID: 2047893298}
   - {fileID: 1862107670}
   - {fileID: 383399833}
@@ -16430,7 +16430,7 @@ GameObject:
   - component: {fileID: 1182240469}
   - component: {fileID: 1182240468}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: AmountText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17143,7 +17143,7 @@ GameObject:
   - component: {fileID: 1259774538}
   - component: {fileID: 1259774537}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: CostText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17314,7 +17314,7 @@ GameObject:
   - component: {fileID: 1314335041}
   - component: {fileID: 1314335040}
   m_Layer: 5
-  m_Name: Image
+  m_Name: CoinImg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17630,7 +17630,7 @@ GameObject:
   - component: {fileID: 1336390450}
   - component: {fileID: 1336390449}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: BuyText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18180,7 +18180,7 @@ GameObject:
   - component: {fileID: 1382940961}
   - component: {fileID: 1382940960}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: NameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20703,7 +20703,7 @@ GameObject:
   - component: {fileID: 1659308759}
   - component: {fileID: 1659308758}
   m_Layer: 5
-  m_Name: Button
+  m_Name: BuyButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22064,7 +22064,7 @@ GameObject:
   - component: {fileID: 1862107672}
   - component: {fileID: 1862107671}
   m_Layer: 5
-  m_Name: Image
+  m_Name: CoinImg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23992,7 +23992,7 @@ GameObject:
   - component: {fileID: 2024743018}
   - component: {fileID: 2024743017}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: IncAmountButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24252,7 +24252,7 @@ GameObject:
   - component: {fileID: 2047893300}
   - component: {fileID: 2047893299}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: CostText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24388,7 +24388,7 @@ GameObject:
   - component: {fileID: 2051666400}
   - component: {fileID: 2051666399}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: CostText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24620,7 +24620,7 @@ GameObject:
   - component: {fileID: 2074672874}
   - component: {fileID: 2074672873}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: DecAmountButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
