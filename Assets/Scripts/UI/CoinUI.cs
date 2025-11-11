@@ -6,6 +6,8 @@ public class CoinUI : MonoBehaviour
 	[Header("UI Reference")]
 	[SerializeField] private TextMeshProUGUI coinText;
 	
+	private bool subscribed = false;
+	
 	private void Awake()
 	{
 		if (coinText == null)
@@ -16,18 +18,34 @@ public class CoinUI : MonoBehaviour
 	
 	private void OnEnable()
 	{
-		if (GameManager.Instance != null)
-		{
-			GameManager.Instance.OnCoinsChanged += UpdateCoins;
-			UpdateCoins(GameManager.Instance.Coins);
-		}
+		TrySubscribeAndRefresh();
+	}
+	
+	private void Start()
+	{
+		TrySubscribeAndRefresh();
 	}
 	
 	private void OnDisable()
 	{
-		if (GameManager.Instance != null)
+		if (subscribed && GameManager.Instance != null)
 		{
 			GameManager.Instance.OnCoinsChanged -= UpdateCoins;
+			subscribed = false;
+		}
+	}
+	
+	private void TrySubscribeAndRefresh()
+	{
+		var gm = GameManager.Instance != null ? GameManager.Instance : FindFirstObjectByType<GameManager>();
+		if (gm != null)
+		{
+			if (!subscribed)
+			{
+				gm.OnCoinsChanged += UpdateCoins;
+				subscribed = true;
+			}
+			UpdateCoins(gm.Coins);
 		}
 	}
 	

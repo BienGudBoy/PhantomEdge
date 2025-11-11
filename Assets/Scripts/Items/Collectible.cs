@@ -9,6 +9,17 @@ public class Collectible : MonoBehaviour
     
     private bool isCollected = false;
     
+		private bool IsPlayerCollider(Collider2D col)
+		{
+			if (col == null) return false;
+			// Accept either the collider's object or any parent as the player
+			if (col.CompareTag("Player")) return true;
+			var pc = col.GetComponentInParent<PlayerController>();
+			if (pc != null) return true;
+			var hs = col.GetComponentInParent<HealthSystem>();
+			return hs != null && col.transform.root.CompareTag("Player");
+		}
+		
     public enum CollectibleType
     {
         Coin,
@@ -27,9 +38,9 @@ public class Collectible : MonoBehaviour
     {
         if (isCollected) return;
         
-        if (other.CompareTag("Player"))
+			if (IsPlayerCollider(other))
         {
-            Collect(other.gameObject);
+				Collect(other.transform.root.gameObject);
         }
     }
 		
@@ -38,9 +49,9 @@ public class Collectible : MonoBehaviour
 		{
 			if (isCollected) return;
 			
-			if (collision.collider != null && collision.collider.CompareTag("Player"))
+			if (collision.collider != null && IsPlayerCollider(collision.collider))
 			{
-				Collect(collision.collider.gameObject);
+				Collect(collision.collider.transform.root.gameObject);
 			}
 		}
     
@@ -52,9 +63,19 @@ public class Collectible : MonoBehaviour
         {
             case CollectibleType.Coin:
 				// Add coins
-				if (GameManager.Instance != null)
 				{
-					GameManager.Instance.AddCoins(value);
+					int add = value;
+					if (add <= 0) add = 1;
+					
+					GameManager gm = GameManager.Instance != null ? GameManager.Instance : FindFirstObjectByType<GameManager>();
+					if (gm != null)
+					{
+						gm.AddCoins(add);
+					}
+					else
+					{
+						Debug.LogWarning("Collectible: GameManager not found, cannot add coins.");
+					}
 				}
                 break;
                 
