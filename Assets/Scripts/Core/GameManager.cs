@@ -53,6 +53,9 @@ public class GameManager : MonoBehaviour
     private float scene1EnterTime = -1f;
     private float lastFarmingMinutes = 0f;
     
+    // Loading scene target
+    private string targetSceneName = null;
+    
     public enum GameState
     {
         Menu,
@@ -85,6 +88,12 @@ public class GameManager : MonoBehaviour
     
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        // Skip LoadingScene - it's just a transition
+        if (scene.name == "LoadingScene")
+        {
+            return;
+        }
+        
         // Only set state if we're not already paused (don't override pause state)
         if (currentState == GameState.Paused)
         {
@@ -257,7 +266,10 @@ public class GameManager : MonoBehaviour
     public void RestartGame()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        // Get current scene name and use loading scene
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        targetSceneName = currentSceneName;
+        SceneManager.LoadScene("LoadingScene");
         SetState(GameState.Playing);
         score = 0;
         OnScoreChanged?.Invoke(score);
@@ -268,7 +280,9 @@ public class GameManager : MonoBehaviour
     public void ReturnToMenu()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("Mainmenu");
+        // Use loading scene for transition
+        targetSceneName = "Mainmenu";
+        SceneManager.LoadScene("LoadingScene");
         SetState(GameState.Menu);
         score = 0;
         OnScoreChanged?.Invoke(score);
@@ -331,9 +345,12 @@ public class GameManager : MonoBehaviour
         // Store player health before scene change
         StorePlayerHealthBeforeSceneChange();
         
+        // Store target scene and load LoadingScene first
+        targetSceneName = sceneName;
         Time.timeScale = 1f;
-        SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene("LoadingScene");
         
+        // State will be set when target scene loads
         if (sceneName == "Mainmenu")
         {
             SetState(GameState.Menu);
@@ -342,6 +359,11 @@ public class GameManager : MonoBehaviour
         {
             SetState(GameState.Playing);
         }
+    }
+    
+    public string GetTargetScene()
+    {
+        return targetSceneName;
     }
     
     public BossManager.BossType GetNextBossType()
@@ -389,24 +411,44 @@ public class GameManager : MonoBehaviour
         
         Scene activeScene = SceneManager.GetActiveScene();
         string activeSceneName = activeScene.name;
+        string targetScene = null;
 
         if (activeSceneName == "Scene2")
         {
-            SceneManager.LoadScene("Scene1");
-            SetState(GameState.Playing);
-            return;
-        }
-
-        int currentIndex = activeScene.buildIndex;
-        if (currentIndex < SceneManager.sceneCountInBuildSettings - 1)
-        {
-            SceneManager.LoadScene(currentIndex + 1);
-            SetState(GameState.Playing);
+            targetScene = "Scene1";
         }
         else
         {
-            // No more levels, loop back to the first gameplay scene
-            SceneManager.LoadScene("Scene1");
+            int currentIndex = activeScene.buildIndex;
+            if (currentIndex < SceneManager.sceneCountInBuildSettings - 1)
+            {
+                // Get scene name by build index
+                targetScene = SceneUtility.GetScenePathByBuildIndex(currentIndex + 1);
+                // Extract scene name from path (e.g., "Assets/Scenes/Scene1.unity" -> "Scene1")
+                if (!string.IsNullOrEmpty(targetScene))
+                {
+                    int lastSlash = targetScene.LastIndexOf('/');
+                    int lastDot = targetScene.LastIndexOf('.');
+                    if (lastSlash >= 0 && lastDot > lastSlash)
+                    {
+                        targetScene = targetScene.Substring(lastSlash + 1, lastDot - lastSlash - 1);
+                    }
+                }
+            }
+            
+            if (string.IsNullOrEmpty(targetScene))
+            {
+                // No more levels, loop back to the first gameplay scene
+                targetScene = "Scene1";
+            }
+        }
+        
+        // Use loading scene for transition
+        if (!string.IsNullOrEmpty(targetScene))
+        {
+            targetSceneName = targetScene;
+            Time.timeScale = 1f;
+            SceneManager.LoadScene("LoadingScene");
             SetState(GameState.Playing);
         }
     }

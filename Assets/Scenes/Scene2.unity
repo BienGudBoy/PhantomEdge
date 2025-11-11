@@ -12875,6 +12875,13 @@ MonoBehaviour:
   clickClip: {fileID: 8300000, guid: fd1f2ca01c02a6644b907707d1331514, type: 3}
   youDiedClip: {fileID: 8300000, guid: a54d1941501724ef39e7a34cb94707be, type: 3}
   victoryClip: {fileID: 8300000, guid: ee2f68080ccdd426b9d3ada4bbc0f4b6, type: 3}
+  enemyAttackClip: {fileID: 0}
+  punchAttackClip: {fileID: 0}
+  scene1MusicTracks:
+  - {fileID: 0}
+  - {fileID: 0}
+  scene2MushroomBossMusic: {fileID: 0}
+  scene2SwordBossMusic: {fileID: 0}
 --- !u!4 &1626462220
 Transform:
   m_ObjectHideFlags: 0
@@ -13653,6 +13660,7 @@ GameObject:
   - component: {fileID: 1807343099}
   - component: {fileID: 1807343098}
   - component: {fileID: 1807343097}
+  - component: {fileID: 1807343101}
   m_Layer: 0
   m_Name: MainCamera
   m_TagString: MainCamera
@@ -13790,6 +13798,14 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!81 &1807343101
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1807343096}
+  m_Enabled: 1
 --- !u!1001 &1808851084
 PrefabInstance:
   m_ObjectHideFlags: 0

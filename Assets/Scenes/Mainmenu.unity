@@ -400,11 +400,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8083df9fb12ea084b83b81c77907d4f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicaudioSource: {fileID: 518566880}
-  vfxAudioSource: {fileID: 1029449620}
-  musicClip: {fileID: 8300000, guid: 7ee6490c3b90df2499d045c8bcf15101, type: 3}
-  winClip: {fileID: 8300000, guid: 8db830f4b53c3794bb7d20683127e567, type: 3}
-  clickClip: {fileID: 0}
 --- !u!1 &292151834
 GameObject:
   m_ObjectHideFlags: 0
@@ -1947,6 +1942,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45c938709adb40d4f8522561cc9ec0c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FinalVictoryPending: 0
 --- !u!4 &1752857037
 Transform:
   m_ObjectHideFlags: 0
@@ -2089,10 +2085,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d54e233b42714849a7d99e543fa8578, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageClip: {fileID: 8300000, guid: 09c379462a392ac42871779aa73075b9, type: 3}
+  damageClip: {fileID: 8300000, guid: d8e7d3f8136294143bfd19655b7686a3, type: 3}
   scoreClip: {fileID: 8300000, guid: c603b5ceb7d075245a40379cb9458357, type: 3}
   clickClip: {fileID: 8300000, guid: fd1f2ca01c02a6644b907707d1331514, type: 3}
   youDiedClip: {fileID: 8300000, guid: a54d1941501724ef39e7a34cb94707be, type: 3}
+  victoryClip: {fileID: 8300000, guid: ee2f68080ccdd426b9d3ada4bbc0f4b6, type: 3}
+  enemyAttackClip: {fileID: 8300000, guid: d29a5bbde8d257141839e47b3ccd6332, type: 3}
+  punchAttackClip: {fileID: 8300000, guid: 09c379462a392ac42871779aa73075b9, type: 3}
+  scene1MusicTracks:
+  - {fileID: 8300000, guid: 20dd3bb577548724f905f565394e4bb2, type: 3}
+  - {fileID: 8300000, guid: af21cbb8ee04a5f41a3143f894fcae43, type: 3}
+  scene2MushroomBossMusic: {fileID: 8300000, guid: aaf9e99c3d07e63458055a62dbb5a13d, type: 3}
+  scene2SwordBossMusic: {fileID: 8300000, guid: 3922d8dbcd0a07f409a64e9f06dfe49c, type: 3}
 --- !u!4 &1912975674
 Transform:
   m_ObjectHideFlags: 0
