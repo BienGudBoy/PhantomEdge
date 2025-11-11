@@ -20247,6 +20247,8 @@ MonoBehaviour:
   clickClip: {fileID: 8300000, guid: fd1f2ca01c02a6644b907707d1331514, type: 3}
   youDiedClip: {fileID: 8300000, guid: a54d1941501724ef39e7a34cb94707be, type: 3}
   victoryClip: {fileID: 8300000, guid: ee2f68080ccdd426b9d3ada4bbc0f4b6, type: 3}
+  enemyAttackClip: {fileID: 8300000, guid: 40f8d55f5968acf4aa2bda7bae8c1222, type: 3}
+  punchAttackClip: {fileID: 8300000, guid: 09c379462a392ac42871779aa73075b9, type: 3}
   scene1MusicTracks:
   - {fileID: 8300000, guid: 20dd3bb577548724f905f565394e4bb2, type: 3}
   - {fileID: 8300000, guid: af21cbb8ee04a5f41a3143f894fcae43, type: 3}

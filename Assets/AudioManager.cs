@@ -10,6 +10,9 @@ public class AudioManager : MonoBehaviour
     public AudioClip clickClip;
     public AudioClip youDiedClip;
     public AudioClip victoryClip;
+    public AudioClip enemyAttackClip;
+    [Tooltip("Punch attack sound for Mushroom boss (no weapon)")]
+    public AudioClip punchAttackClip;
 
     [Header("Background Music")]
     [Tooltip("At least 2 music tracks for Scene1. One will be randomly selected.")]
@@ -90,6 +93,22 @@ public class AudioManager : MonoBehaviour
         if (audioSource != null && victoryClip != null)
         {
             audioSource.PlayOneShot(victoryClip);
+        }
+    }
+
+    public void PlayEnemyAttackSound()
+    {
+        if (audioSource != null && enemyAttackClip != null)
+        {
+            audioSource.PlayOneShot(enemyAttackClip);
+        }
+    }
+
+    public void PlayPunchAttackSound()
+    {
+        if (audioSource != null && punchAttackClip != null)
+        {
+            audioSource.PlayOneShot(punchAttackClip);
         }
     }
 

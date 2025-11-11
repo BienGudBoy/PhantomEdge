@@ -399,6 +399,22 @@ public class FlyingEnemyController : MonoBehaviour
             HealthSystem playerHealth = player.GetComponent<HealthSystem>();
             if (playerHealth != null && !playerHealth.IsDead)
             {
+                // Play appropriate attack sound based on enemy type
+                if (AudioManager.Instance != null)
+                {
+                    // Check if this is a Mushroom boss (punch attack, no weapon)
+                    string enemyName = gameObject.name.ToLowerInvariant();
+                    if (enemyName.Contains("mushroom"))
+                    {
+                        AudioManager.Instance.PlayPunchAttackSound();
+                    }
+                    else
+                    {
+                        // Regular enemies and Sword boss use weapon attack sound
+                        AudioManager.Instance.PlayEnemyAttackSound();
+                    }
+                }
+                
                 playerHealth.TakeDamage(attackDamage);
             }
         }
