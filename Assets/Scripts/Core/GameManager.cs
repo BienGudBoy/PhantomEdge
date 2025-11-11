@@ -32,6 +32,8 @@ public class GameManager : MonoBehaviour
     private bool pendingPlayerRestore = false;
     private Coroutine scoreRefreshCoroutine;
     private Coroutine healthRefreshCoroutine;
+    private float scene1EnterTime = -1f;
+    private float lastFarmingMinutes = 0f;
     
     public enum GameState
     {
@@ -81,6 +83,19 @@ public class GameManager : MonoBehaviour
             // We're in a gameplay scene
             SetState(GameState.Playing);
             InitializePlayerReferences();
+        }
+        
+        // Track farming session time between Scene1 and Scene2
+        if (scene.name == "Scene1")
+        {
+            scene1EnterTime = Time.time;
+        }
+        else if (scene.name == "Scene2")
+        {
+            if (scene1EnterTime > 0f)
+            {
+                lastFarmingMinutes = Mathf.Max(0f, (Time.time - scene1EnterTime) / 60f);
+            }
         }
     }
     
@@ -245,6 +260,11 @@ public class GameManager : MonoBehaviour
         {
             SetState(GameState.Playing);
         }
+    }
+    
+    public float GetLastFarmingMinutes()
+    {
+        return lastFarmingMinutes;
     }
     
     public void NextLevel()

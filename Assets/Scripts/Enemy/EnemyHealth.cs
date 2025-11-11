@@ -50,6 +50,21 @@ public class EnemyHealth : MonoBehaviour
         }
     }
     
+    // External scaling hook for bosses and elites
+    public void SetMaxHealth(int newMaxHealth, bool refillToFull)
+    {
+        maxHealth = Mathf.Max(1, newMaxHealth);
+        if (refillToFull)
+        {
+            currentHealth = maxHealth;
+        }
+        else
+        {
+            currentHealth = Mathf.Min(currentHealth, maxHealth);
+        }
+        OnHealthChanged?.Invoke(currentHealth, maxHealth);
+    }
+    
     public void TakeDamage(int damage)
     {
         if (isDead || damage <= 0) return;

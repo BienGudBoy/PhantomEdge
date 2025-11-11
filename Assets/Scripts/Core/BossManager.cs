@@ -14,6 +14,13 @@ public class BossManager : MonoBehaviour
 	[SerializeField] private GameObject mushroomBossPrefab;
 	[SerializeField] private GameObject swordBossPrefab;
 	[SerializeField] private Transform bossSpawnPoint;
+	[SerializeField] private BossScalingConfig mushroomScaling;
+	[SerializeField] private BossScalingConfig swordScaling;
+	[SerializeField] private int mushroomBaseHP = 600;
+	[SerializeField] private int mushroomBaseDamage = 18;
+	[SerializeField] private int swordBaseHP = 1200;
+	[SerializeField] private int swordBaseDamage = 25;
+	[SerializeField] private int roundIndex = 0;
 	
 	private GameObject currentBoss;
 	
@@ -48,6 +55,52 @@ public class BossManager : MonoBehaviour
 		if (enemyHealth != null)
 		{
 			enemyHealth.OnDeath += OnBossDefeated;
+		}
+		
+		// Apply scaling
+		var scaler = currentBoss.GetComponent<BossScaler>();
+		if (scaler == null)
+		{
+			scaler = currentBoss.AddComponent<BossScaler>();
+		}
+		if (bossToSpawn == BossType.Mushroom)
+		{
+			var cfg = mushroomScaling;
+			if (cfg == null)
+			{
+				Debug.LogWarning("BossManager: Mushroom scaling config not assigned.");
+			}
+			else
+			{
+				// assign via reflection of private fields
+				var cfgField = typeof(BossScaler).GetField("scalingConfig", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+				cfgField?.SetValue(scaler, cfg);
+				var baseHpField = typeof(BossScaler).GetField("overrideBaseMaxHealth", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+				baseHpField?.SetValue(scaler, mushroomBaseHP);
+				var baseDmgField = typeof(BossScaler).GetField("overrideBaseAttackDamage", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+				baseDmgField?.SetValue(scaler, mushroomBaseDamage);
+				scaler.SetRoundIndex(roundIndex);
+				scaler.ApplyScaling();
+			}
+		}
+		else
+		{
+			var cfg = swordScaling;
+			if (cfg == null)
+			{
+				Debug.LogWarning("BossManager: Sword scaling config not assigned.");
+			}
+			else
+			{
+				var cfgField = typeof(BossScaler).GetField("scalingConfig", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+				cfgField?.SetValue(scaler, cfg);
+				var baseHpField = typeof(BossScaler).GetField("overrideBaseMaxHealth", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+				baseHpField?.SetValue(scaler, swordBaseHP);
+				var baseDmgField = typeof(BossScaler).GetField("overrideBaseAttackDamage", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+				baseDmgField?.SetValue(scaler, swordBaseDamage);
+				scaler.SetRoundIndex(roundIndex);
+				scaler.ApplyScaling();
+			}
 		}
 	}
 	
