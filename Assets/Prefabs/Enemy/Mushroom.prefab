@@ -178,8 +178,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.5, y: 0.8}
+  m_Offset: {x: -0.0263381, y: -0.06913997}
+  m_Size: {x: 1.5535498, y: 2.1395845}
   m_Direction: 0
 --- !u!114 &-911705651692820372
 MonoBehaviour:
@@ -201,6 +201,21 @@ MonoBehaviour:
   attackDamage: 10
   attackCooldown: 1
   attackDamageDelay: 0.4
+  enableAutoJump: 1
+  jumpForce: 20
+  jumpCooldown: 1.5
+  groundCheckPoint: {fileID: 0}
+  groundCheckRadius: 0.8
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  obstacleLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  obstacleCheckHeight: 0.4
+  obstacleCheckDistance: 2
+  groundAheadCheckDistance: 2
+  ceilingCheckDistance: 3
   nightSpeedMultiplier: 1.5
   nightDamageMultiplier: 1.5
   nightDetectionRangeMultiplier: 1.2
