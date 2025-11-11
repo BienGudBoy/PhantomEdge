@@ -24,11 +24,14 @@ public class HealthSystem : MonoBehaviour
     
     private bool isDead = false;
     private bool isFlashing = false;
+	private float invulnerableUntil = 0f;
     
     public int MaxHealth => maxHealth;
     public int CurrentHealth => currentHealth;
     public bool IsDead => isDead;
     public float HealthPercentage => (float)currentHealth / maxHealth;
+	public bool IsInvulnerable => Time.time < invulnerableUntil;
+	public float RemainingInvulnerability => Mathf.Max(0f, invulnerableUntil - Time.time);
     
     private void Awake()
     {
@@ -46,9 +49,10 @@ public class HealthSystem : MonoBehaviour
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
     }
     
-    public void TakeDamage(int damage)
+	public void TakeDamage(int damage)
     {
-        if (isDead || damage <= 0) return;
+		if (isDead || damage <= 0) return;
+		if (IsInvulnerable) return;
         
         currentHealth = Mathf.Max(0, currentHealth - damage);
         OnDamageTaken?.Invoke(damage);
@@ -73,6 +77,16 @@ public class HealthSystem : MonoBehaviour
         currentHealth = Mathf.Min(maxHealth, currentHealth + amount);
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
     }
+	
+	public void GrantInvulnerability(float duration)
+	{
+		if (duration <= 0f) return;
+		float newExpiry = Time.time + duration;
+		if (newExpiry > invulnerableUntil)
+		{
+			invulnerableUntil = newExpiry;
+		}
+	}
     
     public void SetMaxHealth(int newMaxHealth)
     {
@@ -99,6 +113,7 @@ public class HealthSystem : MonoBehaviour
         if (isDead) return;
         
         isDead = true;
+		invulnerableUntil = 0f;
         
         // Stop any ongoing flash effect
         StopAllCoroutines();
@@ -158,6 +173,7 @@ public class HealthSystem : MonoBehaviour
         if (!isDead) return;
         
         isDead = false;
+		invulnerableUntil = 0f;
         currentHealth = healthAmount;
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
         

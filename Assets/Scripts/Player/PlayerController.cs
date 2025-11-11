@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
     private bool isSprinting;
     private Vector2 moveInput;
     public bool IsAttacking { get; set; } = false;
+	public int FacingDirection => spriteRenderer != null && spriteRenderer.flipX ? -1 : 1;
 
     // Animator hash
     private int isRunHash;

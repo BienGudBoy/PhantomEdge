@@ -7,8 +7,8 @@ public class HealthShop : Shop
     
     protected override void Start()
     {
-        shopName = "Health Shop";
-        shopDescription = "Restore your health";
+		shopName = "Health Shop";
+		shopDescription = "Restore your health";
         base.Start();
     }
     

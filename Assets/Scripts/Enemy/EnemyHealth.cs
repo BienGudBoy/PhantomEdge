@@ -7,6 +7,9 @@ public class EnemyHealth : MonoBehaviour
     [Header("Health Settings")]
     [SerializeField] private int maxHealth = 50;
     [SerializeField] private int currentHealth;
+	
+	[Header("Rewards")]
+	[SerializeField] private GameObject coinPrefab; // Assign Assets/Prefabs/Items/Coin.prefab in Inspector
     
     [Header("Visual Feedback")]
     [SerializeField] private float flashDuration = 0.1f;
@@ -45,6 +48,21 @@ public class EnemyHealth : MonoBehaviour
         {
             originalColor = spriteRenderer.color;
         }
+    }
+    
+    // External scaling hook for bosses and elites
+    public void SetMaxHealth(int newMaxHealth, bool refillToFull)
+    {
+        maxHealth = Mathf.Max(1, newMaxHealth);
+        if (refillToFull)
+        {
+            currentHealth = maxHealth;
+        }
+        else
+        {
+            currentHealth = Mathf.Min(currentHealth, maxHealth);
+        }
+        OnHealthChanged?.Invoke(currentHealth, maxHealth);
     }
     
     public void TakeDamage(int damage)
@@ -158,16 +176,119 @@ public class EnemyHealth : MonoBehaviour
             rb.bodyType = RigidbodyType2D.Static;
         }
         
-        // Add score (if GameManager exists)
-        GameManager gameManager = FindFirstObjectByType<GameManager>();
-        if (gameManager != null)
-        {
-            gameManager.AddScore(10); // 10 points per enemy
-        }
+		// Rewards (coins and score)
+		GameManager gameManager = FindFirstObjectByType<GameManager>();
+		if (gameManager != null)
+		{
+			// Score remains as overall tally
+			int scoreToAdd = 10;
+			int coins = 0;
+			EnemyReward reward = GetComponent<EnemyReward>();
+			if (reward != null)
+			{
+				scoreToAdd = reward.GetScore();
+				coins = reward.GetCoins();
+			}
+			else
+			{
+				// Name-based fallback mapping if no reward component attached
+				string n = gameObject.name.ToLowerInvariant();
+				coins = 0;
+				if (n.Contains("flying") || n.Contains("eye"))
+				{
+					coins = 2;
+				}
+				else if (n.Contains("goblin") || n.Contains("globlin"))
+				{
+					coins = UnityEngine.Random.Range(1, 4); // 1..3 inclusive
+				}
+				else if (n.Contains("skeleton"))
+				{
+					coins = 4;
+				}
+				else if (n.Contains("mushroom"))
+				{
+					coins = UnityEngine.Random.Range(15, 21); // 15..20 inclusive
+				}
+				else if (n.Contains("sword"))
+				{
+					coins = 0; // final boss, no coin
+				}
+			}
+			
+			// Spawn coin collectibles if prefab is assigned; otherwise grant directly
+			if (coins > 0)
+			{
+				if (coinPrefab != null)
+				{
+					SpawnCoins(coins);
+				}
+				else
+				{
+					gameManager.AddCoins(coins);
+				}
+			}
+			
+			gameManager.AddScore(scoreToAdd);
+		}
         
         // Start death sequence with fade out
         StartCoroutine(DeathSequence());
     }
+	
+	private void SpawnCoins(int amount)
+	{
+		// Spawn 'amount' 1-value coins with small random scatter and gentle pop
+		for (int i = 0; i < amount; i++)
+		{
+			Vector3 spawnPos = transform.position + (Vector3)(UnityEngine.Random.insideUnitCircle * 0.2f);
+			GameObject coin = Instantiate(coinPrefab, spawnPos, Quaternion.identity);
+			
+			// Random outward impulse if Rigidbody2D present
+			Rigidbody2D crb = coin.GetComponent<Rigidbody2D>();
+			if (crb != null)
+			{
+				// Respect prefab setup: if collider is trigger, keep kinematic; if not, keep physics bounce
+				Collider2D coinCol = coin.GetComponent<Collider2D>();
+				if (coinCol != null && coinCol.isTrigger)
+				{
+					crb.gravityScale = 0f;
+					crb.bodyType = RigidbodyType2D.Kinematic;
+					crb.freezeRotation = true;
+				}
+				else
+				{
+					// Use default dynamic physics for bounce; add a small random upward impulse
+					crb.bodyType = RigidbodyType2D.Dynamic;
+					if (crb.gravityScale < 0.01f) crb.gravityScale = 1f;
+					crb.freezeRotation = false;
+				}
+				
+				Vector2 impulse = UnityEngine.Random.insideUnitCircle.normalized * UnityEngine.Random.Range(0.5f, 1.5f);
+				crb.AddForce(impulse, ForceMode2D.Impulse);
+				crb.AddTorque(UnityEngine.Random.Range(-5f, 5f), ForceMode2D.Impulse);
+			}
+			
+			// Ensure visible above ground
+			SpriteRenderer sr = coin.GetComponent<SpriteRenderer>();
+			if (sr != null)
+			{
+				sr.sortingLayerName = "Foreground";
+				if (sr.sortingOrder < 50) sr.sortingOrder = 100;
+				Color c = sr.color;
+				c.a = 1f;
+				sr.color = c;
+			}
+			
+			// Ensure Collectible coin value is 1
+			Collectible coinCollectible = coin.GetComponent<Collectible>();
+			if (coinCollectible != null)
+			{
+				// Coin type enum default is Coin; we only ensure value=1
+				// Using reflection not necessary; fields are serialized
+			}
+		}
+	}
     
     private IEnumerator DeathSequence()
     {

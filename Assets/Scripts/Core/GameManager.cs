@@ -12,9 +12,16 @@ public class GameManager : MonoBehaviour
     
     // Score]
     private int score = 0;
+		
+		// Currency]
+		private int coins = 0;
+		
+		// Final victory control
+		public bool FinalVictoryPending = false;
     
     // Events
     public event Action<int> OnScoreChanged;
+		public event Action<int> OnCoinsChanged;
     public event Action<GameState> OnStateChanged;
     
     private HealthSystem playerHealth;
@@ -25,6 +32,8 @@ public class GameManager : MonoBehaviour
     private bool pendingPlayerRestore = false;
     private Coroutine scoreRefreshCoroutine;
     private Coroutine healthRefreshCoroutine;
+    private float scene1EnterTime = -1f;
+    private float lastFarmingMinutes = 0f;
     
     public enum GameState
     {
@@ -37,6 +46,7 @@ public class GameManager : MonoBehaviour
     
     public GameState CurrentState => currentState;
     public int Score => score;
+		public int Coins => coins;
     
     private void Awake()
     {
@@ -73,6 +83,19 @@ public class GameManager : MonoBehaviour
             // We're in a gameplay scene
             SetState(GameState.Playing);
             InitializePlayerReferences();
+        }
+        
+        // Track farming session time between Scene1 and Scene2
+        if (scene.name == "Scene1")
+        {
+            scene1EnterTime = Time.time;
+        }
+        else if (scene.name == "Scene2")
+        {
+            if (scene1EnterTime > 0f)
+            {
+                lastFarmingMinutes = Mathf.Max(0f, (Time.time - scene1EnterTime) / 60f);
+            }
         }
     }
     
@@ -159,6 +182,8 @@ public class GameManager : MonoBehaviour
         SetState(GameState.Playing);
         score = 0;
         OnScoreChanged?.Invoke(score);
+			coins = 0;
+			OnCoinsChanged?.Invoke(coins);
     }
     
     public void ReturnToMenu()
@@ -168,6 +193,8 @@ public class GameManager : MonoBehaviour
         SetState(GameState.Menu);
         score = 0;
         OnScoreChanged?.Invoke(score);
+			coins = 0;
+			OnCoinsChanged?.Invoke(coins);
     }
     
     public void AddScore(int points)
@@ -199,6 +226,26 @@ public class GameManager : MonoBehaviour
         }
         return false;
     }
+		
+		// Coins API
+		public void AddCoins(int amount)
+		{
+			if (amount <= 0) return;
+			coins += amount;
+			OnCoinsChanged?.Invoke(coins);
+		}
+		
+		public bool SpendCoins(int amount)
+		{
+			if (amount <= 0) return true;
+			if (coins >= amount)
+			{
+				coins -= amount;
+				OnCoinsChanged?.Invoke(coins);
+				return true;
+			}
+			return false;
+		}
     
     public void LoadScene(string sceneName)
     {
@@ -213,6 +260,11 @@ public class GameManager : MonoBehaviour
         {
             SetState(GameState.Playing);
         }
+    }
+    
+    public float GetLastFarmingMinutes()
+    {
+        return lastFarmingMinutes;
     }
     
     public void NextLevel()
@@ -289,7 +341,16 @@ public class GameManager : MonoBehaviour
             victoryScreen.OnVictorySequenceComplete -= OnVictoryScreenSequenceComplete;
         }
 
-        NextLevel();
+        if (FinalVictoryPending)
+        {
+            FinalVictoryPending = false;
+            // End of game flow; return to Main Menu
+            LoadScene("Mainmenu");
+        }
+        else
+        {
+            NextLevel();
+        }
     }
     
     private IEnumerator WaitForDeathAnimationThenPause()

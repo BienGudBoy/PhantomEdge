@@ -14,7 +14,7 @@ public class Shop : Interactable
     
     protected virtual void Start()
     {
-        interactPrompt = $"{shopName}\n{shopDescription}\nCost: {cost} Score";
+		interactPrompt = $"{shopName}\n{shopDescription}\nCost: {cost} Coins";
     }
     
     public override void Interact()
@@ -33,7 +33,7 @@ public class Shop : Interactable
             return;
         }
         
-        // Check if player has enough score
+		// Check currency
         if (GameManager.Instance == null)
         {
             Debug.LogWarning("Shop: GameManager not found!");
@@ -44,9 +44,9 @@ public class Shop : Interactable
         bool purchaseSuccess = false;
         string message = "";
         
-        if (GameManager.Instance.Score < cost)
+		if (GameManager.Instance.Coins < cost)
         {
-            message = $"Not enough score!";
+			message = $"Not enough coins!";
             ShowFloatingText(message, false);
             ShowMessage(message);
             return;
@@ -54,8 +54,8 @@ public class Shop : Interactable
         
         if (TryPurchase())
         {
-            // Deduct cost from score
-            if (GameManager.Instance.SpendScore(cost))
+			// Deduct cost from coins
+			if (GameManager.Instance.SpendCoins(cost))
             {
                 purchaseSuccess = true;
                 message = "Purchase successful!";
@@ -68,7 +68,7 @@ public class Shop : Interactable
             }
             else
             {
-                message = "Failed to deduct score!";
+				message = "Failed to deduct coins!";
             }
         }
         else

@@ -176,7 +176,7 @@ MonoBehaviour:
   patrolDistance: 5
   detectionRange: 8
   attackRange: 1.5
-  attackDamage: 10
+  attackDamage: 26
   attackCooldown: 1
   attackDamageDelay: 0.4
   enableAutoJump: 1

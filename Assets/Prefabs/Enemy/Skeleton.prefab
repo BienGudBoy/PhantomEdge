@@ -193,8 +193,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99bd7963a85c80242a85d46fad68923c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patrolSpeed: 2
-  chaseSpeed: 4
+  patrolSpeed: 2.2
+  chaseSpeed: 2.8
   patrolDistance: 5
   detectionRange: 8
   attackRange: 1.5
@@ -220,6 +220,7 @@ MonoBehaviour:
   nightDamageMultiplier: 1.5
   nightDetectionRangeMultiplier: 1.2
   nightAttackCooldownMultiplier: 0.8
+  minFacingFlipInterval: 0.4
 --- !u!114 &-6996950651651286329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,8 +233,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b43bd68edbfc1fc489ab6ffed8830093, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 50
+  maxHealth: 95
   currentHealth: 0
+  coinPrefab: {fileID: 6700375537857059503, guid: 1b4b0ba283a4e4675a089f459bfec920, type: 3}
   flashDuration: 0.1
   damageColor: {r: 1, g: 0, b: 0, a: 1}
   flashCount: 2

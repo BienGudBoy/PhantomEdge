@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class FlyingEnemyController : MonoBehaviour
@@ -40,12 +41,13 @@ public class FlyingEnemyController : MonoBehaviour
     private float currentAttackCooldown;
     private float currentDetectionRange;
     
-    [Header("Components")]
+	[Header("Components")]
     private Rigidbody2D rb;
     private Animator animator;
     private SpriteRenderer spriteRenderer;
     private Transform player;
     private DayNightCycle dayNightCycle;
+	public int FacingDirection { get; private set; } = 1;
     
     [Header("Patrol")]
     private Vector2 startPosition;
@@ -71,7 +73,12 @@ public class FlyingEnemyController : MonoBehaviour
     private bool hasFlightParameter;
     private bool hasAttackParameter;
     private bool hasTakehitParameter;
-    private bool hasDeathParameter;
+	private bool hasDeathParameter;
+	private Coroutine externalStaggerRoutine;
+	
+	[Header("Awareness & Facing")]
+	[SerializeField] private float minFacingFlipInterval = 0.4f; // Delay between facing flips to allow backstabs
+	private float lastFacingFlipTime = -999f;
     
     private enum EnemyState
     {
@@ -402,6 +409,9 @@ public class FlyingEnemyController : MonoBehaviour
         rb.linearVelocity = Vector2.zero;
         MaintainHeight();
         
+		// While hurt, postpone flips to keep a brief vulnerability window
+		lastFacingFlipTime = Time.time;
+		
         if (hasAnimator && hasTakehitParameter)
         {
             SafeSetTrigger(isTakehitHash);
@@ -478,10 +488,19 @@ public class FlyingEnemyController : MonoBehaviour
         
         rb.linearVelocity = desiredVelocity;
         
-        // Flip sprite based on horizontal direction
-        if (spriteRenderer != null)
+		// Flip sprite based on horizontal direction with cooldown
+		if (spriteRenderer != null)
         {
-            spriteRenderer.flipX = direction.x < 0;
+			int desiredFacing = direction.x >= 0f ? 1 : -1;
+			if (desiredFacing != FacingDirection)
+			{
+				if (Time.time - lastFacingFlipTime >= minFacingFlipInterval)
+				{
+					spriteRenderer.flipX = desiredFacing < 0;
+					FacingDirection = desiredFacing;
+					lastFacingFlipTime = Time.time;
+				}
+			}
         }
     }
     
@@ -609,6 +628,34 @@ public class FlyingEnemyController : MonoBehaviour
         
         Destroy(gameObject, 3f);
     }
+	
+	public void ApplyExternalStagger(float duration)
+	{
+		if (duration <= 0f || currentState == EnemyState.Dead) return;
+		
+		// Reset flip timer so enemy won't instantly turn during/after stagger
+		lastFacingFlipTime = Time.time;
+		
+		if (externalStaggerRoutine != null)
+		{
+			StopCoroutine(externalStaggerRoutine);
+		}
+		externalStaggerRoutine = StartCoroutine(ExternalStagger(duration));
+	}
+	
+	private IEnumerator ExternalStagger(float duration)
+	{
+		currentState = EnemyState.Hurt;
+		if (rb != null)
+		{
+			rb.linearVelocity = Vector2.zero;
+		}
+		
+		yield return new WaitForSeconds(duration);
+		
+		ResetToChase();
+		externalStaggerRoutine = null;
+	}
     
     private void OnDrawGizmosSelected()
     {
