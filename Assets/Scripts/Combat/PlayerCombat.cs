@@ -8,10 +8,22 @@ public class PlayerCombat : MonoBehaviour
 	[SerializeField] private float attackDuration = 0.70f; // Total attack animation time
 	[SerializeField] private float damageDelay = 0.22f; // When in the animation to deal damage (seconds)
     [SerializeField] private Transform attackPoint;
+	
+	[Header("Advanced Mechanics")]
+	[SerializeField] private bool enableAttackIFrames = true;
+	[SerializeField] private float attackInvulnerabilityDuration = 0.15f;
+	[SerializeField] private bool enableBackstabBonus = true;
+	[SerializeField] private float backstabMultiplier = 1.25f;
+	[SerializeField, Range(0f, 180f)] private float backstabAngleThreshold = 60f;
+	[SerializeField] private bool enableMicroStagger = true;
+	[SerializeField] private float microStaggerDuration = 0.35f;
+	[SerializeField] private bool microStaggerSkeletonsRequireBackstab = true;
+	[SerializeField] private bool microStaggerOtherEnemies = false;
     
     [Header("Components")]
     private Animator animator;
     private HealthSystem healthSystem;
+	private PlayerController playerController;
     
     [Header("State")]
     private float lastAttackTime = 0f;
@@ -22,6 +34,7 @@ public class PlayerCombat : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         healthSystem = GetComponent<HealthSystem>();
+		playerController = GetComponent<PlayerController>();
         
         enemyLayer = LayerMask.GetMask("Enemy");
         Debug.Log($"PlayerCombat initialized. Enemy layer mask value: {enemyLayer.value}");
@@ -44,12 +57,16 @@ public class PlayerCombat : MonoBehaviour
         isAttacking = true;
         
         Debug.Log($"Attack started at time: {Time.time}, duration: {attackDuration}");
+		
+		if (enableAttackIFrames && healthSystem != null)
+		{
+			healthSystem.GrantInvulnerability(attackInvulnerabilityDuration);
+		}
         
         // Notify PlayerController to stop movement animations
-        PlayerController controller = GetComponent<PlayerController>();
-        if (controller != null)
+		if (playerController != null)
         {
-            controller.IsAttacking = true;
+			playerController.IsAttacking = true;
         }
         
         // Trigger attack animation
@@ -111,8 +128,22 @@ public class PlayerCombat : MonoBehaviour
             EnemyHealth enemyHealth = enemy.GetComponent<EnemyHealth>();
             if (enemyHealth != null)
             {
-                enemyHealth.TakeDamage(attackDamage);
-                Debug.Log($"Dealt {attackDamage} damage to {enemy.gameObject.name}");
+				bool isBackstab = enableBackstabBonus && IsBackstab(enemy.transform);
+				float damageScale = isBackstab ? backstabMultiplier : 1f;
+				int appliedDamage = Mathf.Max(1, Mathf.RoundToInt(attackDamage * damageScale));
+				
+				enemyHealth.TakeDamage(appliedDamage);
+				
+				if (isBackstab)
+				{
+					Debug.Log($"Backstab! Dealt {appliedDamage} damage (x{backstabMultiplier:F2}) to {enemy.gameObject.name}");
+				}
+				else
+				{
+					Debug.Log($"Dealt {appliedDamage} damage to {enemy.gameObject.name}");
+				}
+				
+				TryApplyMicroStagger(enemy.gameObject, isBackstab);
             }
         }
     }
@@ -132,10 +163,9 @@ public class PlayerCombat : MonoBehaviour
         }
         
         // Notify PlayerController that attack is done
-        PlayerController controller = GetComponent<PlayerController>();
-        if (controller != null)
+		if (playerController != null)
         {
-            controller.IsAttacking = false;
+			playerController.IsAttacking = false;
             Debug.Log("PlayerController.IsAttacking set to false");
         }
     }
@@ -175,6 +205,113 @@ public class PlayerCombat : MonoBehaviour
 	public float GetAttackDuration()
 	{
 		return attackDuration;
+	}
+	
+	private bool IsBackstab(Transform enemyTransform)
+	{
+		Vector2 toPlayer = (Vector2)(transform.position - enemyTransform.position);
+		if (toPlayer.sqrMagnitude < Mathf.Epsilon)
+		{
+			return false;
+		}
+		
+		Vector2 enemyForward = GetEnemyFacingVector(enemyTransform);
+		if (enemyForward.sqrMagnitude < Mathf.Epsilon)
+		{
+			enemyForward = Vector2.right;
+		}
+		
+		float angleThreshold = Mathf.Clamp(backstabAngleThreshold, 0f, 180f);
+		float backstabDot = Vector2.Dot(enemyForward.normalized, toPlayer.normalized);
+		float requiredDot = -Mathf.Cos(angleThreshold * Mathf.Deg2Rad);
+		
+		if (backstabDot > requiredDot)
+		{
+			return false;
+		}
+		
+		Vector2 toEnemy = -toPlayer;
+		if (toEnemy.sqrMagnitude < Mathf.Epsilon)
+		{
+			return false;
+		}
+		
+		Vector2 playerFacing = GetPlayerFacingVector();
+		float facingDot = Vector2.Dot(playerFacing.normalized, toEnemy.normalized);
+		
+		return facingDot > 0.1f;
+	}
+	
+	private Vector2 GetEnemyFacingVector(Transform enemyTransform)
+	{
+		if (enemyTransform.TryGetComponent<EnemyController>(out var enemyController))
+		{
+			return new Vector2(enemyController.FacingDirection, 0f);
+		}
+		
+		if (enemyTransform.TryGetComponent<FlyingEnemyController>(out var flyingController))
+		{
+			return new Vector2(flyingController.FacingDirection, 0f);
+		}
+		
+		SpriteRenderer sprite = enemyTransform.GetComponent<SpriteRenderer>();
+		if (sprite != null)
+		{
+			return sprite.flipX ? Vector2.left : Vector2.right;
+		}
+		
+		return enemyTransform.lossyScale.x >= 0f ? Vector2.right : Vector2.left;
+	}
+	
+	private Vector2 GetPlayerFacingVector()
+	{
+		if (playerController != null)
+		{
+			return new Vector2(playerController.FacingDirection, 0f);
+		}
+		
+		return transform.localScale.x >= 0f ? Vector2.right : Vector2.left;
+	}
+	
+	private void TryApplyMicroStagger(GameObject enemyObject, bool isBackstab)
+	{
+		if (!enableMicroStagger)
+		{
+			return;
+		}
+		
+		string nameLower = enemyObject.name.ToLowerInvariant();
+		bool isGoblin = nameLower.Contains("goblin") || nameLower.Contains("globlin");
+		bool isSkeleton = nameLower.Contains("skeleton");
+		
+		bool shouldApply = false;
+		
+		if (isGoblin)
+		{
+			shouldApply = true;
+		}
+		else if (isSkeleton)
+		{
+			shouldApply = microStaggerSkeletonsRequireBackstab ? isBackstab : true;
+		}
+		else if (microStaggerOtherEnemies)
+		{
+			shouldApply = true;
+		}
+		
+		if (!shouldApply)
+		{
+			return;
+		}
+		
+		if (enemyObject.TryGetComponent<EnemyController>(out var enemyController))
+		{
+			enemyController.ApplyExternalStagger(microStaggerDuration);
+		}
+		else if (enemyObject.TryGetComponent<FlyingEnemyController>(out var flyingController))
+		{
+			flyingController.ApplyExternalStagger(microStaggerDuration);
+		}
 	}
 	
     public int GetAttackDamage()

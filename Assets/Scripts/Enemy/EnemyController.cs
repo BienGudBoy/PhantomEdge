@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
@@ -54,6 +55,7 @@ public class EnemyController : MonoBehaviour
     private Transform player;
     private DayNightCycle dayNightCycle;
     private Collider2D bodyCollider;
+	public int FacingDirection { get; private set; } = 1;
     
     [Header("Patrol")]
     private Vector2 startPosition;
@@ -78,6 +80,7 @@ public class EnemyController : MonoBehaviour
     private bool hasAttackParameter;
     private bool hasTakehitParameter;
     private bool hasDeathParameter;
+	private Coroutine externalStaggerRoutine;
     
     private enum EnemyState
     {
@@ -550,6 +553,7 @@ public class EnemyController : MonoBehaviour
             if (moveDir != 0f)
             {
                 spriteRenderer.flipX = moveDir < 0;
+				FacingDirection = moveDir >= 0f ? 1 : -1;
             }
         }
     }
@@ -634,6 +638,31 @@ public class EnemyController : MonoBehaviour
         // Destroy after delay
         Destroy(gameObject, 3f);
     }
+	
+	public void ApplyExternalStagger(float duration)
+	{
+		if (duration <= 0f || currentState == EnemyState.Dead) return;
+		
+		if (externalStaggerRoutine != null)
+		{
+			StopCoroutine(externalStaggerRoutine);
+		}
+		externalStaggerRoutine = StartCoroutine(ExternalStagger(duration));
+	}
+	
+	private IEnumerator ExternalStagger(float duration)
+	{
+		currentState = EnemyState.Hurt;
+		if (rb != null)
+		{
+			rb.linearVelocity = Vector2.zero;
+		}
+		
+		yield return new WaitForSeconds(duration);
+		
+		ResetToChase();
+		externalStaggerRoutine = null;
+	}
     
     private void OnDrawGizmosSelected()
     {
