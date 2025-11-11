@@ -206,14 +206,31 @@ public class EnemyHealth : MonoBehaviour
 				{
 					coins = 4;
 				}
-				else if (n.Contains("mushroom"))
+			else if (n.Contains("mushroom"))
+			{
+				// Base coin drop: 15-20 coins
+				// Scale with mushroomVictoryCount (round index) to keep it rewarding
+				int baseMin = 15;
+				int baseMax = 20;
+				int roundIndex = 0;
+				
+				// Get round index from GameManager
+				if (gameManager != null)
 				{
-					coins = UnityEngine.Random.Range(15, 21); // 15..20 inclusive
+					roundIndex = gameManager.GetRoundIndexForBoss(BossManager.BossType.Mushroom);
 				}
-				else if (n.Contains("sword"))
-				{
-					coins = 0; // final boss, no coin
-				}
+				
+				// Increase coin drops by 5 coins per round (linear scaling)
+				// Round 0: 15-20, Round 1: 20-25, Round 2: 25-30, etc.
+				int coinMin = baseMin + (roundIndex * 5);
+				int coinMax = baseMax + (roundIndex * 5);
+				
+				coins = UnityEngine.Random.Range(coinMin, coinMax + 1);
+			}
+			else if (n.Contains("sword"))
+			{
+				coins = 0; // final boss, no coin
+			}
 			}
 			
 			// Spawn coin collectibles if prefab is assigned; otherwise grant directly
