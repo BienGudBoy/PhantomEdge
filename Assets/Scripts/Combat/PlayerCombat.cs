@@ -3,10 +3,10 @@ using UnityEngine;
 public class PlayerCombat : MonoBehaviour
 {
     [Header("Combat Settings")]
-    [SerializeField] private float attackRange = 1.5f;
-    [SerializeField] private int attackDamage = 10;
-    [SerializeField] private float attackDuration = 0.85f; // Match animation length
-    [SerializeField] private float damageDelay = 0.3f; // When in the animation to deal damage (seconds)
+	[SerializeField] private float attackRange = 1.6f;
+	[SerializeField] private int attackDamage = 13;
+	[SerializeField] private float attackDuration = 0.70f; // Total attack animation time
+	[SerializeField] private float damageDelay = 0.22f; // When in the animation to deal damage (seconds)
     [SerializeField] private Transform attackPoint;
     
     [Header("Components")]
@@ -163,6 +163,20 @@ public class PlayerCombat : MonoBehaviour
         Debug.Log($"PlayerCombat: Damage increased by {amount}. New damage: {attackDamage}");
     }
     
+	// Multiplicatively reduce attackDuration to increase attack speed.
+	// Example: multiplier=0.9f reduces duration by 10% per upgrade. Clamped by minDuration.
+	public void ApplyAttackSpeedUpgrade(float multiplier = 0.9f, float minDuration = 0.45f)
+	{
+		float previous = attackDuration;
+		attackDuration = Mathf.Max(minDuration, attackDuration * multiplier);
+		Debug.Log($"PlayerCombat: Attack speed upgraded. Duration {previous:F3}s -> {attackDuration:F3}s (mult={multiplier}, min={minDuration})");
+	}
+	
+	public float GetAttackDuration()
+	{
+		return attackDuration;
+	}
+	
     public int GetAttackDamage()
     {
         return attackDamage;
