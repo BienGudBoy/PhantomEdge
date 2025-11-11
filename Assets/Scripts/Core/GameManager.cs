@@ -45,6 +45,9 @@ public class GameManager : MonoBehaviour
     private int storedPlayerHealth = -1;
     private int storedPlayerMaxHealth = -1;
     private bool pendingPlayerRestore = false;
+    
+    // Store current health before scene changes
+    private int persistentCurrentHealth = -1;
     private Coroutine scoreRefreshCoroutine;
     private Coroutine healthRefreshCoroutine;
     private float scene1EnterTime = -1f;
@@ -280,6 +283,9 @@ public class GameManager : MonoBehaviour
     
     public void LoadScene(string sceneName)
     {
+        // Store player health before scene change
+        StorePlayerHealthBeforeSceneChange();
+        
         Time.timeScale = 1f;
         SceneManager.LoadScene(sceneName);
         
@@ -333,6 +339,9 @@ public class GameManager : MonoBehaviour
     
     public void NextLevel()
     {
+        // Store player health before scene change
+        StorePlayerHealthBeforeSceneChange();
+        
         Scene activeScene = SceneManager.GetActiveScene();
         string activeSceneName = activeScene.name;
 
@@ -472,6 +481,26 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void StorePlayerHealthBeforeSceneChange()
+    {
+        // Store current health before scene change (if player exists)
+        // Try to find player if reference is stale
+        if (playerHealth == null)
+        {
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            if (player != null)
+            {
+                playerHealth = player.GetComponent<HealthSystem>();
+            }
+        }
+        
+        if (playerHealth != null && !playerHealth.IsDead)
+        {
+            persistentCurrentHealth = playerHealth.CurrentHealth;
+            Debug.Log($"Stored player health before scene change: {persistentCurrentHealth}");
+        }
+    }
+    
     private void InitializePlayerReferences()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
@@ -493,12 +522,29 @@ public class GameManager : MonoBehaviour
                 else
                 {
                     // Restore HP upgrades (base is 100 from HealthSystem default)
+                    int baseMaxHealth = 100; // Default max health
+                    int newMaxHealth = baseMaxHealth + totalHPIncrease;
+                    
+                    // Use stored current health if available, otherwise keep what HealthSystem set in Awake
+                    int currentHP = persistentCurrentHealth > 0 ? persistentCurrentHealth : playerHealth.CurrentHealth;
+                    
+                    // Clamp current health to not exceed new max health
+                    currentHP = Mathf.Min(currentHP, newMaxHealth);
+                    
+                    Debug.Log($"Restoring player health: stored={persistentCurrentHealth}, current={playerHealth.CurrentHealth}, newMax={newMaxHealth}, final={currentHP}");
+                    
                     if (totalHPIncrease > 0)
                     {
-                        int baseMaxHealth = 100; // Default max health
-                        int newMaxHealth = baseMaxHealth + totalHPIncrease;
-                        playerHealth.SetMaxHealth(newMaxHealth);
+                        playerHealth.SetHealthState(currentHP, newMaxHealth);
                     }
+                    else if (persistentCurrentHealth > 0)
+                    {
+                        // Even if no HP upgrades, restore the stored current health
+                        playerHealth.SetHealthState(currentHP, baseMaxHealth);
+                    }
+                    
+                    // Reset the stored health after using it
+                    persistentCurrentHealth = -1;
                 }
             }
             

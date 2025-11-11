@@ -276,8 +276,7 @@ public class CombatShopUI : MonoBehaviour
         }
         
         int hpIncrease = vitalBoostAmounts[vitalBoostOptionIndex];
-        int newMaxHealth = health.MaxHealth + hpIncrease;
-        health.SetMaxHealth(newMaxHealth);
+        health.IncreaseMaxHealth(hpIncrease);
         
         // Deduct coins
         GameManager.Instance.SpendCoins(currentCost);

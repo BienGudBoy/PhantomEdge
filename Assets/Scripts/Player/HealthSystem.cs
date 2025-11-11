@@ -94,6 +94,16 @@ public class HealthSystem : MonoBehaviour
         currentHealth = maxHealth;
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
     }
+    
+    // Increase max health without restoring current health to full
+    public void IncreaseMaxHealth(int amount)
+    {
+        if (amount <= 0) return;
+        maxHealth += amount;
+        // Keep current health the same (don't restore to full)
+        currentHealth = Mathf.Clamp(currentHealth, 1, maxHealth);
+        OnHealthChanged?.Invoke(currentHealth, maxHealth);
+    }
 
     public void SetHealthState(int newCurrentHealth, int newMaxHealth)
     {
